@@ -2,6 +2,8 @@ import React from 'react';
 import './Navbar.css';
 import zLogo from '../assets/z-logo.png';
 
+const navItems = ['Ad Solutions', 'Resources', 'Advertise with us', 'Z Rise'];
+
 const Navbar = () => {
   return (
     <nav className="navbar">
@@ -10,13 +12,14 @@ const Navbar = () => {
       </div>
 
       <div className="navbar-links">
-        <a href="#ad-solutions">Ad Solutions</a>
-        <a href="#resources">Resources</a>
-        <a href="#advertise">Advertise with us</a>
-        <a href="#z-rise">Z Rise</a>
+        {navItems.map((item) => (
+          <a key={item} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}>
+            {item}
+          </a>
+        ))}
       </div>
 
-      <button className="search-btn">
+      <button className="search-btn" aria-label="Search">
         <svg
           width="20"
           height="20"

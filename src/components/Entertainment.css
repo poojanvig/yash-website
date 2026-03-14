@@ -35,8 +35,17 @@
 
 .marquee-track {
   display: flex;
-  gap: 24px;
   width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.marquee-group {
+  display: flex;
+  gap: 24px;
+  flex-shrink: 0;
+  padding-right: 24px;
 }
 
 .row1-track {
@@ -49,19 +58,19 @@
 
 @keyframes scrollLeft {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(calc(-33.333%));
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @keyframes scrollRight {
   0% {
-    transform: translateX(calc(-33.333%));
+    transform: translate3d(-50%, 0, 0);
   }
   100% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -163,7 +172,12 @@
   }
 
   .marquee-track {
+    gap: 0;
+  }
+
+  .marquee-group {
     gap: 16px;
+    padding-right: 16px;
   }
 
   .entertainment-card {
