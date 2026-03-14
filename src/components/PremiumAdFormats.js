@@ -261,7 +261,7 @@ function AdCategory({ categoryKey, data }) {
 
 function PremiumAdFormats() {
   return (
-    <section className="premium-ad-formats">
+    <section id="premium-ad-formats" className="premium-ad-formats">
       <h2 className="premium-title">Premium Ad Formats</h2>
       <p className="premium-subtitle">
         Choose from a comprehensive range of advertising solutions

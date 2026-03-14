@@ -4,7 +4,7 @@ import heroBg from '../assets/hero-bg.png';
 
 const Hero = () => {
   return (
-    <section className="hero">
+    <section id="hero" className="hero">
       <div className="hero-bg">
         <img src={heroBg} alt="Movie Posters Collage" />
         <div className="hero-overlay"></div>

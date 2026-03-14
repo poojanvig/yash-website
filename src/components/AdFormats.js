@@ -4,7 +4,7 @@ import adFormatsHero from '../assets/ad-formats-hero.png';
 
 const AdFormats = () => {
   return (
-    <section className="ad-formats">
+    <section id="ad-formats" className="ad-formats">
       <h2 className="ad-formats-title">
         High-Impact Ad Formats That Connect Brands<br />to Millions
       </h2>

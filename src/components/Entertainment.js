@@ -14,7 +14,7 @@ const cards = [
 
 const Entertainment = () => {
   return (
-    <section className="entertainment">
+    <section id="entertainment" className="entertainment">
       <h2 className="entertainment-title">
         Entertainment for <span className="gradient-text">2.3 Bn</span> Heartbeats
       </h2>

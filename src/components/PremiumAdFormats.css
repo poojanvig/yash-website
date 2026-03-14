@@ -43,33 +43,38 @@
   display: flex;
   justify-content: center;
   gap: 0;
-  margin-bottom: 58px;
+  margin: 0 auto 58px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  width: fit-content;
 }
 
 .toggle-btn {
-  padding: 9px 19px;
-  border: 1px solid #f2bc34;
-  font-size: 0.84rem;
+  padding: 10px 28px;
+  border: none;
+  font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   background: transparent;
-  color: #f2f0f7;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 50px;
 }
 
 .toggle-btn:first-child {
-  border-radius: 50px 0 0 50px;
-  border-right: none;
+  border-radius: 50px;
 }
 
 .toggle-btn:last-child {
-  border-radius: 0 50px 50px 0;
+  border-radius: 50px;
 }
 
 .toggle-btn.active {
   background: #f2bc34;
-  color: #18151f;
-  border-color: #f2bc34;
+  color: #000000;
+  border: none;
 }
 
 /* Category Content Layout */
@@ -291,33 +296,45 @@
   opacity: 0.82;
 }
 
-.ad-category-video .ad-category-title {
+.ad-category-video .ad-category-title,
+.ad-category-ctv .ad-category-title,
+.ad-category-display .ad-category-title {
   margin-bottom: 12px;
 }
 
-.ad-category-video .platform-toggle {
+.ad-category-video .platform-toggle,
+.ad-category-ctv .platform-toggle,
+.ad-category-display .platform-toggle {
   margin-bottom: 44px;
 }
 
-.ad-category-video .ad-category-content {
+.ad-category-video .ad-category-content,
+.ad-category-ctv .ad-category-content,
+.ad-category-display .ad-category-content {
   max-width: 1180px;
   gap: 24px;
   align-items: center;
   z-index: 0;
 }
 
-.ad-category-video .ad-category-content::before {
+.ad-category-video .ad-category-content::before,
+.ad-category-ctv .ad-category-content::before,
+.ad-category-display .ad-category-content::before {
   display: none;
 }
 
-.ad-category-video .ad-mockup {
+.ad-category-video .ad-mockup,
+.ad-category-ctv .ad-mockup,
+.ad-category-display .ad-mockup {
   width: 292px;
   margin-top: 8px;
   margin-right: -8px;
   z-index: 1;
 }
 
-.ad-category-video .mockup-glow {
+.ad-category-video .mockup-glow,
+.ad-category-ctv .mockup-glow,
+.ad-category-display .mockup-glow {
   width: 386px;
   height: 386px;
   left: -22px;
@@ -326,11 +343,15 @@
   background: #a10cff;
 }
 
-.ad-category-video .ad-mockup img {
+.ad-category-video .ad-mockup img,
+.ad-category-ctv .ad-mockup img,
+.ad-category-display .ad-mockup img {
   max-width: 286px;
 }
 
-.ad-category-video .ad-info-card {
+.ad-category-video .ad-info-card,
+.ad-category-ctv .ad-info-card,
+.ad-category-display .ad-info-card {
   flex: 0 0 430px;
   max-width: 430px;
   min-height: 524px;
@@ -351,7 +372,9 @@
   position: relative;
 }
 
-.ad-category-video .ad-info-card::before {
+.ad-category-video .ad-info-card::before,
+.ad-category-ctv .ad-info-card::before,
+.ad-category-display .ad-info-card::before {
   content: '';
   position: absolute;
   inset: -2px;
@@ -367,7 +390,9 @@
   pointer-events: none;
 }
 
-.ad-category-video .ad-info-card::after {
+.ad-category-video .ad-info-card::after,
+.ad-category-ctv .ad-info-card::after,
+.ad-category-display .ad-info-card::after {
   border-radius: 19px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.012) 12%, rgba(255, 255, 255, 0) 24%),
@@ -397,28 +422,61 @@
   white-space: nowrap;
 }
 
-.ad-category-video .ad-info-section {
+.ad-category-ctv .ad-info-title,
+.ad-category-display .ad-info-title {
+  position: absolute;
+  left: 24px;
+  top: 23px;
+  max-width: 280px;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 1;
+  margin-bottom: 0;
+  background: linear-gradient(57.49deg, #1ABED4 36.91%, #68BC48 41.46%, #F89223 46.66%, #F57933 52.68%, #F89223 57.88%, #76B843 62.92%, #F1544B 67.47%, #EB2B8C 70.72%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: block;
+  z-index: 2;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.ad-category-video .ad-info-section,
+.ad-category-ctv .ad-info-section,
+.ad-category-display .ad-info-section {
   margin-bottom: 24px;
   position: relative;
   z-index: 1;
 }
 
-.ad-category-video .ad-info-card .ad-info-section:first-of-type {
+.ad-category-video .ad-info-card .ad-info-section:first-of-type,
+.ad-category-ctv .ad-info-card .ad-info-section:first-of-type,
+.ad-category-display .ad-info-card .ad-info-section:first-of-type {
   margin-top: 86px;
 }
 
-.ad-category-video .ad-info-section h5 {
+.ad-category-video .ad-info-section h5,
+.ad-category-ctv .ad-info-section h5,
+.ad-category-display .ad-info-section h5 {
   font-size: 0.96rem;
   margin-bottom: 14px;
 }
 
-.ad-category-video .ad-info-section p {
+.ad-category-video .ad-info-section p,
+.ad-category-ctv .ad-info-section p,
+.ad-category-display .ad-info-section p {
   max-width: 334px;
   font-size: 0.95rem;
   line-height: 1.32;
 }
 
-.ad-category-video .buying-options-grid {
+.ad-category-video .buying-options-grid,
+.ad-category-ctv .buying-options-grid,
+.ad-category-display .buying-options-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px 14px;
@@ -426,7 +484,9 @@
   justify-items: stretch;
 }
 
-.ad-category-video .buying-option {
+.ad-category-video .buying-option,
+.ad-category-ctv .buying-option,
+.ad-category-display .buying-option {
   min-height: 84px;
   border-radius: 12px;
   padding: 14px 30px 12px 14px;
@@ -434,14 +494,18 @@
   width: 100%;
 }
 
-.ad-category-video .buying-option-centered {
+.ad-category-video .buying-option-centered,
+.ad-category-ctv .buying-option-centered,
+.ad-category-display .buying-option-centered {
   grid-column: 1 / -1;
   justify-self: center;
   max-width: 154px;
   width: 154px;
 }
 
-.ad-category-video .buying-label {
+.ad-category-video .buying-label,
+.ad-category-ctv .buying-label,
+.ad-category-display .buying-label {
   font-size: 1.35rem;
   margin-bottom: 4px;
   font-weight: 700;
@@ -449,7 +513,9 @@
   line-height: 1;
 }
 
-.ad-category-video .buying-subtitle {
+.ad-category-video .buying-subtitle,
+.ad-category-ctv .buying-subtitle,
+.ad-category-display .buying-subtitle {
   font-size: 0.54rem;
   margin-bottom: 6px;
   font-weight: 700;
@@ -458,7 +524,9 @@
   line-height: 1.15;
 }
 
-.ad-category-video .buying-desc {
+.ad-category-video .buying-desc,
+.ad-category-ctv .buying-desc,
+.ad-category-display .buying-desc {
   max-width: 122px;
   font-size: 0.66rem;
   line-height: 1.3;
@@ -467,25 +535,33 @@
   color: #4a4e5d;
 }
 
-.ad-category-video .buying-option-arrow {
+.ad-category-video .buying-option-arrow,
+.ad-category-ctv .buying-option-arrow,
+.ad-category-display .buying-option-arrow {
   right: 10px;
   bottom: 8px;
   font-size: 18px;
   color: #676b7b;
 }
 
-.ad-category-video .ad-tabs-nav {
+.ad-category-video .ad-tabs-nav,
+.ad-category-ctv .ad-tabs-nav,
+.ad-category-display .ad-tabs-nav {
   min-width: 154px;
   gap: 10px;
 }
 
-.ad-category-video .ad-tab-btn {
+.ad-category-video .ad-tab-btn,
+.ad-category-ctv .ad-tab-btn,
+.ad-category-display .ad-tab-btn {
   padding: 9px 16px;
   font-size: 0.92rem;
   font-weight: 500;
 }
 
-.ad-category-video .ad-tab-btn.active {
+.ad-category-video .ad-tab-btn.active,
+.ad-category-ctv .ad-tab-btn.active,
+.ad-category-display .ad-tab-btn.active {
   box-shadow: 0 10px 20px rgba(145, 22, 255, 0.22);
 }
 
@@ -543,29 +619,39 @@
     padding: 10px 14px;
   }
 
-  .ad-category-video .ad-category-content {
+  .ad-category-video .ad-category-content,
+  .ad-category-ctv .ad-category-content,
+  .ad-category-display .ad-category-content {
     max-width: 1020px;
     gap: 18px;
   }
 
-  .ad-category-video .ad-mockup {
+  .ad-category-video .ad-mockup,
+  .ad-category-ctv .ad-mockup,
+  .ad-category-display .ad-mockup {
     width: 248px;
     margin-top: 10px;
     margin-right: -6px;
   }
 
-  .ad-category-video .mockup-glow {
+  .ad-category-video .mockup-glow,
+  .ad-category-ctv .mockup-glow,
+  .ad-category-display .mockup-glow {
     width: 326px;
     height: 326px;
     left: -20px;
     top: 66%;
   }
 
-  .ad-category-video .ad-mockup img {
+  .ad-category-video .ad-mockup img,
+  .ad-category-ctv .ad-mockup img,
+  .ad-category-display .ad-mockup img {
     max-width: 242px;
   }
 
-  .ad-category-video .ad-info-card {
+  .ad-category-video .ad-info-card,
+  .ad-category-ctv .ad-info-card,
+  .ad-category-display .ad-info-card {
     flex-basis: 384px;
     max-width: 384px;
     min-height: 486px;
@@ -578,7 +664,14 @@
     height: 58px;
   }
 
-  .ad-category-video .ad-tabs-nav {
+  .ad-category-ctv .ad-info-title,
+  .ad-category-display .ad-info-title {
+    font-size: 34px;
+  }
+
+  .ad-category-video .ad-tabs-nav,
+  .ad-category-ctv .ad-tabs-nav,
+  .ad-category-display .ad-tabs-nav {
     min-width: 140px;
   }
 }
@@ -645,34 +738,46 @@
     max-width: none;
   }
 
-  .ad-category-video .ad-mockup {
+  .ad-category-video .ad-mockup,
+  .ad-category-ctv .ad-mockup,
+  .ad-category-display .ad-mockup {
     margin-top: 0;
     margin-right: 0;
   }
 
-  .ad-category-video .mockup-glow {
+  .ad-category-video .mockup-glow,
+  .ad-category-ctv .mockup-glow,
+  .ad-category-display .mockup-glow {
     width: 286px;
     height: 286px;
     left: -16px;
     top: 66%;
   }
 
-  .ad-category-video .ad-info-card {
+  .ad-category-video .ad-info-card,
+  .ad-category-ctv .ad-info-card,
+  .ad-category-display .ad-info-card {
     flex-basis: auto;
     max-width: none;
     min-height: 0;
     padding: 24px 20px 18px;
   }
 
-  .ad-category-video .ad-tabs-nav {
+  .ad-category-video .ad-tabs-nav,
+  .ad-category-ctv .ad-tabs-nav,
+  .ad-category-display .ad-tabs-nav {
     min-width: unset;
   }
 
-  .ad-category-video .buying-options-grid {
+  .ad-category-video .buying-options-grid,
+  .ad-category-ctv .buying-options-grid,
+  .ad-category-display .buying-options-grid {
     grid-template-columns: 1fr;
   }
 
-  .ad-category-video .buying-option-centered {
+  .ad-category-video .buying-option-centered,
+  .ad-category-ctv .buying-option-centered,
+  .ad-category-display .buying-option-centered {
     width: 100%;
   }
 }
