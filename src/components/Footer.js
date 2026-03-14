@@ -14,7 +14,8 @@ function Footer() {
       <div className="footer-gradient-line"></div>
       <div className="footer-container">
         <div className="footer-logo">
-          <img src={zLogo} alt="Z Ad World" className="footer-z-logo" />
+          <img src={zLogo} alt="Z" className="footer-z-logo" />
+          <span className="footer-logo-text">Ad World</span>
         </div>
 
         <div className="footer-content">
