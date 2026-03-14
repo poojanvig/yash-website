@@ -5,6 +5,8 @@ import Hero from './components/Hero';
 import Entertainment from './components/Entertainment';
 import AdFormats from './components/AdFormats';
 import PremiumAdFormats from './components/PremiumAdFormats';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <Entertainment />
       <AdFormats />
       <PremiumAdFormats />
+      <Contact />
+      <Footer />
     </div>
   );
 }
