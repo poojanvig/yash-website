@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Entertainment from './components/Entertainment';
 import AdFormats from './components/AdFormats';
+import PremiumAdFormats from './components/PremiumAdFormats';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Hero />
       <Entertainment />
       <AdFormats />
+      <PremiumAdFormats />
     </div>
   );
 }

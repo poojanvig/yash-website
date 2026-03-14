@@ -1,0 +1,370 @@
+.premium-ad-formats {
+  padding: 80px 60px;
+  background: #191921;
+}
+
+.premium-title {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.premium-subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #9a9aaa;
+  line-height: 1.6;
+  margin-bottom: 60px;
+}
+
+/* Category */
+.ad-category {
+  margin-bottom: 40px;
+}
+
+.ad-category-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Platform Toggle */
+.platform-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 50px;
+}
+
+.toggle-btn {
+  padding: 10px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #2a2a3a;
+  color: #9a9aaa;
+}
+
+.toggle-btn:first-child {
+  border-radius: 50px 0 0 50px;
+  border-right: none;
+}
+
+.toggle-btn:last-child {
+  border-radius: 0 50px 50px 0;
+}
+
+.toggle-btn.active {
+  background: linear-gradient(135deg, #7B2FFF, #A855F7);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* Category Content Layout */
+.ad-category-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Mockup */
+.ad-mockup {
+  flex-shrink: 0;
+  width: 340px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mockup-ellipse {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: #3B0BDB;
+  left: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.ad-mockup img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  border-radius: 24px;
+}
+
+/* Info Card */
+.ad-info-card {
+  flex: 1;
+  background: rgba(30, 30, 45, 0.8);
+  border-radius: 20px;
+  padding: 35px;
+  position: relative;
+}
+
+/* Rainbow gradient border on the info card */
+.ad-info-card::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 20px;
+  padding: 1.5px;
+  background: linear-gradient(135deg, #f6d365, #fda085, #f093fb, #60efff, #00ff87);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.ad-info-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  background: linear-gradient(to right, #11C9DD, #76B843, #F6BF32, #F89223, #F2509E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.ad-info-section {
+  margin-bottom: 20px;
+}
+
+.ad-info-section h5 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.ad-info-section p {
+  font-size: 14px;
+  color: #b0b0c0;
+  line-height: 1.7;
+}
+
+/* Buying Options */
+.buying-options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.buying-option {
+  display: flex;
+  flex-direction: column;
+  background: rgba(200, 200, 220, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px 18px;
+  min-width: 160px;
+  flex: 1;
+  max-width: 200px;
+  position: relative;
+}
+
+.buying-option-arrow {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  color: #9a9aaa;
+  font-size: 16px;
+}
+
+.buying-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.buying-subtitle {
+  font-size: 12px;
+  color: #9a9aaa;
+  margin-bottom: 8px;
+}
+
+.buying-desc {
+  font-size: 12px;
+  color: #7a7a8a;
+  line-height: 1.5;
+  padding-right: 20px;
+}
+
+/* Sidebar Tabs */
+.ad-tabs-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  min-width: 160px;
+  align-self: center;
+}
+
+.ad-tab-btn {
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: #9a9aaa;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ad-tab-btn.active {
+  background: linear-gradient(135deg, #7B2FFF, #A855F7);
+  color: #ffffff;
+}
+
+.ad-tab-btn:hover:not(.active) {
+  color: #ffffff;
+}
+
+/* Section Divider */
+.section-divider {
+  width: 100%;
+  max-width: 900px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 60px auto;
+}
+
+/* Tablet */
+@media (max-width: 968px) {
+  .premium-ad-formats {
+    padding: 60px 30px;
+  }
+
+  .premium-title {
+    font-size: 32px;
+  }
+
+  .ad-category-content {
+    gap: 24px;
+  }
+
+  .ad-mockup {
+    width: 260px;
+  }
+
+  .mockup-ellipse {
+    width: 280px;
+    height: 280px;
+    left: -30px;
+  }
+
+  .ad-mockup img {
+    max-width: 220px;
+  }
+
+  .ad-info-title {
+    font-size: 22px;
+  }
+
+  .buying-option {
+    min-width: 130px;
+    max-width: 160px;
+  }
+
+  .ad-tabs-nav {
+    min-width: 130px;
+  }
+
+  .ad-tab-btn {
+    font-size: 13px;
+    padding: 10px 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .premium-ad-formats {
+    padding: 40px 20px;
+  }
+
+  .premium-title {
+    font-size: 26px;
+  }
+
+  .premium-subtitle {
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  .ad-category-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ad-mockup {
+    width: 240px;
+  }
+
+  .mockup-ellipse {
+    width: 260px;
+    height: 260px;
+    left: -20px;
+  }
+
+  .ad-mockup img {
+    max-width: 200px;
+  }
+
+  .ad-info-card {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .ad-tabs-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: unset;
+    width: 100%;
+  }
+
+  .ad-tab-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .buying-option {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .premium-title {
+    font-size: 22px;
+  }
+
+  .ad-category-title {
+    font-size: 20px;
+  }
+
+  .ad-info-title {
+    font-size: 18px;
+  }
+}
