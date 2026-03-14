@@ -264,9 +264,9 @@ function PremiumAdFormats() {
     <section id="premium-ad-formats" className="premium-ad-formats">
       <h2 className="premium-title">Premium Ad Formats</h2>
       <p className="premium-subtitle">
-        Choose from a comprehensive range of advertising solutions
+        High-Impact Ad Formats That Connect Brands
         <br />
-        designed to deliver high visibility and measurable impact.
+        to Millions
       </p>
 
       <AdCategory categoryKey="video" data={adData.video} />
