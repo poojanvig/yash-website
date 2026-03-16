@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./PremiumAdFormats.css";
 import ctvMockup from "../assets/ctv-mockup.png";
 import videoMockup from "../assets/video-mockup.png";
 import displayMockup from "../assets/display-mockup.png";
+import ctvMastheadsDesktop from "../assets/CTV mastheads.png";
+import ctvPauseAdDesktop from "../assets/CtV Pause Ad.png";
 
 const adData = {
   ctv: {
@@ -14,6 +16,33 @@ const adData = {
         description:
           "CTV Mastheads are the high-impact display ad units that appear at the top of the home screen on Connected TV devices.",
         usage: "Ideal for Mass reach on Connected TVs, High Brand Recall.",
+        desktopImage: ctvMastheadsDesktop,
+        buyingOptions: [
+          {
+            label: "CPM",
+            subtitle: "(Cost Per Mile)",
+            desc: "Cost per 1,000 ad impressions.",
+          },
+          {
+            label: "CPC",
+            subtitle: "(Cost Per Click)",
+            desc: "Cost incurred when a viewer clicks on the ad.",
+          },
+          {
+            label: "CPD",
+            subtitle: "(Cost Per Day)",
+            desc: "Fixed cost for exclusive visibility per day.",
+          },
+        ],
+      },
+      {
+        name: "CTV Pause Ads",
+        displayTitle: "CTV PAUSE ADS",
+        description:
+          "CTV Pause Ads are static ad creatives that appear on the screen when a viewer pauses video content on the Connected TV.",
+        usage: "Ideal for Strong brand recall and High brand visibility on the big screen.",
+        desktopImage: ctvPauseAdDesktop,
+        desktopOnly: true,
         buyingOptions: [
           {
             label: "CPM",
@@ -43,6 +72,7 @@ const adData = {
         description:
           "Pre-roll ads are typically the ads that automatically plays before the content the end user has selected to watch.",
         usage: "Ideal for Brand Awareness, Recall, Launch Campaigns.",
+        desktopImage: videoMockup,
         buyingOptions: [
           {
             label: "CPM",
@@ -66,6 +96,7 @@ const adData = {
         displayTitle: "MID-ROLL",
         description: "Mid-roll ads play during content breaks.",
         usage: "Ideal for engaged audiences.",
+        desktopImage: videoMockup,
         buyingOptions: [],
       },
       {
@@ -73,6 +104,7 @@ const adData = {
         displayTitle: "BUMPER ADS",
         description: "Short non-skippable ads.",
         usage: "Ideal for quick brand recall.",
+        desktopImage: videoMockup,
         buyingOptions: [],
       },
       {
@@ -80,6 +112,7 @@ const adData = {
         displayTitle: "SPLASH SCREEN",
         description: "Full screen ads on app launch.",
         usage: "Ideal for maximum visibility.",
+        desktopImage: videoMockup,
         buyingOptions: [],
       },
       {
@@ -89,6 +122,7 @@ const adData = {
           "CTV Mastheads are the high-impact display ad units that appear at the top of the home screen on connected TV devices.",
         usage:
           "Ideal for broad-screen dominance and top-of-home-screen brand ownership.",
+        desktopImage: videoMockup,
         buyingOptions: [],
       },
     ],
@@ -103,6 +137,7 @@ const adData = {
           "RoadBlock ads allow advertisers to promote multiple creatives simultaneously, delivering a 100% share of screen visibility across platform.",
         usage:
           "Ideal for High brand visibility, Strong impact during campaigns.",
+        desktopImage: displayMockup,
         buyingOptions: [
           {
             label: "CPC",
@@ -131,6 +166,7 @@ const adData = {
         displayTitle: "MASTHEAD",
         description: "Top banner ad placement.",
         usage: "Ideal for premium visibility.",
+        desktopImage: displayMockup,
         buyingOptions: [],
       },
       {
@@ -138,6 +174,7 @@ const adData = {
         displayTitle: "NATIVE",
         description: "Ads that blend with content.",
         usage: "Ideal for seamless engagement.",
+        desktopImage: displayMockup,
         buyingOptions: [],
       },
       {
@@ -145,6 +182,7 @@ const adData = {
         displayTitle: "COMPANION ADS",
         description: "Complementary ad placements.",
         usage: "Ideal for reinforcing brand message.",
+        desktopImage: displayMockup,
         buyingOptions: [],
       },
       {
@@ -152,6 +190,7 @@ const adData = {
         displayTitle: "ASTON BONDS",
         description: "Overlay ads during content.",
         usage: "Ideal for non-intrusive branding.",
+        desktopImage: displayMockup,
         buyingOptions: [],
       },
       {
@@ -159,12 +198,14 @@ const adData = {
         displayTitle: "PUSH NOTIFICATION",
         description: "Direct push notifications to users.",
         usage: "Ideal for re-engagement.",
+        desktopImage: displayMockup,
         buyingOptions: [],
       },
       {
         name: "App Exit Banner",
         displayTitle: "APP EXIT BANNER",
         description: "Ads shown when user exits app.",
+        desktopImage: displayMockup,
         usage: "Ideal for last impression.",
         buyingOptions: [],
       },
@@ -181,31 +222,51 @@ const mockupImages = {
 function AdCategory({ categoryKey, data }) {
   const [activeTab, setActiveTab] = useState(0);
   const [platform, setPlatform] = useState("mobile");
-  const activeAd = data.tabs[activeTab];
-  const mockupSrc = mockupImages[categoryKey];
+  const [fadeIn, setFadeIn] = useState(true);
+  const visibleTabs = data.tabs.filter(
+    (tab) => platform === "desktop" || !tab.desktopOnly
+  );
+  const activeAd = visibleTabs[activeTab];
+  const mockupSrc =
+    platform === "desktop" && activeAd.desktopImage
+      ? activeAd.desktopImage
+      : mockupImages[categoryKey];
+
+  const handlePlatformChange = (newPlatform) => {
+    setFadeIn(false);
+    setTimeout(() => {
+      setPlatform(newPlatform);
+      setActiveTab(0);
+      setFadeIn(true);
+    }, 400);
+  };
 
   return (
-    <div className={`ad-category ad-category-${categoryKey}`}>
+    <div className={`ad-category ad-category-${categoryKey} platform-${platform}`}>
       <h3 className="ad-category-title">{data.title}</h3>
       <div className="platform-toggle">
         <button
           className={`toggle-btn ${platform === "mobile" ? "active" : ""}`}
-          onClick={() => setPlatform("mobile")}
+          onClick={() => handlePlatformChange("mobile")}
         >
           Mobile
         </button>
         <button
           className={`toggle-btn ${platform === "desktop" ? "active" : ""}`}
-          onClick={() => setPlatform("desktop")}
+          onClick={() => handlePlatformChange("desktop")}
         >
           Desktop
         </button>
       </div>
 
       <div className="ad-category-content">
+        <div className="mockup-glow"></div>
         <div className="ad-mockup">
-          <div className="mockup-glow"></div>
-          {mockupSrc && <img src={mockupSrc} alt={data.title} />}
+          <img
+            src={mockupSrc}
+            alt={data.title}
+            className={`mockup-img ${fadeIn ? "mockup-visible" : "mockup-hidden"}`}
+          />
         </div>
 
         <div className="ad-info-card">
@@ -244,7 +305,7 @@ function AdCategory({ categoryKey, data }) {
         </div>
 
         <div className="ad-tabs-nav">
-          {data.tabs.map((tab, i) => (
+          {visibleTabs.map((tab, i) => (
             <button
               key={i}
               className={`ad-tab-btn ${activeTab === i ? "active" : ""}`}
@@ -269,9 +330,9 @@ function PremiumAdFormats() {
         to Millions
       </p>
 
-      <AdCategory categoryKey="video" data={adData.video} />
-      <div className="section-divider"></div>
       <AdCategory categoryKey="ctv" data={adData.ctv} />
+      <div className="section-divider"></div>
+      <AdCategory categoryKey="video" data={adData.video} />
       <div className="section-divider"></div>
       <AdCategory categoryKey="display" data={adData.display} />
     </section>

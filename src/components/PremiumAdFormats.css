@@ -1,9 +1,6 @@
 .premium-ad-formats {
   padding: 92px 48px 100px;
-  background:
-    radial-gradient(circle at 22% 54%, rgba(115, 0, 255, 0.5), transparent 16%),
-    radial-gradient(circle at 28% 60%, rgba(39, 145, 255, 0.25), transparent 22%),
-    #191921;
+  background: #191921;
 }
 
 .premium-title {
@@ -43,12 +40,16 @@
 }
 
 .ad-category-ctv .mockup-glow {
+  width: 546px;
+  height: 546px;
+  background: #4603FF;
   filter: none;
-  box-shadow: none;
+  left: -20px;
+  top: 120px;
 }
 
 .ad-category-ctv .ad-mockup {
-  margin-top: -26px;
+  margin-top: 0;
 }
 
 .ad-category-title {
@@ -103,7 +104,7 @@
 .ad-category-content {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 36px;
   max-width: 1180px;
@@ -113,11 +114,11 @@
 /* Mockup */
 .ad-mockup {
   flex-shrink: 0;
-  width: 245px;
+  width: 300px;
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .mockup-glow {
@@ -127,19 +128,33 @@
   border-radius: 50%;
   background: #a10cff;
   left: -96px;
-  top: 58%;
-  transform: translateY(-50%);
+  top: 20%;
   pointer-events: none;
-  filter: blur(0);
+  filter: none;
 }
 
 .ad-mockup img {
   width: 100%;
-  max-width: 245px;
+  max-width: 300px;
   height: auto;
   position: relative;
   z-index: 1;
   filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.24));
+}
+
+/* Mockup fade transition */
+.mockup-img {
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.mockup-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mockup-hidden {
+  opacity: 0;
+  transform: translateY(-30px);
 }
 
 /* Info Card */
@@ -332,7 +347,7 @@
 }
 
 .ad-category-video .ad-mockup {
-  width: 245px;
+  width: 300px;
   margin-top: 0;
   margin-right: 0;
   z-index: 1;
@@ -342,14 +357,14 @@
   width: 410px;
   height: 410px;
   left: -96px;
-  top: 58%;
-  transform: translateY(-50%);
-  filter: blur(0);
+  top: 20%;
+  transform: none;
+  filter: none;
   background: var(--section-accent);
 }
 
 .ad-category-video .ad-mockup img {
-  max-width: 245px;
+  max-width: 300px;
 }
 
 .ad-category-ctv .ad-category-content {
@@ -360,24 +375,19 @@
 }
 
 .ad-category-ctv .ad-mockup {
-  width: 245px;
-  margin-top: -64px;
+  width: 300px;
+  margin-top: 0;
   margin-right: 0;
   z-index: 1;
 }
 
 .ad-category-ctv .mockup-glow {
-  width: 410px;
-  height: 410px;
-  left: -96px;
-  top: 64%;
-  transform: translateY(-50%);
+  background: #4603FF;
   filter: none;
-  background: var(--section-accent);
 }
 
 .ad-category-ctv .ad-mockup img {
-  max-width: 245px;
+  max-width: 300px;
 }
 
 .ad-category-display .ad-category-content {
@@ -388,7 +398,7 @@
 }
 
 .ad-category-display .ad-mockup {
-  width: 245px;
+  width: 300px;
   margin-top: 0;
   margin-right: 0;
   z-index: 1;
@@ -398,14 +408,14 @@
   width: 410px;
   height: 410px;
   left: -96px;
-  top: 58%;
-  transform: translateY(-50%);
-  filter: blur(0);
+  top: 20%;
+  transform: none;
+  filter: none;
   background: var(--section-accent);
 }
 
 .ad-category-display .ad-mockup img {
-  max-width: 245px;
+  max-width: 300px;
 }
 
 .ad-category-video .platform-toggle,
@@ -654,6 +664,78 @@
 .ad-category-display .ad-tab-btn.active {
   background: linear-gradient(90deg, #f03f9d 0%, #EB2B8C 100%);
   box-shadow: 0 10px 20px rgba(235, 43, 140, 0.22);
+}
+
+/* Desktop platform mockup - CTV */
+.ad-category-ctv.platform-desktop .ad-mockup {
+  width: 620px;
+  position: absolute;
+  left: -40px;
+  top: 180px;
+  z-index: 0;
+}
+
+.ad-category-ctv.platform-desktop .ad-mockup img {
+  max-width: 620px;
+  width: 100%;
+}
+
+
+.ad-category-ctv.platform-desktop .ad-info-card {
+  z-index: 2;
+  margin-left: 300px;
+}
+
+/* Desktop platform mockup - Video */
+.ad-category-video .mockup-glow {
+  width: 546px;
+  height: 546px;
+  left: -20px;
+  top: 120px;
+}
+
+.ad-category-video.platform-desktop .ad-mockup {
+  width: 620px;
+  position: absolute;
+  left: -40px;
+  top: 180px;
+  z-index: 0;
+}
+
+.ad-category-video.platform-desktop .ad-mockup img {
+  max-width: 620px;
+  width: 100%;
+}
+
+.ad-category-video.platform-desktop .ad-info-card {
+  z-index: 2;
+  margin-left: 300px;
+}
+
+/* Desktop platform mockup - Display */
+.ad-category-display .mockup-glow {
+  width: 546px;
+  height: 546px;
+  left: -20px;
+  top: 120px;
+}
+
+.ad-category-display.platform-desktop .ad-mockup {
+  width: 620px;
+  position: absolute;
+  left: -40px;
+  top: 180px;
+  z-index: 0;
+}
+
+.ad-category-display.platform-desktop .ad-mockup img {
+  max-width: 620px;
+  width: 100%;
+}
+
+.ad-category-display.platform-desktop .ad-info-card {
+  z-index: 2;
+  margin-left: 300px;
 }
 
 /* Section Divider */
