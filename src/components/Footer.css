@@ -189,4 +189,51 @@
   .footer-reach-item a {
     font-size: 13px;
   }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-form input {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .newsletter-form button {
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 24px 16px;
+  }
+
+  .footer-logo {
+    margin-bottom: 20px;
+  }
+
+  .footer-z-logo {
+    height: 32px;
+  }
+
+  .footer-content {
+    gap: 24px;
+  }
+
+  .footer-col {
+    gap: 14px;
+  }
+
+  .footer-col-title {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .footer-col a {
+    font-size: 13px;
+  }
+
+  .footer-newsletter {
+    padding: 18px;
+  }
 }

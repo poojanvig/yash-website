@@ -450,8 +450,6 @@ const Entertainment = () => {
     : null;
   const isStatsOpen = activeCardIndex !== null || transition !== null;
   const incomingCard = transition ? allCards[transition.toIndex] : null;
-  const hidePrevPreview = transition?.direction === 'prev';
-  const hideNextPreview = transition?.direction === 'next';
 
   return (
     <section id="entertainment" className="entertainment">

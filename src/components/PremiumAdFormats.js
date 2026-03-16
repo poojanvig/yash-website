@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./PremiumAdFormats.css";
 import ctvMockup from "../assets/ctv-mockup.png";
 import videoMockup from "../assets/video-mockup.png";

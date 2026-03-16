@@ -136,10 +136,16 @@
 
 @media (max-width: 480px) {
   .hero-content {
-    padding: 100px 18px 42px;
+    padding: 80px 16px 36px;
   }
 
   .hero-title span {
-    font-size: clamp(2.1rem, 11vw, 3rem);
+    font-size: clamp(1.8rem, 9vw, 2.5rem);
+  }
+
+  .hero-cta {
+    padding: 14px 20px;
+    font-size: 12px;
+    min-width: 100%;
   }
 }

@@ -214,6 +214,7 @@
 
   .contact-title span {
     font-size: 64px;
+    line-height: 1.1;
   }
 
   .contact-right {
@@ -223,13 +224,27 @@
 }
 
 @media (max-width: 480px) {
+  .contact {
+    padding: 30px 16px;
+  }
+
+  .contact-container {
+    gap: 28px;
+  }
+
   .contact-title span {
-    font-size: 48px;
+    font-size: 40px;
+    line-height: 1.1;
   }
 
   .contact-form input,
   .contact-form textarea {
-    padding: 14px 16px;
+    padding: 12px 14px;
     font-size: 14px;
+  }
+
+  .contact-submit {
+    padding: 14px;
+    font-size: 15px;
   }
 }

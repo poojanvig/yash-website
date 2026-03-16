@@ -1283,6 +1283,39 @@
   .stat-breakdown-label {
     font-size: 13px;
   }
+
+  .blob-1 { width: 200px; height: 200px; }
+  .blob-2 { width: 180px; height: 180px; }
+  .blob-3 { width: 160px; height: 160px; }
+  .blob-4 { width: 150px; height: 150px; }
+}
+
+@media (max-width: 360px) {
+  .entertainment-card {
+    min-width: 180px;
+    height: 110px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card-combo {
+    grid-column: 1;
+  }
+
+  .stats-modal-tab {
+    font-size: 10px;
+    padding: 8px 3px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  .stats-modal-title {
+    font-size: 22px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -972,11 +972,35 @@
   .ad-category-display .buying-option-centered {
     width: 100%;
   }
+
+  .platform-desktop .ad-mockup {
+    position: relative !important;
+    width: 280px !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  .platform-desktop .ad-mockup img {
+    max-width: 280px !important;
+  }
+
+  .platform-desktop .ad-info-card {
+    margin-left: 0 !important;
+  }
 }
 
 @media (max-width: 480px) {
+  .premium-ad-formats {
+    padding: 36px 16px 48px;
+  }
+
   .premium-title {
     font-size: 22px;
+  }
+
+  .premium-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 36px;
   }
 
   .ad-category-title {
@@ -985,5 +1009,66 @@
 
   .ad-info-title {
     font-size: 18px;
+  }
+
+  .ad-category-video .ad-info-title,
+  .ad-category-ctv .ad-info-title,
+  .ad-category-display .ad-info-title {
+    font-size: 24px;
+    position: relative;
+    left: auto;
+    top: auto;
+    white-space: normal;
+  }
+
+  .ad-category-video .ad-info-card .ad-info-section:first-of-type,
+  .ad-category-ctv .ad-info-card .ad-info-section:first-of-type,
+  .ad-category-display .ad-info-card .ad-info-section:first-of-type {
+    margin-top: 16px;
+  }
+
+  .section-divider {
+    margin: 48px auto;
+  }
+
+  .toggle-btn {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+  }
+
+  .ad-mockup {
+    width: 200px;
+  }
+
+  .ad-mockup img {
+    max-width: 200px;
+  }
+
+  .ad-category-video .ad-mockup,
+  .ad-category-ctv .ad-mockup,
+  .ad-category-display .ad-mockup {
+    width: 200px;
+  }
+
+  .ad-category-video .ad-mockup img,
+  .ad-category-ctv .ad-mockup img,
+  .ad-category-display .ad-mockup img {
+    max-width: 200px;
+    height: auto;
+  }
+
+  .platform-desktop .ad-mockup {
+    position: relative !important;
+    width: 280px !important;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  .platform-desktop .ad-mockup img {
+    max-width: 280px !important;
+  }
+
+  .platform-desktop .ad-info-card {
+    margin-left: 0 !important;
   }
 }

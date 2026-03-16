@@ -263,3 +263,32 @@
     backdrop-filter: blur(2px);
   }
 }
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 16px 0;
+  }
+
+  .z-logo {
+    height: 28px;
+  }
+
+  .logo-text {
+    font-size: 14px;
+  }
+
+  .search-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hamburger-btn {
+    width: 36px;
+    height: 36px;
+    padding: 10px 8px;
+  }
+
+  .navbar-links {
+    width: min(280px, 85vw);
+  }
+}
