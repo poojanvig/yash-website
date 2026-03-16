@@ -441,6 +441,15 @@ function AdCategory({ categoryKey, data }) {
     }, 400);
   };
 
+  const handleTabChange = (index) => {
+    if (index === activeTab) return;
+    setFadeIn(false);
+    setTimeout(() => {
+      setActiveTab(index);
+      setFadeIn(true);
+    }, 400);
+  };
+
   return (
     <div className={`ad-category ad-category-${categoryKey} platform-${platform}`}>
       <h3 className="ad-category-title">{data.title}</h3>
@@ -509,7 +518,7 @@ function AdCategory({ categoryKey, data }) {
             <button
               key={i}
               className={`ad-tab-btn ${activeTab === i ? "active" : ""}`}
-              onClick={() => setActiveTab(i)}
+              onClick={() => handleTabChange(i)}
             >
               {tab.name}
             </button>
