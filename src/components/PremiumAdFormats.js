@@ -432,21 +432,49 @@ function AdCategory({ categoryKey, data }) {
         ? activeAd.mobileImage
         : mockupImages[categoryKey];
 
+  const getImageSrc = (tab, plat) => {
+    if (plat === "desktop" && tab.desktopImage) return tab.desktopImage;
+    if (tab.mobileImage) return tab.mobileImage;
+    return mockupImages[categoryKey];
+  };
+
+  const preloadAndFadeIn = (src, callback) => {
+    const img = new Image();
+    img.src = src;
+    if (img.complete) {
+      callback();
+    } else {
+      img.onload = callback;
+      img.onerror = callback;
+    }
+  };
+
   const handlePlatformChange = (newPlatform) => {
     setFadeIn(false);
+    const newTabs = data.tabs.filter(
+      (tab) =>
+        (newPlatform === "desktop" || !tab.desktopOnly) &&
+        (newPlatform === "mobile" || !tab.mobileOnly)
+    );
+    const nextSrc = getImageSrc(newTabs[0], newPlatform);
     setTimeout(() => {
-      setPlatform(newPlatform);
-      setActiveTab(0);
-      setFadeIn(true);
+      preloadAndFadeIn(nextSrc, () => {
+        setPlatform(newPlatform);
+        setActiveTab(0);
+        setFadeIn(true);
+      });
     }, 400);
   };
 
   const handleTabChange = (index) => {
     if (index === activeTab) return;
     setFadeIn(false);
+    const nextSrc = getImageSrc(visibleTabs[index], platform);
     setTimeout(() => {
-      setActiveTab(index);
-      setFadeIn(true);
+      preloadAndFadeIn(nextSrc, () => {
+        setActiveTab(index);
+        setFadeIn(true);
+      });
     }, 400);
   };
 
