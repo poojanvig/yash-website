@@ -5,6 +5,11 @@ import videoMockup from "../assets/video-mockup.png";
 import displayMockup from "../assets/display-mockup.png";
 import ctvMastheadsDesktop from "../assets/CTV mastheads.png";
 import ctvPauseAdDesktop from "../assets/CtV Pause Ad.png";
+import videoMidrollMobile from "../assets/video-adsMidroll.png";
+import videoBumperAdsMobile from "../assets/video-adsBuperads.png";
+import videoSplashScreenMobile from "../assets/Video Ads Splash screen.png";
+import videoPrerollDesktop from "../assets/VideoAds-Preroll-desktop.png";
+import videoBumperDesktop from "../assets/VideoAds-Bumber-desktop.png";
 
 const adData = {
   ctv: {
@@ -72,58 +77,103 @@ const adData = {
         description:
           "Pre-roll ads are typically the ads that automatically plays before the content the end user has selected to watch.",
         usage: "Ideal for Brand Awareness, Recall, Launch Campaigns.",
-        desktopImage: videoMockup,
+        desktopImage: videoPrerollDesktop,
         buyingOptions: [
           {
             label: "CPM",
-            subtitle: "(Cost Per Mille)",
-            desc: "Charged per 1,000 ad impressions",
+            subtitle: "(Cost Per Mile)",
+            desc: "Cost per 1,000 ad impressions.",
           },
           {
             label: "CPC",
             subtitle: "(Cost Per Click)",
-            desc: "Charged only when users click on the ad",
+            desc: "Cost incurred when a viewer clicks on the ad.",
           },
           {
             label: "CPCV",
             subtitle: "(Cost Per Completed View)",
-            desc: "Advertiser pays only when the entire ad video is viewed",
+            desc: "Advertisers pay only when the video ad is watched.",
           },
         ],
       },
       {
         name: "Mid-roll",
         displayTitle: "MID-ROLL",
-        description: "Mid-roll ads play during content breaks.",
-        usage: "Ideal for engaged audiences.",
-        desktopImage: videoMockup,
-        buyingOptions: [],
+        description:
+          "Mid-roll ads are non-skippable video advertisements that play during the viewers are actively engaged with the video.",
+        usage: "Ideal for Brand Awareness, Recall, and consideration.",
+        mobileImage: videoMidrollMobile,
+        desktopImage: videoPrerollDesktop,
+        buyingOptions: [
+          {
+            label: "CPM",
+            subtitle: "(Cost Per Mile)",
+            desc: "Cost per 1,000 ad impressions.",
+          },
+          {
+            label: "CPC",
+            subtitle: "(Cost Per Click)",
+            desc: "Cost incurred when a viewer clicks on the ad.",
+          },
+          {
+            label: "CPCV",
+            subtitle: "(Cost Per Completed View)",
+            desc: "Advertisers pay only when the video ad is watched.",
+          },
+        ],
       },
       {
         name: "Bumper-Ads",
         displayTitle: "BUMPER ADS",
-        description: "Short non-skippable ads.",
-        usage: "Ideal for quick brand recall.",
-        desktopImage: videoMockup,
-        buyingOptions: [],
+        description:
+          "Bumper ads are short, bite-sized video that are non-skippable. They deliver quick brand message with minimal disruption.",
+        usage: "Ideal for Branding and Storytelling in shorts formats.",
+        mobileImage: videoBumperAdsMobile,
+        desktopImage: videoBumperDesktop,
+        buyingOptions: [
+          {
+            label: "CPM",
+            subtitle: "(Cost Per Mile)",
+            desc: "Cost per 1,000 ad impressions.",
+          },
+          {
+            label: "CPC",
+            subtitle: "(Cost Per Click)",
+            desc: "Cost incurred when a viewer clicks on the ad.",
+          },
+          {
+            label: "CPCV",
+            subtitle: "(Cost Per Completed View)",
+            desc: "Advertisers pay only when the video ad is watched.",
+          },
+        ],
       },
       {
         name: "Splash Screen",
         displayTitle: "SPLASH SCREEN",
-        description: "Full screen ads on app launch.",
-        usage: "Ideal for maximum visibility.",
-        desktopImage: videoMockup,
-        buyingOptions: [],
-      },
-      {
-        name: "CTV Mastheads",
-        displayTitle: "CTV MASTHEADS",
         description:
-          "CTV Mastheads are the high-impact display ad units that appear at the top of the home screen on connected TV devices.",
-        usage:
-          "Ideal for broad-screen dominance and top-of-home-screen brand ownership.",
+          "Splash Screen ads are full-screen, high-impact brand creatives that appear when users open the app.",
+        usage: "Ideal for Instant Brand Awareness, High Recall and Mass Reach.",
+        mobileImage: videoSplashScreenMobile,
         desktopImage: videoMockup,
-        buyingOptions: [],
+        mobileOnly: true,
+        buyingOptions: [
+          {
+            label: "CPM",
+            subtitle: "(Cost Per Mile)",
+            desc: "Cost per 1,000 ad impressions.",
+          },
+          {
+            label: "CPC",
+            subtitle: "(Cost Per Click)",
+            desc: "Cost incurred when a viewer clicks on the ad.",
+          },
+          {
+            label: "CPD",
+            subtitle: "(Cost Per Day)",
+            desc: "Fixed cost for exclusive visibility per day.",
+          },
+        ],
       },
     ],
   },
@@ -224,13 +274,17 @@ function AdCategory({ categoryKey, data }) {
   const [platform, setPlatform] = useState("mobile");
   const [fadeIn, setFadeIn] = useState(true);
   const visibleTabs = data.tabs.filter(
-    (tab) => platform === "desktop" || !tab.desktopOnly
+    (tab) =>
+      (platform === "desktop" || !tab.desktopOnly) &&
+      (platform === "mobile" || !tab.mobileOnly)
   );
   const activeAd = visibleTabs[activeTab];
   const mockupSrc =
     platform === "desktop" && activeAd.desktopImage
       ? activeAd.desktopImage
-      : mockupImages[categoryKey];
+      : activeAd.mobileImage
+        ? activeAd.mobileImage
+        : mockupImages[categoryKey];
 
   const handlePlatformChange = (newPlatform) => {
     setFadeIn(false);
