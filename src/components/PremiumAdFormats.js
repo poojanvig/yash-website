@@ -10,6 +10,16 @@ import videoBumperAdsMobile from "../assets/video-adsBuperads.png";
 import videoSplashScreenMobile from "../assets/Video Ads Splash screen.png";
 import videoPrerollDesktop from "../assets/VideoAds-Preroll-desktop.png";
 import videoBumperDesktop from "../assets/VideoAds-Bumber-desktop.png";
+import mastheadMobile from "../assets/MASTHEAD-mobile.png";
+import nativeMobile from "../assets/Native-mobile.png";
+import companionAdsMobile from "../assets/COMPANION ADS.png";
+import astonBandsMobile from "../assets/Mobile_ Aston Bands.png";
+import pushNotificationMobile from "../assets/pushNotification-mobile.png";
+import appExitBannerMobile from "../assets/App Exit banner.png";
+import roadblockDesktop from "../assets/RoadBlock-desktop.png";
+import mastheadDesktop from "../assets/MasterHead-Desktop.png";
+import nativeDesktop from "../assets/Nativ-Desktop.png";
+import companionAdsDesktop from "../assets/Companion ADS-Desktop.png";
 
 const adData = {
   ctv: {
@@ -187,7 +197,7 @@ const adData = {
           "RoadBlock ads allow advertisers to promote multiple creatives simultaneously, delivering a 100% share of screen visibility across platform.",
         usage:
           "Ideal for High brand visibility, Strong impact during campaigns.",
-        desktopImage: displayMockup,
+        desktopImage: roadblockDesktop,
         buyingOptions: [
           {
             label: "CPC",
@@ -214,50 +224,186 @@ const adData = {
       {
         name: "Masthead",
         displayTitle: "MASTHEAD",
-        description: "Top banner ad placement.",
-        usage: "Ideal for premium visibility.",
-        desktopImage: displayMockup,
-        buyingOptions: [],
+        description:
+          "The Masthead is a high-impact ad unit that appears at the top of the home screen, making it the first banner to capture user attention.",
+        usage: "Ideal for Brand Recall, Mass reach and Driving traffic to the website or app.",
+        mobileImage: mastheadMobile,
+        desktopImage: mastheadDesktop,
+        buyingOptions: [
+          {
+            label: "CPC",
+            subtitle: "(Cost Per Click)",
+            desc: "Cost incurred when a viewer clicks on the ad.",
+          },
+          {
+            label: "CPL",
+            subtitle: "(Cost Per Lead)",
+            desc: "Pay for qualified leads generated.",
+          },
+          {
+            label: "CPI",
+            subtitle: "(Cost Per Install)",
+            desc: "Pay for app installs driven by the ad.",
+          },
+          {
+            label: "CPD",
+            subtitle: "(Cost Per Day)",
+            desc: "Fixed cost for exclusive visibility per day.",
+          },
+        ],
       },
       {
         name: "Native",
         displayTitle: "NATIVE",
-        description: "Ads that blend with content.",
-        usage: "Ideal for seamless engagement.",
-        desktopImage: displayMockup,
-        buyingOptions: [],
+        description:
+          "Native ads are designed to blend seamlessly into the recommended content feed, making them appear organic and non-intrusive.",
+        usage: "Ideal for Brand Awareness and capturing audience attention.",
+        mobileImage: nativeMobile,
+        desktopImage: nativeDesktop,
+        buyingOptions: [
+          {
+            label: "CPC",
+            subtitle: "(Cost Per Click)",
+            desc: "Cost incurred when a viewer clicks on the ad.",
+          },
+          {
+            label: "CPL",
+            subtitle: "(Cost Per Lead)",
+            desc: "Pay for qualified leads generated.",
+          },
+          {
+            label: "CPI",
+            subtitle: "(Cost Per Install)",
+            desc: "Pay for app installs driven by the ad.",
+          },
+          {
+            label: "CPD",
+            subtitle: "(Cost Per Day)",
+            desc: "Fixed cost for exclusive visibility per day.",
+          },
+        ],
       },
       {
         name: "Companion Ads",
         displayTitle: "COMPANION ADS",
-        description: "Complementary ad placements.",
-        usage: "Ideal for reinforcing brand message.",
-        desktopImage: displayMockup,
-        buyingOptions: [],
+        description:
+          "Companion ads are display or interactive ad units that appear alongside video content, such as beside or below the video player.",
+        usage: "Ideal for Brand Reinforcement, High Recall and supporting video ad campaigns",
+        mobileImage: companionAdsMobile,
+        desktopImage: companionAdsDesktop,
+        buyingOptions: [
+          {
+            label: "CPC",
+            subtitle: "(Cost Per Click)",
+            desc: "Cost incurred when a viewer clicks on the ad.",
+          },
+          {
+            label: "CPL",
+            subtitle: "(Cost Per Lead)",
+            desc: "Pay for qualified leads generated.",
+          },
+          {
+            label: "CPI",
+            subtitle: "(Cost Per Install)",
+            desc: "Pay for app installs driven by the ad.",
+          },
+          {
+            label: "CPD",
+            subtitle: "(Cost Per Day)",
+            desc: "Fixed cost for exclusive visibility per day.",
+          },
+        ],
       },
       {
-        name: "Aston Bonds",
-        displayTitle: "ASTON BONDS",
-        description: "Overlay ads during content.",
-        usage: "Ideal for non-intrusive branding.",
+        name: "Aston Bands",
+        displayTitle: "ASTON BANDS",
+        description:
+          "Aston Bands are overlay-style advertising units that appear as slim, non-intrusive bands on the video player.",
+        usage: "Ideal for Brand Presence, Driving consideration without disrupting viewing.",
+        mobileImage: astonBandsMobile,
         desktopImage: displayMockup,
-        buyingOptions: [],
+        mobileOnly: true,
+        buyingOptions: [
+          {
+            label: "CPM",
+            subtitle: "(Cost Per Mile)",
+            desc: "Cost per 1,000 ad impressions.",
+          },
+          {
+            label: "CPC",
+            subtitle: "(Cost Per Click)",
+            desc: "Cost incurred when a viewer clicks on the ad.",
+          },
+          {
+            label: "CPD",
+            subtitle: "(Cost Per Day)",
+            desc: "Fixed cost for exclusive visibility per day.",
+          },
+        ],
       },
       {
         name: "Push Notification",
         displayTitle: "PUSH NOTIFICATION",
-        description: "Direct push notifications to users.",
-        usage: "Ideal for re-engagement.",
+        description:
+          "Push Notification Ads are direct, message-based ad alerts sent to users' devices, even when they are not actively using the app.",
+        usage: "Ideal for Instant reach, Re-engagement and Retention.",
+        mobileImage: pushNotificationMobile,
         desktopImage: displayMockup,
-        buyingOptions: [],
+        mobileOnly: true,
+        buyingOptions: [
+          {
+            label: "CPC",
+            subtitle: "(Cost Per Click)",
+            desc: "Cost incurred when a viewer clicks on the ad.",
+          },
+          {
+            label: "CPL",
+            subtitle: "(Cost Per Lead)",
+            desc: "Pay for qualified leads generated.",
+          },
+          {
+            label: "CPI",
+            subtitle: "(Cost Per Install)",
+            desc: "Pay for app installs driven by the ad.",
+          },
+          {
+            label: "CPD",
+            subtitle: "(Cost Per Day)",
+            desc: "Fixed cost for exclusive visibility per day.",
+          },
+        ],
       },
       {
         name: "App Exit Banner",
         displayTitle: "APP EXIT BANNER",
-        description: "Ads shown when user exits app.",
+        description:
+          "App Exit Banners are the full-screen or high-impact display ads that appear when a user attempts to exit or close the app.",
+        mobileImage: appExitBannerMobile,
         desktopImage: displayMockup,
-        usage: "Ideal for last impression.",
-        buyingOptions: [],
+        mobileOnly: true,
+        usage: "Ideal for Brand Recall, Re-engagement and redirecting users to a website or app.",
+        buyingOptions: [
+          {
+            label: "CPC",
+            subtitle: "(Cost Per Click)",
+            desc: "Cost incurred when a viewer clicks on the ad.",
+          },
+          {
+            label: "CPL",
+            subtitle: "(Cost Per Lead)",
+            desc: "Pay for qualified leads generated.",
+          },
+          {
+            label: "CPI",
+            subtitle: "(Cost Per Install)",
+            desc: "Pay for app installs driven by the ad.",
+          },
+          {
+            label: "CPD",
+            subtitle: "(Cost Per Day)",
+            desc: "Fixed cost for exclusive visibility per day.",
+          },
+        ],
       },
     ],
   },
