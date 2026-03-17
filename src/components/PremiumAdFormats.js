@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import "./PremiumAdFormats.css";
-import ctvMockup from "../assets/ctv-mockup.png";
-import videoMockup from "../assets/video-mockup.png";
-import displayMockup from "../assets/display-mockup.png";
-import ctvMastheadsDesktop from "../assets/CTV mastheads.png";
-import ctvPauseAdDesktop from "../assets/CtV Pause Ad.png";
-import videoMidrollMobile from "../assets/video-adsMidroll.png";
-import videoBumperAdsMobile from "../assets/video-adsBuperads.png";
-import videoSplashScreenMobile from "../assets/Video Ads Splash screen.png";
-import videoPrerollDesktop from "../assets/VideoAds-Preroll-desktop.png";
-import videoBumperDesktop from "../assets/VideoAds-Bumber-desktop.png";
-import mastheadMobile from "../assets/MASTHEAD-mobile.png";
-import nativeMobile from "../assets/Native-mobile.png";
-import companionAdsMobile from "../assets/COMPANION ADS.png";
-import astonBandsMobile from "../assets/Mobile_ Aston Bands.png";
-import pushNotificationMobile from "../assets/pushNotification-mobile.png";
-import appExitBannerMobile from "../assets/App Exit banner.png";
-import roadblockDesktop from "../assets/RoadBlock-desktop.png";
-import mastheadDesktop from "../assets/MasterHead-Desktop.png";
-import nativeDesktop from "../assets/Nativ-Desktop.png";
-import companionAdsDesktop from "../assets/Companion ADS-Desktop.png";
+import ctvMockup from "../assets/ctv-mockup.webp";
+import videoMockup from "../assets/video-mockup.webp";
+import displayMockup from "../assets/display-mockup.webp";
+import ctvMastheadsDesktop from "../assets/CTV mastheads.webp";
+import ctvPauseAdDesktop from "../assets/CtV Pause Ad.webp";
+import videoMidrollMobile from "../assets/video-adsMidroll.webp";
+import videoBumperAdsMobile from "../assets/video-adsBuperads.webp";
+import videoSplashScreenMobile from "../assets/Video Ads Splash screen.webp";
+import videoPrerollDesktop from "../assets/VideoAds-Preroll-desktop.webp";
+import videoBumperDesktop from "../assets/VideoAds-Bumber-desktop.webp";
+import mastheadMobile from "../assets/MASTHEAD-mobile.webp";
+import nativeMobile from "../assets/Native-mobile.webp";
+import companionAdsMobile from "../assets/COMPANION ADS.webp";
+import astonBandsMobile from "../assets/Mobile_ Aston Bands.webp";
+import pushNotificationMobile from "../assets/pushNotification-mobile.webp";
+import appExitBannerMobile from "../assets/App Exit banner.webp";
+import roadblockDesktop from "../assets/RoadBlock-desktop.webp";
+import mastheadDesktop from "../assets/MasterHead-Desktop.webp";
+import nativeDesktop from "../assets/Nativ-Desktop.webp";
+import companionAdsDesktop from "../assets/Companion ADS-Desktop.webp";
 
 const adData = {
   ctv: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import './AdFormats.css';
-import adFormatsHero from '../assets/ad-formats-hero.png';
+import adFormatsHero from '../assets/ad-formats-hero.webp';
 
 const AdFormats = () => {
   return (

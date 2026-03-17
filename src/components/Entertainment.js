@@ -1,22 +1,22 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './Entertainment.css';
-import youtubeCard from '../assets/youtube-card.png';
-import youtubeColour from '../assets/Youtube-colour.png';
-import socialMediaCard from '../assets/social-media-card.png';
-import socialMediaColour from '../assets/socialMedia-coloured.png';
-import broadcastCard from '../assets/broadcast-card.png';
-import ottCard from '../assets/ott-card.png';
-import dilfluencerCard from '../assets/dilfluencer-card.png';
-import dilfluencerColour from '../assets/Dilfluencer-Coloured.png';
-import zImmerseCard from '../assets/z-immerse-card.png';
-import zImmerseColour from '../assets/Z Immerse-Coloured.png';
-import zRiseCard from '../assets/z-rise-card.png';
-import zRiseColour from '../assets/zRise-colour.png';
-import zBrandworksCard from '../assets/z-brandworks-card.png';
-import zBrandworksColour from '../assets/BrandWorks-coloured.png';
-import indiaMap from '../assets/Indian-map.png';
-import broadcastColour from '../assets/Broadcast-colour.png';
-import ottColour from '../assets/OTT-coloured.png';
+import youtubeCard from '../assets/youtube-card.webp';
+import youtubeColour from '../assets/Youtube-colour.webp';
+import socialMediaCard from '../assets/social-media-card.webp';
+import socialMediaColour from '../assets/socialMedia-coloured.webp';
+import broadcastCard from '../assets/broadcast-card.webp';
+import ottCard from '../assets/ott-card.webp';
+import dilfluencerCard from '../assets/dilfluencer-card.webp';
+import dilfluencerColour from '../assets/Dilfluencer-Coloured.webp';
+import zImmerseCard from '../assets/z-immerse-card.webp';
+import zImmerseColour from '../assets/Z Immerse-Coloured.webp';
+import zRiseCard from '../assets/z-rise-card.webp';
+import zRiseColour from '../assets/zRise-colour.webp';
+import zBrandworksCard from '../assets/z-brandworks-card.webp';
+import zBrandworksColour from '../assets/BrandWorks-coloured.webp';
+import indiaMap from '../assets/Indian-map.webp';
+import broadcastColour from '../assets/Broadcast-colour.webp';
+import ottColour from '../assets/OTT-coloured.webp';
 
 const allCards = [
   {

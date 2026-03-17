@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-import zLogo from '../assets/z-logo.png';
+import zLogo from '../assets/z-logo.webp';
 
 const navItems = [
   { name: 'Ad Solutions', id: 'ad-formats' },

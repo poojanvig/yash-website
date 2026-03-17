@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Footer.css';
-import zLogo from '../assets/z-logo.png';
+import zLogo from '../assets/z-logo.webp';
 
 function Footer() {
   const [email, setEmail] = useState('');
