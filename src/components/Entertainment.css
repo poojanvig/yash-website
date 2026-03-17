@@ -56,6 +56,10 @@
   animation: scrollRight 30s linear infinite;
 }
 
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 @keyframes scrollLeft {
   0% {
     transform: translate3d(0, 0, 0);
@@ -88,6 +92,15 @@
   height: 100%;
   object-fit: cover;
   filter: grayscale(100%);
+  transition: filter 0.3s ease;
+  will-change: filter;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.entertainment-card:hover .card-bg {
+  filter: grayscale(0%);
 }
 
 .card-overlay {

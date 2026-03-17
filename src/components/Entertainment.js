@@ -468,7 +468,7 @@ const Entertainment = () => {
               >
                 {row1Cards.map((card, index) => (
                   <div className="entertainment-card" key={`row1-${groupIndex}-${index}`}>
-                    <img src={card.image} alt={card.title} className="card-bg" />
+                    <img src={card.statImage || card.image} alt={card.title} className="card-bg" />
                     <div className="card-overlay">
                       <h3 className="card-title">{card.title}</h3>
                       <button
@@ -496,7 +496,7 @@ const Entertainment = () => {
               >
                 {row2Cards.map((card, index) => (
                   <div className="entertainment-card" key={`row2-${groupIndex}-${index}`}>
-                    <img src={card.image} alt={card.title} className="card-bg" />
+                    <img src={card.statImage || card.image} alt={card.title} className="card-bg" />
                     <div className="card-overlay">
                       <h3 className="card-title">{card.title}</h3>
                       <button
