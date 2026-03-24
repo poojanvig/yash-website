@@ -10,7 +10,7 @@ const AdFormats = () => {
       </h2>
 
       <div className="ad-formats-image">
-        <img src={adFormatsHero} alt="Ad Formats Showcase" />
+        <img src={adFormatsHero} alt="Ad Formats Showcase" loading="lazy" decoding="async" />
       </div>
     </section>
   );

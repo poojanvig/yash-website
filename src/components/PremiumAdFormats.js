@@ -1,195 +1,48 @@
 import React, { useState } from "react";
 import "./PremiumAdFormats.css";
-import ctvMockup from "../assets/ctv-mockup.webp";
-import videoMockup from "../assets/video-mockup.webp";
+import spotlightMockup from "../assets/spotlight-mockup.webp";
 import displayMockup from "../assets/display-mockup.webp";
-import ctvMastheadsDesktop from "../assets/CTV mastheads.webp";
+import inRailStaticBanner from "../assets/in-rail-static-banner.webp";
+import overlayAstonBand from "../assets/overlay-aston-band.webp";
+import disruptorAston from "../assets/disruptor-aston.webp";
+import brandedCarousel from "../assets/branded-carousel.webp";
+import lBand from "../assets/l-band.webp";
+import brandedWindowGec from "../assets/branded-window-gec.webp";
+import comingUpWindowGec from "../assets/coming-up-window-gec.webp";
+import inContentAdvertising from "../assets/in-content-advertising.webp";
+import metaTaggedAston from "../assets/meta-tagged-aston.webp";
+import pauseAndPlay from "../assets/pause-and-play.webp";
+import inShowIntegration from "../assets/in-show-integration.webp";
+import qrAstons from "../assets/qr-astons.webp";
+import anchorMentions from "../assets/anchor-mentions.webp";
 import ctvPauseAdDesktop from "../assets/CtV Pause Ad.webp";
-import videoMidrollMobile from "../assets/video-adsMidroll.webp";
-import videoBumperAdsMobile from "../assets/video-adsBuperads.webp";
-import videoSplashScreenMobile from "../assets/Video Ads Splash screen.webp";
-import videoPrerollDesktop from "../assets/VideoAds-Preroll-desktop.webp";
-import videoBumperDesktop from "../assets/VideoAds-Bumber-desktop.webp";
-import mastheadMobile from "../assets/MASTHEAD-mobile.webp";
-import nativeMobile from "../assets/Native-mobile.webp";
 import companionAdsMobile from "../assets/COMPANION ADS.webp";
-import astonBandsMobile from "../assets/Mobile_ Aston Bands.webp";
-import pushNotificationMobile from "../assets/pushNotification-mobile.webp";
 import appExitBannerMobile from "../assets/App Exit banner.webp";
-import roadblockDesktop from "../assets/RoadBlock-desktop.webp";
-import mastheadDesktop from "../assets/MasterHead-Desktop.webp";
-import nativeDesktop from "../assets/Nativ-Desktop.webp";
-import companionAdsDesktop from "../assets/Companion ADS-Desktop.webp";
 
-const adData = {
-  ctv: {
-    title: "CTV Ads",
+const categories = [
+  {
+    key: "spotlight",
+    name: "Spotlight",
+    description:
+      "Spotlight is an Omni-Channel, High Visibility Advertising innovation that blends premium brand touchpoints to amplify presence and deliver impactful reach at scale.",
+    platforms: ["Digital"],
     tabs: [
       {
-        name: "CTV Mastheads",
-        displayTitle: "CTV MASTHEADS",
+        name: "Masthead",
+        displayTitle: "MASTHEAD",
         description:
-          "CTV Mastheads are the high-impact display ad units that appear at the top of the home screen on Connected TV devices.",
-        usage: "Ideal for Mass reach on Connected TVs, High Brand Recall.",
-        desktopImage: ctvMastheadsDesktop,
+          "The Masthead is a high-impact ad unit that appears at the top of the home screen, making it the first banner to capture user attention.",
+        usage:
+          "Ideal for Brand Recall, Mass reach and Driving traffic to the website or app.",
+        image: spotlightMockup,
+
         buyingOptions: [
-          {
-            label: "CPM",
-            subtitle: "(Cost Per Mile)",
-            desc: "Cost per 1,000 ad impressions.",
-          },
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPD",
-            subtitle: "(Cost Per Day)",
-            desc: "Fixed cost for exclusive visibility per day.",
-          },
+          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+          { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
+          { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
+          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
         ],
       },
-      {
-        name: "CTV Pause Ads",
-        displayTitle: "CTV PAUSE ADS",
-        description:
-          "CTV Pause Ads are static ad creatives that appear on the screen when a viewer pauses video content on the Connected TV.",
-        usage: "Ideal for Strong brand recall and High brand visibility on the big screen.",
-        desktopImage: ctvPauseAdDesktop,
-        desktopOnly: true,
-        buyingOptions: [
-          {
-            label: "CPM",
-            subtitle: "(Cost Per Mile)",
-            desc: "Cost per 1,000 ad impressions.",
-          },
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPD",
-            subtitle: "(Cost Per Day)",
-            desc: "Fixed cost for exclusive visibility per day.",
-          },
-        ],
-      },
-    ],
-  },
-  video: {
-    title: "Video Ads",
-    tabs: [
-      {
-        name: "Pre-roll",
-        displayTitle: "PRE-ROLL",
-        description:
-          "Pre-roll ads are typically the ads that automatically plays before the content the end user has selected to watch.",
-        usage: "Ideal for Brand Awareness, Recall, Launch Campaigns.",
-        desktopImage: videoPrerollDesktop,
-        buyingOptions: [
-          {
-            label: "CPM",
-            subtitle: "(Cost Per Mile)",
-            desc: "Cost per 1,000 ad impressions.",
-          },
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPCV",
-            subtitle: "(Cost Per Completed View)",
-            desc: "Advertisers pay only when the video ad is watched.",
-          },
-        ],
-      },
-      {
-        name: "Mid-roll",
-        displayTitle: "MID-ROLL",
-        description:
-          "Mid-roll ads are non-skippable video advertisements that play during the viewers are actively engaged with the video.",
-        usage: "Ideal for Brand Awareness, Recall, and consideration.",
-        mobileImage: videoMidrollMobile,
-        desktopImage: videoPrerollDesktop,
-        buyingOptions: [
-          {
-            label: "CPM",
-            subtitle: "(Cost Per Mile)",
-            desc: "Cost per 1,000 ad impressions.",
-          },
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPCV",
-            subtitle: "(Cost Per Completed View)",
-            desc: "Advertisers pay only when the video ad is watched.",
-          },
-        ],
-      },
-      {
-        name: "Bumper-Ads",
-        displayTitle: "BUMPER ADS",
-        description:
-          "Bumper ads are short, bite-sized video that are non-skippable. They deliver quick brand message with minimal disruption.",
-        usage: "Ideal for Branding and Storytelling in shorts formats.",
-        mobileImage: videoBumperAdsMobile,
-        desktopImage: videoBumperDesktop,
-        buyingOptions: [
-          {
-            label: "CPM",
-            subtitle: "(Cost Per Mile)",
-            desc: "Cost per 1,000 ad impressions.",
-          },
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPCV",
-            subtitle: "(Cost Per Completed View)",
-            desc: "Advertisers pay only when the video ad is watched.",
-          },
-        ],
-      },
-      {
-        name: "Splash Screen",
-        displayTitle: "SPLASH SCREEN",
-        description:
-          "Splash Screen ads are full-screen, high-impact brand creatives that appear when users open the app.",
-        usage: "Ideal for Instant Brand Awareness, High Recall and Mass Reach.",
-        mobileImage: videoSplashScreenMobile,
-        desktopImage: videoMockup,
-        mobileOnly: true,
-        buyingOptions: [
-          {
-            label: "CPM",
-            subtitle: "(Cost Per Mile)",
-            desc: "Cost per 1,000 ad impressions.",
-          },
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPD",
-            subtitle: "(Cost Per Day)",
-            desc: "Fixed cost for exclusive visibility per day.",
-          },
-        ],
-      },
-    ],
-  },
-  display: {
-    title: "Display Ads",
-    tabs: [
       {
         name: "Roadblock",
         displayTitle: "ROADBLOCK",
@@ -197,180 +50,27 @@ const adData = {
           "RoadBlock ads allow advertisers to promote multiple creatives simultaneously, delivering a 100% share of screen visibility across platform.",
         usage:
           "Ideal for High brand visibility, Strong impact during campaigns.",
-        desktopImage: roadblockDesktop,
+        image: displayMockup,
         buyingOptions: [
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "One click and money is charged, no extra charges on any ad",
-          },
-          {
-            label: "CPL",
-            subtitle: "(Cost Per Lead)",
-            desc: "Pay for qualified leads only",
-          },
-          {
-            label: "CPI",
-            subtitle: "(Cost Per Install)",
-            desc: "Pay for app installs driven by ads",
-          },
-          {
-            label: "CPD",
-            subtitle: "(Cost Per Day)",
-            desc: "Fixed cost for exclusive visibility on the app",
-          },
+          { label: "CPC", subtitle: "(Cost Per Click)", desc: "One click and money is charged, no extra charges on any ad" },
+          { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads only" },
+          { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by ads" },
+          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility on the app" },
         ],
       },
       {
-        name: "Masthead",
-        displayTitle: "MASTHEAD",
+        name: "In-rail Static Ads",
+        displayTitle: "IN-RAIL STATIC BANNERS",
         description:
-          "The Masthead is a high-impact ad unit that appears at the top of the home screen, making it the first banner to capture user attention.",
-        usage: "Ideal for Brand Recall, Mass reach and Driving traffic to the website or app.",
-        mobileImage: mastheadMobile,
-        desktopImage: mastheadDesktop,
+          "In-Rail Static Banners are high-visibility placements within content rails, ensuring seamless brand presence as users browse.",
+        usage:
+          "Deliver seamless, non-intrusive brand visibility within browsing content feeds.",
+        image: inRailStaticBanner,
         buyingOptions: [
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPL",
-            subtitle: "(Cost Per Lead)",
-            desc: "Pay for qualified leads generated.",
-          },
-          {
-            label: "CPI",
-            subtitle: "(Cost Per Install)",
-            desc: "Pay for app installs driven by the ad.",
-          },
-          {
-            label: "CPD",
-            subtitle: "(Cost Per Day)",
-            desc: "Fixed cost for exclusive visibility per day.",
-          },
-        ],
-      },
-      {
-        name: "Native",
-        displayTitle: "NATIVE",
-        description:
-          "Native ads are designed to blend seamlessly into the recommended content feed, making them appear organic and non-intrusive.",
-        usage: "Ideal for Brand Awareness and capturing audience attention.",
-        mobileImage: nativeMobile,
-        desktopImage: nativeDesktop,
-        buyingOptions: [
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPL",
-            subtitle: "(Cost Per Lead)",
-            desc: "Pay for qualified leads generated.",
-          },
-          {
-            label: "CPI",
-            subtitle: "(Cost Per Install)",
-            desc: "Pay for app installs driven by the ad.",
-          },
-          {
-            label: "CPD",
-            subtitle: "(Cost Per Day)",
-            desc: "Fixed cost for exclusive visibility per day.",
-          },
-        ],
-      },
-      {
-        name: "Companion Ads",
-        displayTitle: "COMPANION ADS",
-        description:
-          "Companion ads are display or interactive ad units that appear alongside video content, such as beside or below the video player.",
-        usage: "Ideal for Brand Reinforcement, High Recall and supporting video ad campaigns",
-        mobileImage: companionAdsMobile,
-        desktopImage: companionAdsDesktop,
-        buyingOptions: [
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPL",
-            subtitle: "(Cost Per Lead)",
-            desc: "Pay for qualified leads generated.",
-          },
-          {
-            label: "CPI",
-            subtitle: "(Cost Per Install)",
-            desc: "Pay for app installs driven by the ad.",
-          },
-          {
-            label: "CPD",
-            subtitle: "(Cost Per Day)",
-            desc: "Fixed cost for exclusive visibility per day.",
-          },
-        ],
-      },
-      {
-        name: "Aston Bands",
-        displayTitle: "ASTON BANDS",
-        description:
-          "Aston Bands are overlay-style advertising units that appear as slim, non-intrusive bands on the video player.",
-        usage: "Ideal for Brand Presence, Driving consideration without disrupting viewing.",
-        mobileImage: astonBandsMobile,
-        desktopImage: displayMockup,
-        mobileOnly: true,
-        buyingOptions: [
-          {
-            label: "CPM",
-            subtitle: "(Cost Per Mile)",
-            desc: "Cost per 1,000 ad impressions.",
-          },
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPD",
-            subtitle: "(Cost Per Day)",
-            desc: "Fixed cost for exclusive visibility per day.",
-          },
-        ],
-      },
-      {
-        name: "Push Notification",
-        displayTitle: "PUSH NOTIFICATION",
-        description:
-          "Push Notification Ads are direct, message-based ad alerts sent to users' devices, even when they are not actively using the app.",
-        usage: "Ideal for Instant reach, Re-engagement and Retention.",
-        mobileImage: pushNotificationMobile,
-        desktopImage: displayMockup,
-        mobileOnly: true,
-        buyingOptions: [
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPL",
-            subtitle: "(Cost Per Lead)",
-            desc: "Pay for qualified leads generated.",
-          },
-          {
-            label: "CPI",
-            subtitle: "(Cost Per Install)",
-            desc: "Pay for app installs driven by the ad.",
-          },
-          {
-            label: "CPD",
-            subtitle: "(Cost Per Day)",
-            desc: "Fixed cost for exclusive visibility per day.",
-          },
+          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+          { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
+          { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
+          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
       {
@@ -378,65 +78,348 @@ const adData = {
         displayTitle: "APP EXIT BANNER",
         description:
           "App Exit Banners are the full-screen or high-impact display ads that appear when a user attempts to exit or close the app.",
-        mobileImage: appExitBannerMobile,
-        desktopImage: displayMockup,
-        mobileOnly: true,
-        usage: "Ideal for Brand Recall, Re-engagement and redirecting users to a website or app.",
+        usage:
+          "Ideal for Brand Recall, Re-engagement and redirecting users to a website or app.",
+        image: appExitBannerMobile,
         buyingOptions: [
-          {
-            label: "CPC",
-            subtitle: "(Cost Per Click)",
-            desc: "Cost incurred when a viewer clicks on the ad.",
-          },
-          {
-            label: "CPL",
-            subtitle: "(Cost Per Lead)",
-            desc: "Pay for qualified leads generated.",
-          },
-          {
-            label: "CPI",
-            subtitle: "(Cost Per Install)",
-            desc: "Pay for app installs driven by the ad.",
-          },
-          {
-            label: "CPD",
-            subtitle: "(Cost Per Day)",
-            desc: "Fixed cost for exclusive visibility per day.",
-          },
+          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+          { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
+          { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
+          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+        ],
+      },
+      {
+        name: "CTV Pause Ads",
+        displayTitle: "CTV PAUSE ADS",
+        description:
+          "CTV Pause Ads are static ad creatives that appear on the screen when a viewer pauses video content on the Connected TV.",
+        usage:
+          "Ideal for Strong brand recall and High brand visibility on the big screen.",
+        image: ctvPauseAdDesktop,
+        buyingOptions: [
+          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+        ],
+      },
+      {
+        name: "Clickable Companion",
+        displayTitle: "CLICKABLE COMPANION",
+        description:
+          "Companion ads are display or interactive ad units that appear alongside video content, such as beside or below the video player.",
+        usage:
+          "Ideal for Brand Reinforcement, High Recall and supporting video ad campaigns.",
+        image: companionAdsMobile,
+
+        buyingOptions: [
+          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+          { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
+          { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
+          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+        ],
+      },
+      {
+        name: "Overlays Aston Bands",
+        displayTitle: "OVERLAYS ASTON BANDS",
+        description:
+          "Aston Bands are overlay-style advertising units that appear as slim, non-intrusive bands on the video player.",
+        usage:
+          "Ideal for Brand Presence, Driving consideration without disrupting viewing.",
+        image: overlayAstonBand,
+        buyingOptions: [
+          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
         ],
       },
     ],
   },
-};
+  {
+    key: "reach",
+    name: "Reach",
+    description:
+      "Maximize visibility and drive Awareness by connecting with high-value audiences through premium placements designed to deliver impactful reach at scale.",
+    platforms: ["Digital", "Linear"],
+    platformTabs: {
+      Digital: [
+        {
+          name: "In-rail Static Ads",
+          displayTitle: "IN-RAIL STATIC ADS",
+          description:
+            "In-Rail Static Banners are high-visibility placements within content rails, ensuring seamless brand presence as users browse.",
+          usage:
+            "Deliver seamless, non-intrusive brand visibility within browsing content feeds.",
+          image: inRailStaticBanner,
+          buyingOptions: [
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
+            { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          ],
+        },
+        {
+          name: "App Exit Banner",
+          displayTitle: "APP EXIT BANNER",
+          description:
+            "App Exit Banners are the full-screen or high-impact display ads that appear when a user attempts to exit or close the app.",
+          usage:
+            "Ideal for Brand Recall, Re-engagement and redirecting users to a website or app.",
+          image: appExitBannerMobile,
+          buyingOptions: [
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
+            { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
+            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          ],
+        },
+      ],
+      Linear: [
+        {
+          name: "Disruptor Astons",
+          displayTitle: "DISRUPTER ASTON BAND",
+          description:
+            "Disrupter Aston Bands are high-visibility banner formats designed to interrupt the browsing journey and immediately grab user attention.",
+          usage:
+            "Ideal for Flash sales, Product launches and limited-time offers",
+          image: disruptorAston,
+          buyingOptions: [
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
+            { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          ],
+        },
+        {
+          name: "Branded Carousel",
+          displayTitle: "BRANDED CAROUSEL",
+          description:
+            "Branded Carousel ads are interactive, multi-frame ad units that allow advertisers to showcase multiple creatives in a swipeable format.",
+          usage:
+            "Ideal for Storytelling, Product showcases and Multi-offer campaigns.",
+          image: brandedCarousel,
+          buyingOptions: [
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          ],
+        },
+        {
+          name: "L-Bands",
+          displayTitle: "L-BANDS",
+          description:
+            "L-Bands are L-shaped overlay ad units that wrap around the content on two sides, providing high visibility without fully interrupting the viewing experience.",
+          usage:
+            "Ideal for Brand Awareness, Sponsorship integration and High-impact visibility.",
+          image: lBand,
+          buyingOptions: [
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    key: "inspire",
+    name: "Inspire",
+    description:
+      "Capture attention and spark Interest through immersive storytelling formats. This stage focuses on meaningful engagement that builds brand recall and emotional connection.",
+    platforms: ["Linear"],
+    tabs: [
+      {
+        name: "Branded Window",
+        displayTitle: "BRANDED WINDOW",
+        description:
+          "Branded Window (GEC) is a customized, high-visibility ad placement within General Entertainment Content (GEC).",
+        usage: "Ideal for Premium brand positioning, Mass audience reach within entertainment content.",
+        image: brandedWindowGec,
+        buyingOptions: [
+          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+        ],
+      },
+      {
+        name: "Coming Up Window",
+        displayTitle: "COMING UP WINDOW",
+        description:
+          "Coming Up Window (GEC) is a branded ad placement that appears during the 'Coming Up Next' segment within General Entertainment Content.",
+        usage:
+          "Ideal for Brand Awareness, Audience anticipation and capturing attention during content transitions.",
+        image: comingUpWindowGec,
+        buyingOptions: [
+          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+        ],
+      },
+      {
+        name: "In-content Ads",
+        displayTitle: "IN-CONTENT ADVERTISING",
+        description:
+          "In-Content Advertising is a seamless ad integration within entertainment content, blending brand messaging naturally into the viewing experience.",
+        usage: "Ideal for Deep brand integration, High recall and Non-intrusive engagement.",
+        image: inContentAdvertising,
+        buyingOptions: [
+          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+        ],
+      },
+    ],
+  },
+  {
+    key: "synergize",
+    name: "Synergize",
+    description:
+      "Capture attention, spark interest, and build Desire through immersive storytelling formats that drive engagement, strengthen brand recall, and create emotional connections.",
+    platforms: ["Digital", "Linear"],
+    platformTabs: {
+      Digital: [
+        {
+          name: "CTV Pause Ads",
+          displayTitle: "CTV PAUSE ADS",
+          description:
+            "CTV Pause Ads are static ad creatives that appear on the screen when a viewer pauses video content on the Connected TV.",
+          usage:
+            "Ideal for Strong brand recall and High brand visibility on the big screen.",
+          image: ctvPauseAdDesktop,
+          buyingOptions: [
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          ],
+        },
+      ],
+      Linear: [
+        {
+          name: "Meta Tagged Aston",
+          displayTitle: "META TAGGED ASTON",
+          description:
+            "Meta Tagged Aston is a performance-enabled Aston band format integrated with clickable metadata elements.",
+          usage: "Ideal for Enhancing discoverability through contextual tagging.",
+          image: metaTaggedAston,
+          buyingOptions: [
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          ],
+        },
+        {
+          name: "Pause & Play",
+          displayTitle: "PAUSE & PLAY",
+          description:
+            "Pause & Play ads are interactive ad units that appear when a viewer pauses content, offering an engaging brand experience during natural viewing breaks.",
+          usage:
+            "Ideal for High brand recall, Non-intrusive engagement during content consumption.",
+          image: pauseAndPlay,
+          buyingOptions: [
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          ],
+        },
+        {
+          name: "In show Integration",
+          displayTitle: "IN SHOW INTEGRATION",
+          description:
+            "In Show Integration is a seamless brand placement within the show's storyline, creating organic and memorable brand associations.",
+          usage: "Ideal for Deep brand integration, High recall and Authentic audience connection.",
+          image: inShowIntegration,
+          buyingOptions: [
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    key: "engage",
+    name: "Engage",
+    description:
+      "Convert attention into measurable Action. From direct interactions to response driven formats, this stage empowers users to click, explore, and take the next step.",
+    platforms: ["Digital", "Linear"],
+    platformTabs: {
+      Digital: [
+        {
+          name: "Clickable Companion",
+          displayTitle: "CLICKABLE COMPANION",
+          description:
+            "Companion ads are display or interactive ad units that appear alongside video content, such as beside or below the video player.",
+          usage:
+            "Ideal for Brand Reinforcement, High Recall and supporting video ad campaigns",
+          image: companionAdsMobile,
+          buyingOptions: [
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
+            { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
+            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          ],
+        },
+        {
+          name: "Overlay Aston Bands",
+          displayTitle: "OVERLAY ASTON BANDS",
+          description:
+            "Aston Bands are overlay-style advertising units that appear as slim, non-intrusive bands on the video player.",
+          usage:
+            "Ideal for Brand Presence, Driving consideration without disrupting viewing.",
+          image: overlayAstonBand,
+          buyingOptions: [
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          ],
+        },
+      ],
+      Linear: [
+        {
+          name: "QR Code Astons",
+          displayTitle: "QR CODE ASTONS",
+          description:
+            "QR Code Astons are high-visibility Aston band formats integrated with a scannable QR code on the screen.",
+          usage: "Ideal for Driving website visits or app downloads, Bridging TV-to-mobile journeys.",
+          image: qrAstons,
+          buyingOptions: [
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
+            { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          ],
+        },
+        {
+          name: "Anchor Mentions",
+          displayTitle: "ANCHOR MENTIONS",
+          description:
+            "Anchor Mentions are brand integrations where the TV anchor organically mentions or showcases the brand during live or recorded content.",
+          usage: "Ideal for Authentic brand endorsement, High trust and Credibility building.",
+          image: anchorMentions,
+          buyingOptions: [
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
+            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          ],
+        },
+      ],
+    },
+  },
+];
 
-const mockupImages = {
-  ctv: ctvMockup,
-  video: videoMockup,
-  display: displayMockup,
-};
-
-function AdCategory({ categoryKey, data }) {
+function PremiumAdFormats() {
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
-  const [platform, setPlatform] = useState("mobile");
+  const [activePlatform, setActivePlatform] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
-  const visibleTabs = data.tabs.filter(
-    (tab) =>
-      (platform === "desktop" || !tab.desktopOnly) &&
-      (platform === "mobile" || !tab.mobileOnly)
-  );
-  const activeAd = visibleTabs[activeTab];
-  const mockupSrc =
-    platform === "desktop" && activeAd.desktopImage
-      ? activeAd.desktopImage
-      : activeAd.mobileImage
-        ? activeAd.mobileImage
-        : mockupImages[categoryKey];
 
-  const getImageSrc = (tab, plat) => {
-    if (plat === "desktop" && tab.desktopImage) return tab.desktopImage;
-    if (tab.mobileImage) return tab.mobileImage;
-    return mockupImages[categoryKey];
-  };
+  const category = categories[activeCategoryIndex];
+  const activePlatformName = category.platforms[activePlatform] || category.platforms[0];
+  const tabs = category.platformTabs
+    ? category.platformTabs[activePlatformName]
+    : category.tabs;
+  const activeAd = tabs[activeTab];
+  const mockupSrc = activeAd.image;
 
   const preloadAndFadeIn = (src, callback) => {
     const img = new Image();
@@ -449,61 +432,103 @@ function AdCategory({ categoryKey, data }) {
     }
   };
 
-  const handlePlatformChange = (newPlatform) => {
+  const handleCategoryChange = (index) => {
+    if (index === activeCategoryIndex) return;
     setFadeIn(false);
-    const newTabs = data.tabs.filter(
-      (tab) =>
-        (newPlatform === "desktop" || !tab.desktopOnly) &&
-        (newPlatform === "mobile" || !tab.mobileOnly)
-    );
-    const nextSrc = getImageSrc(newTabs[0], newPlatform);
+    const nextCat = categories[index];
+    const nextTabs = nextCat.platformTabs
+      ? nextCat.platformTabs[nextCat.platforms[0]]
+      : nextCat.tabs;
+    const nextSrc = nextTabs[0].image;
     setTimeout(() => {
       preloadAndFadeIn(nextSrc, () => {
-        setPlatform(newPlatform);
+        setActiveCategoryIndex(index);
+        setActiveTab(0);
+        setActivePlatform(0);
+        setFadeIn(true);
+      });
+    }, 300);
+  };
+
+  const handlePlatformChange = (index) => {
+    if (index === activePlatform) return;
+    setFadeIn(false);
+    const nextTabs = category.platformTabs
+      ? category.platformTabs[category.platforms[index]]
+      : category.tabs;
+    const nextSrc = nextTabs[0].image;
+    setTimeout(() => {
+      preloadAndFadeIn(nextSrc, () => {
+        setActivePlatform(index);
         setActiveTab(0);
         setFadeIn(true);
       });
-    }, 400);
+    }, 300);
   };
 
   const handleTabChange = (index) => {
     if (index === activeTab) return;
     setFadeIn(false);
-    const nextSrc = getImageSrc(visibleTabs[index], platform);
+    const nextSrc = tabs[index].image;
     setTimeout(() => {
       preloadAndFadeIn(nextSrc, () => {
         setActiveTab(index);
         setFadeIn(true);
       });
-    }, 400);
+    }, 300);
   };
 
   return (
-    <div className={`ad-category ad-category-${categoryKey} platform-${platform}`}>
-      <h3 className="ad-category-title">{data.title}</h3>
-      <div className="platform-toggle">
-        <button
-          className={`toggle-btn ${platform === "mobile" ? "active" : ""}`}
-          onClick={() => handlePlatformChange("mobile")}
-        >
-          Mobile
-        </button>
-        <button
-          className={`toggle-btn ${platform === "desktop" ? "active" : ""}`}
-          onClick={() => handlePlatformChange("desktop")}
-        >
-          Desktop
-        </button>
+    <section id="premium-ad-formats" className="premium-ad-formats">
+      <h2 className="premium-title">
+        Optimize Your Presence With Premium Ad Formats
+      </h2>
+
+      <div className="category-tabs">
+        {categories.map((cat, i) => (
+          <button
+            key={cat.key}
+            className={`category-tab ${i === activeCategoryIndex ? "active" : ""}`}
+            onClick={() => handleCategoryChange(i)}
+          >
+            {cat.name}
+          </button>
+        ))}
       </div>
 
-      <div className="ad-category-content">
+      <p className="category-description">{category.description}</p>
+
+      <div className="platform-toggle">
+        {category.platforms.map((p, i) => (
+          <button
+            key={p}
+            className={`platform-toggle-btn ${i === activePlatform ? "active" : ""}`}
+            onClick={() => handlePlatformChange(i)}
+          >
+            {p}
+          </button>
+        ))}
+      </div>
+
+      <div className={`ad-category-content category-${category.key}`}>
         <div className="mockup-glow"></div>
-        <div className="ad-mockup">
+        <div className={`ad-mockup mockup-${activeAd.name.toLowerCase().replace(/\s+/g, '-')}`}>
           <img
             src={mockupSrc}
-            alt={data.title}
+            alt={activeAd.displayTitle}
             className={`mockup-img ${fadeIn ? "mockup-visible" : "mockup-hidden"}`}
+            loading="lazy"
+            decoding="async"
           />
+          {activeAd.secondaryImage && (
+            <img
+              src={activeAd.secondaryImage}
+              alt=""
+              className={`mockup-img mockup-secondary ${fadeIn ? "mockup-visible" : "mockup-hidden"}`}
+              loading="lazy"
+              decoding="async"
+            />
+          )}
         </div>
 
         <div className="ad-info-card">
@@ -542,9 +567,9 @@ function AdCategory({ categoryKey, data }) {
         </div>
 
         <div className="ad-tabs-nav">
-          {visibleTabs.map((tab, i) => (
+          {tabs.map((tab, i) => (
             <button
-              key={i}
+              key={tab.name}
               className={`ad-tab-btn ${activeTab === i ? "active" : ""}`}
               onClick={() => handleTabChange(i)}
             >
@@ -553,25 +578,6 @@ function AdCategory({ categoryKey, data }) {
           ))}
         </div>
       </div>
-    </div>
-  );
-}
-
-function PremiumAdFormats() {
-  return (
-    <section id="premium-ad-formats" className="premium-ad-formats">
-      <h2 className="premium-title">Premium Ad Formats</h2>
-      <p className="premium-subtitle">
-        High-Impact Ad Formats That Connect Brands
-        <br />
-        to Millions
-      </p>
-
-      <AdCategory categoryKey="ctv" data={adData.ctv} />
-      <div className="section-divider"></div>
-      <AdCategory categoryKey="video" data={adData.video} />
-      <div className="section-divider"></div>
-      <AdCategory categoryKey="display" data={adData.display} />
     </section>
   );
 }

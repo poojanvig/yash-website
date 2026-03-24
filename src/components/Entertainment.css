@@ -1,6 +1,6 @@
 .entertainment {
   padding: 80px 0;
-  background: url('../assets/bg.png') center center / cover no-repeat;
+  background: url('../assets/bg.webp') center center / cover no-repeat;
   overflow: hidden;
 }
 
@@ -91,16 +91,29 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-  will-change: filter;
+  transition: opacity 0.15s ease;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
 }
 
-.entertainment-card:hover .card-bg {
-  filter: grayscale(0%);
+.card-bg-gray {
+  opacity: 1;
+}
+
+.card-bg-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.entertainment-card:hover .card-bg-gray {
+  opacity: 0;
+}
+
+.entertainment-card:hover .card-bg-color {
+  opacity: 1;
 }
 
 .card-overlay {
@@ -296,7 +309,9 @@
   }
 }
 
-/* Arc carousel keyframes — rotate around a far origin to create a sweep */
+
+
+/* Arc carousel keyframes */
 @keyframes arcInFromRight {
   from { transform: rotate(35deg); }
   to   { transform: rotate(0deg); }
@@ -330,7 +345,6 @@
   position: absolute;
   inset: 0;
   min-height: 680px;
-  /* Origin far below — same principle as the circular carousel (height × 5) */
   transform-origin: center calc(100% + 1800px);
 }
 
@@ -344,11 +358,11 @@
 }
 
 .stats-modal-panel-outgoing.direction-next {
-  animation: arcOutToLeft 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: arcOutToLeft 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .stats-modal-panel-outgoing.direction-prev {
-  animation: arcOutToRight 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: arcOutToRight 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .stats-modal-panel-incoming {
@@ -357,11 +371,11 @@
 }
 
 .stats-modal-panel-incoming.direction-next {
-  animation: arcInFromRight 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: arcInFromRight 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .stats-modal-panel-incoming.direction-prev {
-  animation: arcInFromLeft 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: arcInFromLeft 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .stats-modal {
@@ -762,8 +776,12 @@
 }
 
 .stats-nav-btn:hover {
-  transform: translateY(-50%) scale(1.04);
+  transform: translateY(-50%) scale(1.08);
   box-shadow: 0 18px 40px rgba(114, 33, 255, 0.25);
+}
+
+.stats-nav-btn:active {
+  transform: translateY(-50%) scale(0.94);
 }
 
 .stats-nav-btn:disabled {
@@ -807,8 +825,12 @@
 }
 
 .close-stats-btn:hover {
-  transform: translateX(-50%) translateY(-2px);
+  transform: translateX(-50%) translateY(-3px);
   box-shadow: 0 20px 32px rgba(122, 39, 255, 0.3);
+}
+
+.close-stats-btn:active {
+  transform: translateX(-50%) scale(0.96);
 }
 
 .stats-side-card {

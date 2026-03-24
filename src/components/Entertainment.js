@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import './Entertainment.css';
 import youtubeCard from '../assets/youtube-card.webp';
 import youtubeColour from '../assets/Youtube-colour.webp';
@@ -225,7 +226,6 @@ const allCards = [
 
 const row1Cards = allCards.slice(0, 4);
 const row2Cards = allCards.slice(4, 8);
-const CARD_TRAVEL_DURATION_MS = 500;
 
 const AudienceSplitIcon = ({ type }) => {
   if (type === 'female') {
@@ -264,11 +264,16 @@ const StatsModalCard = ({ card }) => {
 
   return (
     <div className={`stats-modal ${card.title === 'OTT' ? 'stats-modal-ott' : ''}`}>
-      <img src={card.statImage || card.image} alt={card.title} className="stats-modal-bg" />
+      <img src={card.statImage || card.image} alt={card.title} className="stats-modal-bg" decoding="async" />
       <div className="stats-modal-content">
         <h3 className="stats-modal-title">{card.title}</h3>
+
         {hasTabbedViews && (
-          <div className="stats-modal-tabs" role="tablist" aria-label={`${card.title} segments`}>
+          <div
+            className="stats-modal-tabs"
+            role="tablist"
+            aria-label={`${card.title} segments`}
+          >
             {card.statViews.map((view, index) => (
               <button
                 type="button"
@@ -283,69 +288,72 @@ const StatsModalCard = ({ card }) => {
             ))}
           </div>
         )}
+
         <p className="stats-modal-desc">{activeDescription}</p>
 
         <div className="stats-grid">
           {activeStats.slice(0, 2).map((stat, index) => (
-          <div className="stat-card" key={index}>
-            <img src={card.statImage || card.image} alt="" className="stat-card-bg" />
-            <div className="stat-card-content">
-              <span className="stat-value">{stat.value}</span>
-              <span className="stat-label">{stat.label}</span>
-              {stat.sublabel && <span className="stat-sublabel">{stat.sublabel}</span>}
-            </div>
-          </div>
-        ))}
-
-        <div className="stat-card stat-card-combo">
-          <img src={card.statImage || card.image} alt="" className="stat-card-bg" />
-          <div className={`stat-card-content ${activeComboStat.breakdown ? 'stat-card-content-breakdown' : ''}`}>
-            {activeComboStat.note && (
-              <span className="stat-combo-note">{activeComboStat.note}</span>
-            )}
-            <span className="stat-value">{activeComboStat.value}</span>
-            <span className="stat-label">{activeComboStat.label}</span>
-            {activeComboStat.sublabel && (
-              <span className="stat-sublabel">{activeComboStat.sublabel}</span>
-            )}
-            {activeComboStat.breakdown ? (
-              <div className="stat-breakdown">
-                {activeComboStat.heading && (
-                  <span className="stat-breakdown-title">{activeComboStat.heading}</span>
-                )}
-                <div className="stat-breakdown-list">
-                  {activeComboStat.breakdown.map((item) => (
-                    <div className="stat-breakdown-item" key={`${card.title}-${item.label}`}>
-                      <span className="stat-breakdown-icon">
-                        <AudienceSplitIcon type={item.icon} />
-                      </span>
-                      <span className="stat-breakdown-metric">{item.value}</span>
-                      <span className="stat-breakdown-label">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
+            <div className="stat-card" key={index}>
+              <img src={card.statImage || card.image} alt="" className="stat-card-bg" decoding="async" />
+              <div className="stat-card-content">
+                <span className="stat-value">{stat.value}</span>
+                <span className="stat-label">{stat.label}</span>
+                {stat.sublabel && <span className="stat-sublabel">{stat.sublabel}</span>}
               </div>
-            ) : activeComboStat.showMap !== false ? (
-              <img src={indiaMap} alt="India Map" className="stat-india-map" />
-            ) : null}
-          </div>
-        </div>
+            </div>
+          ))}
 
-        {activeStats.slice(2, 4).map((stat, index) => (
-          <div className="stat-card" key={index + 2}>
+          <div className="stat-card stat-card-combo">
             <img src={card.statImage || card.image} alt="" className="stat-card-bg" />
-            <div className="stat-card-content">
-              <span className="stat-value">{stat.value}</span>
-              <span className="stat-label">{stat.label}</span>
-              {stat.sublabel && <span className="stat-sublabel">{stat.sublabel}</span>}
+            <div className={`stat-card-content ${activeComboStat.breakdown ? 'stat-card-content-breakdown' : ''}`}>
+              {activeComboStat.note && (
+                <span className="stat-combo-note">{activeComboStat.note}</span>
+              )}
+              <span className="stat-value">{activeComboStat.value}</span>
+              <span className="stat-label">{activeComboStat.label}</span>
+              {activeComboStat.sublabel && (
+                <span className="stat-sublabel">{activeComboStat.sublabel}</span>
+              )}
+              {activeComboStat.breakdown ? (
+                <div className="stat-breakdown">
+                  {activeComboStat.heading && (
+                    <span className="stat-breakdown-title">{activeComboStat.heading}</span>
+                  )}
+                  <div className="stat-breakdown-list">
+                    {activeComboStat.breakdown.map((item) => (
+                      <div className="stat-breakdown-item" key={`${card.title}-${item.label}`}>
+                        <span className="stat-breakdown-icon">
+                          <AudienceSplitIcon type={item.icon} />
+                        </span>
+                        <span className="stat-breakdown-metric">{item.value}</span>
+                        <span className="stat-breakdown-label">{item.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : activeComboStat.showMap !== false ? (
+                <img src={indiaMap} alt="India Map" className="stat-india-map" />
+              ) : null}
             </div>
           </div>
-        ))}
+
+          {activeStats.slice(2, 4).map((stat, index) => (
+            <div className="stat-card" key={index + 2}>
+              <img src={card.statImage || card.image} alt="" className="stat-card-bg" decoding="async" />
+              <div className="stat-card-content">
+                <span className="stat-value">{stat.value}</span>
+                <span className="stat-label">{stat.label}</span>
+                {stat.sublabel && <span className="stat-sublabel">{stat.sublabel}</span>}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
   );
 };
+
+const CARD_TRAVEL_DURATION_MS = 350;
 
 const Entertainment = () => {
   const [activeCardIndex, setActiveCardIndex] = useState(null);
@@ -361,7 +369,6 @@ const Entertainment = () => {
 
   const openStats = useCallback((cardTitle) => {
     const index = allCards.findIndex((card) => card.title === cardTitle);
-
     if (index !== -1) {
       clearTransitionTimeout();
       setTransition(null);
@@ -376,19 +383,12 @@ const Entertainment = () => {
   }, [clearTransitionTimeout]);
 
   const startCardTravel = useCallback((direction) => {
-    if (activeCardIndex === null || transition) {
-      return;
-    }
-
+    if (activeCardIndex === null || transition) return;
     const step = direction === 'next' ? 1 : -1;
     const targetIndex = (activeCardIndex + step + allCards.length) % allCards.length;
 
     clearTransitionTimeout();
-    setTransition({
-      direction,
-      fromIndex: activeCardIndex,
-      toIndex: targetIndex,
-    });
+    setTransition({ direction, fromIndex: activeCardIndex, toIndex: targetIndex });
 
     transitionTimeoutRef.current = window.setTimeout(() => {
       setActiveCardIndex(targetIndex);
@@ -408,24 +408,14 @@ const Entertainment = () => {
   }, [startCardTravel]);
 
   useEffect(() => {
-    if (activeCardIndex === null) {
-      return undefined;
-    }
+    if (activeCardIndex === null) return undefined;
 
     const originalOverflow = document.body.style.overflow;
 
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        closeStats();
-      }
-
-      if (event.key === 'ArrowRight') {
-        goNext();
-      }
-
-      if (event.key === 'ArrowLeft') {
-        goPrev();
-      }
+      if (event.key === 'Escape') closeStats();
+      if (event.key === 'ArrowRight') goNext();
+      if (event.key === 'ArrowLeft') goPrev();
     };
 
     document.body.style.overflow = 'hidden';
@@ -458,6 +448,7 @@ const Entertainment = () => {
       </h2>
 
       <div className="marquee-wrapper">
+        {/* Row 1 */}
         <div className="marquee-row">
           <div className="marquee-track row1-track">
             {[0, 1].map((groupIndex) => (
@@ -467,25 +458,43 @@ const Entertainment = () => {
                 aria-hidden={groupIndex === 1}
               >
                 {row1Cards.map((card, index) => (
-                  <div className="entertainment-card" key={`row1-${groupIndex}-${index}`}>
-                    <img src={card.statImage || card.image} alt={card.title} className="card-bg" />
+                  <motion.div
+                    className="entertainment-card"
+                    key={`row1-${groupIndex}-${index}`}
+                    whileHover={{
+                      y: -8,
+                      boxShadow: '0 20px 60px rgba(120, 40, 255, 0.35)',
+                    }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+                  >
+                    <img src={card.image} alt={card.title} className="card-bg card-bg-gray" decoding="async" />
+                    {card.statImage && (
+                      <img src={card.statImage} alt={card.title} className="card-bg card-bg-color" decoding="async" />
+                    )}
                     <div className="card-overlay">
                       <h3 className="card-title">{card.title}</h3>
-                      <button
+                      <motion.button
                         type="button"
                         className="view-stats-btn"
                         onClick={() => openStats(card.title)}
+                        whileHover={{
+                          scale: 1.08,
+                          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                       >
                         View Stats
-                      </button>
+                      </motion.button>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             ))}
           </div>
         </div>
 
+        {/* Row 2 */}
         <div className="marquee-row">
           <div className="marquee-track row2-track">
             {[0, 1].map((groupIndex) => (
@@ -495,19 +504,36 @@ const Entertainment = () => {
                 aria-hidden={groupIndex === 1}
               >
                 {row2Cards.map((card, index) => (
-                  <div className="entertainment-card" key={`row2-${groupIndex}-${index}`}>
-                    <img src={card.statImage || card.image} alt={card.title} className="card-bg" />
+                  <motion.div
+                    className="entertainment-card"
+                    key={`row2-${groupIndex}-${index}`}
+                    whileHover={{
+                      y: -8,
+                      boxShadow: '0 20px 60px rgba(120, 40, 255, 0.35)',
+                    }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+                  >
+                    <img src={card.image} alt={card.title} className="card-bg card-bg-gray" decoding="async" />
+                    {card.statImage && (
+                      <img src={card.statImage} alt={card.title} className="card-bg card-bg-color" decoding="async" />
+                    )}
                     <div className="card-overlay">
                       <h3 className="card-title">{card.title}</h3>
-                      <button
+                      <motion.button
                         type="button"
                         className="view-stats-btn"
                         onClick={() => openStats(card.title)}
+                        whileHover={{
+                          scale: 1.08,
+                          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                       >
                         View Stats
-                      </button>
+                      </motion.button>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             ))}
@@ -515,6 +541,7 @@ const Entertainment = () => {
         </div>
       </div>
 
+      {/* ── Stats Modal Overlay ── */}
       {isStatsOpen && activeCard && (
         <div className="stats-modal-overlay" onClick={closeStats}>
           <div className="gradient-blob blob-1"></div>
@@ -533,9 +560,10 @@ const Entertainment = () => {
               Entertainment for <span className="gradient-text">2.3 Bn</span> Heartbeats
             </h2>
 
+            {/* Side cards */}
             {prevCard && !transition && (
               <div className="stats-side-card stats-side-card-left" aria-hidden="true">
-                <img src={prevCard.statImage || prevCard.image} alt="" className="stats-side-card-bg" />
+                <img src={prevCard.statImage || prevCard.image} alt="" className="stats-side-card-bg" decoding="async" />
                 <div className="stats-side-card-overlay">
                   <span className="stats-side-card-title">{prevCard.title}</span>
                 </div>
@@ -544,7 +572,7 @@ const Entertainment = () => {
 
             {nextCard && !transition && (
               <div className="stats-side-card stats-side-card-right" aria-hidden="true">
-                <img src={nextCard.statImage || nextCard.image} alt="" className="stats-side-card-bg" />
+                <img src={nextCard.statImage || nextCard.image} alt="" className="stats-side-card-bg" decoding="async" />
                 <div className="stats-side-card-overlay">
                   <span className="stats-side-card-title">{nextCard.title}</span>
                 </div>
@@ -566,6 +594,7 @@ const Entertainment = () => {
               </svg>
             </button>
 
+            {/* ── CSS arc carousel ── */}
             <div className="stats-modal-stack">
               {transition ? (
                 <>
