@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
 import './Entertainment.css';
 import youtubeCard from '../assets/youtube-card.webp';
 import youtubeColour from '../assets/Youtube-colour.webp';
@@ -458,14 +457,9 @@ const Entertainment = () => {
                 aria-hidden={groupIndex === 1}
               >
                 {row1Cards.map((card, index) => (
-                  <motion.div
+                  <div
                     className="entertainment-card"
                     key={`row1-${groupIndex}-${index}`}
-                    whileHover={{
-                      y: -8,
-                      boxShadow: '0 20px 60px rgba(120, 40, 255, 0.35)',
-                    }}
-                    transition={{ type: 'spring', stiffness: 350, damping: 22 }}
                   >
                     <img src={card.image} alt={card.title} className="card-bg card-bg-gray" decoding="async" />
                     {card.statImage && (
@@ -473,21 +467,15 @@ const Entertainment = () => {
                     )}
                     <div className="card-overlay">
                       <h3 className="card-title">{card.title}</h3>
-                      <motion.button
+                      <button
                         type="button"
                         className="view-stats-btn"
                         onClick={() => openStats(card.title)}
-                        whileHover={{
-                          scale: 1.08,
-                          backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                       >
                         View Stats
-                      </motion.button>
+                      </button>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             ))}
@@ -504,14 +492,9 @@ const Entertainment = () => {
                 aria-hidden={groupIndex === 1}
               >
                 {row2Cards.map((card, index) => (
-                  <motion.div
+                  <div
                     className="entertainment-card"
                     key={`row2-${groupIndex}-${index}`}
-                    whileHover={{
-                      y: -8,
-                      boxShadow: '0 20px 60px rgba(120, 40, 255, 0.35)',
-                    }}
-                    transition={{ type: 'spring', stiffness: 350, damping: 22 }}
                   >
                     <img src={card.image} alt={card.title} className="card-bg card-bg-gray" decoding="async" />
                     {card.statImage && (
@@ -519,21 +502,15 @@ const Entertainment = () => {
                     )}
                     <div className="card-overlay">
                       <h3 className="card-title">{card.title}</h3>
-                      <motion.button
+                      <button
                         type="button"
                         className="view-stats-btn"
                         onClick={() => openStats(card.title)}
-                        whileHover={{
-                          scale: 1.08,
-                          backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                       >
                         View Stats
-                      </motion.button>
+                      </button>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             ))}
