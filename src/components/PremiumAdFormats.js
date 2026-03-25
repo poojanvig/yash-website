@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import "./PremiumAdFormats.css";
 import spotlightMockup from "../assets/spotlight-mockup.webp";
 import displayMockup from "../assets/display-mockup.webp";
@@ -411,7 +411,6 @@ function PremiumAdFormats() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
   const [activePlatform, setActivePlatform] = useState(0);
-  const [fadeIn, setFadeIn] = useState(true);
 
   const category = categories[activeCategoryIndex];
   const activePlatformName = category.platforms[activePlatform] || category.platforms[0];
@@ -421,61 +420,58 @@ function PremiumAdFormats() {
   const activeAd = tabs[activeTab];
   const mockupSrc = activeAd.image;
 
-  const preloadAndFadeIn = (src, callback) => {
+  const [fadeClass, setFadeClass] = useState("mockup-fade-in");
+  const pendingRef = useRef(null);
+
+  const fadeSwitch = useCallback((nextSrc, applyState) => {
+    if (pendingRef.current) return;
+    // Preload next image
     const img = new Image();
-    img.src = src;
-    if (img.complete) {
-      callback();
-    } else {
-      img.onload = callback;
-      img.onerror = callback;
-    }
-  };
+    img.src = nextSrc;
+    const start = () => {
+      // Fade out
+      setFadeClass("mockup-fade-out");
+      pendingRef.current = setTimeout(() => {
+        // Swap content
+        applyState();
+        // Fade in
+        setFadeClass("mockup-fade-in");
+        pendingRef.current = null;
+      }, 350);
+    };
+    if (img.complete) start();
+    else { img.onload = start; img.onerror = start; }
+  }, []);
 
   const handleCategoryChange = (index) => {
     if (index === activeCategoryIndex) return;
-    setFadeIn(false);
     const nextCat = categories[index];
     const nextTabs = nextCat.platformTabs
       ? nextCat.platformTabs[nextCat.platforms[0]]
       : nextCat.tabs;
-    const nextSrc = nextTabs[0].image;
-    setTimeout(() => {
-      preloadAndFadeIn(nextSrc, () => {
-        setActiveCategoryIndex(index);
-        setActiveTab(0);
-        setActivePlatform(0);
-        setFadeIn(true);
-      });
-    }, 300);
+    fadeSwitch(nextTabs[0].image, () => {
+      setActiveCategoryIndex(index);
+      setActiveTab(0);
+      setActivePlatform(0);
+    });
   };
 
   const handlePlatformChange = (index) => {
     if (index === activePlatform) return;
-    setFadeIn(false);
     const nextTabs = category.platformTabs
       ? category.platformTabs[category.platforms[index]]
       : category.tabs;
-    const nextSrc = nextTabs[0].image;
-    setTimeout(() => {
-      preloadAndFadeIn(nextSrc, () => {
-        setActivePlatform(index);
-        setActiveTab(0);
-        setFadeIn(true);
-      });
-    }, 300);
+    fadeSwitch(nextTabs[0].image, () => {
+      setActivePlatform(index);
+      setActiveTab(0);
+    });
   };
 
   const handleTabChange = (index) => {
     if (index === activeTab) return;
-    setFadeIn(false);
-    const nextSrc = tabs[index].image;
-    setTimeout(() => {
-      preloadAndFadeIn(nextSrc, () => {
-        setActiveTab(index);
-        setFadeIn(true);
-      });
-    }, 300);
+    fadeSwitch(tabs[index].image, () => {
+      setActiveTab(index);
+    });
   };
 
   return (
@@ -516,19 +512,9 @@ function PremiumAdFormats() {
           <img
             src={mockupSrc}
             alt={activeAd.displayTitle}
-            className={`mockup-img ${fadeIn ? "mockup-visible" : "mockup-hidden"}`}
-            loading="lazy"
+            className={`mockup-img ${fadeClass}`}
             decoding="async"
           />
-          {activeAd.secondaryImage && (
-            <img
-              src={activeAd.secondaryImage}
-              alt=""
-              className={`mockup-img mockup-secondary ${fadeIn ? "mockup-visible" : "mockup-hidden"}`}
-              loading="lazy"
-              decoding="async"
-            />
-          )}
         </div>
 
         <div className="ad-info-card">

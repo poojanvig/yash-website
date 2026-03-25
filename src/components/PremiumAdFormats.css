@@ -210,38 +210,27 @@
 .mockup-anchor-mentions { overflow: visible; }
 .mockup-anchor-mentions img { width: 500px; max-width: none; top: 230px; left: 20px; }
 
-/* Mockup fade transition */
+/* Mockup fade in / fade out */
 .mockup-img {
-  transition: opacity 350ms ease, transform 350ms ease;
+  pointer-events: none;
 }
 
-.mockup-visible {
-  opacity: 1;
-  transform: translateY(0);
+.mockup-fade-out {
+  animation: mockupFadeOut 0.35s ease forwards;
 }
 
-.mockup-hidden {
-  opacity: 0;
-  transform: translateY(-30px);
+.mockup-fade-in {
+  animation: mockupFadeIn 0.4s ease forwards;
 }
 
-.mockup-secondary {
-  position: absolute !important;
-  bottom: -20px;
-  right: -40px;
-  max-width: 220px !important;
-  width: 220px !important;
-  z-index: 1 !important;
-  border-radius: 8px;
-  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.4));
+@keyframes mockupFadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.97); }
 }
 
-.mockup-secondary.mockup-visible {
-  transform: translateY(0);
-}
-
-.mockup-secondary.mockup-hidden {
-  transform: translateY(20px);
+@keyframes mockupFadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 /* ===========================
