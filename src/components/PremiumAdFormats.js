@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import "./PremiumAdFormats.css";
 import spotlightMockup from "../assets/spotlight-mockup.webp";
 import displayMockup from "../assets/display-mockup.webp";
