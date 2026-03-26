@@ -15,7 +15,6 @@ function Footer() {
       <div className="footer-container">
         <div className="footer-logo">
           <img src={zLogo} alt="Z" className="footer-z-logo" />
-          <span className="footer-logo-text">Ad World</span>
         </div>
 
         <div className="footer-content">

@@ -21,14 +21,8 @@
 }
 
 .footer-z-logo {
-  height: 40px;
+  height: 60px;
   width: auto;
-}
-
-.footer-logo-text {
-  color: #b0b0b0;
-  font-size: 18px;
-  font-weight: 400;
 }
 
 .footer-content {
@@ -213,7 +207,7 @@
   }
 
   .footer-z-logo {
-    height: 32px;
+    height: 48px;
   }
 
   .footer-content {

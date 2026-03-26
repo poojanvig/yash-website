@@ -13,22 +13,12 @@
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  margin-left: 20px;
 }
 
 .z-logo {
-  height: 42px;
+  height: 60px;
   width: auto;
-}
-
-.logo-text {
-  color: #ffffff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 100%;
-  letter-spacing: 0%;
 }
 
 .navbar-links {
@@ -196,11 +186,7 @@
   }
 
   .z-logo {
-    height: 34px;
-  }
-
-  .logo-text {
-    font-size: 16px;
+    height: 48px;
   }
 
   .hamburger-btn {
@@ -270,11 +256,7 @@
   }
 
   .z-logo {
-    height: 28px;
-  }
-
-  .logo-text {
-    font-size: 14px;
+    height: 40px;
   }
 
   .search-btn {

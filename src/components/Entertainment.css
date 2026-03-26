@@ -50,11 +50,11 @@
 }
 
 .row1-track {
-  animation: scrollLeft 30s linear infinite;
+  animation: scrollLeft 55s linear infinite;
 }
 
 .row2-track {
-  animation: scrollRight 30s linear infinite;
+  animation: scrollRight 55s linear infinite;
 }
 
 .marquee-row:hover .marquee-track {
@@ -183,7 +183,7 @@
   position: relative;
   width: min(1700px, 100%);
   min-height: 100vh;
-  padding: 46px 88px 118px;
+  padding: 46px 88px 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -343,6 +343,7 @@
   max-width: 90vw;
   overflow: visible;
   z-index: 2;
+  margin-top: 40px;
 }
 
 .stats-modal-panel {
@@ -807,7 +808,7 @@
 
 .close-stats-btn {
   position: absolute;
-  bottom: 26px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

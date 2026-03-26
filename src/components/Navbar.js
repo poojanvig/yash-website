@@ -28,8 +28,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="navbar-logo">
-          <img src={zLogo} alt="Z Ad World" className="z-logo" />
-          <span className="logo-text">Ad World</span>
+          <img src={zLogo} alt="Z Logo" className="z-logo" />
         </div>
 
         <div className={`navbar-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
