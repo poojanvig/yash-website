@@ -5,7 +5,7 @@ import zLogo from '../assets/z-logo.webp';
 const navItems = [
   { name: 'Ad Solutions', id: 'ad-formats' },
   { name: 'Resources', id: 'entertainment' },
-  { name: 'Advertise with us', id: 'premium-ad-formats' },
+  { name: 'Advertise with us', id: 'contact' },
   { name: 'Z Rise', id: 'hero' }
 ];
 

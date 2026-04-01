@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.css';
-import heroBg from '../assets/hero-bg.webp';
+import heroBg from '../assets/zee-ad-world-banner.webp';
 
 const Hero = () => {
   return (
@@ -18,7 +18,13 @@ const Hero = () => {
           <span>Infinite Opportunities</span>
         </h1>
 
-        <button className="hero-cta">
+        <button
+          className="hero-cta"
+          onClick={() => {
+            const el = document.getElementById('contact');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }}
+        >
           ADVERTISE WITH US
         </button>
       </div>
