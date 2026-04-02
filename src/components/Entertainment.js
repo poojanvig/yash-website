@@ -23,17 +23,22 @@ const allCards = [
     title: 'Social Media',
     image: socialMediaCard,
     statImage: socialMediaColour,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    description: 'Massive social reach driving high-impact brand visibility and engagement at scale.',
     stats: [
-      { value: '720+', label: 'Million', sublabel: 'Monthly Views' },
-      { value: '25+', label: 'Regional Accounts', sublabel: 'Across Social Media Platforms' },
-      { value: '300+', label: 'Million', sublabel: 'Combined Reach' },
-      { value: '1+', label: 'Million', sublabel: 'Posts Across Social Media Platforms' },
+      { value: '50+ Mn', label: 'Overall Social Engagement', sublabel: '(Weekly Avg)' },
+      { value: '4+ Bn', label: 'Total Video Views', sublabel: '(Meta)' },
     ],
     comboStat: {
-      value: '260+',
-      label: 'Million',
-      sublabel: 'Total Followers across the Globe',
+      heading: 'Channel Reach',
+      channels: [
+        { name: 'Zee TV', fb: '38M', ig: '4M' },
+        { name: 'Zee Marathi', fb: '8.8M', ig: '3M' },
+        { name: 'Zee Bangla', fb: '19.3M', ig: '2M' },
+        { name: 'Zee Kannada', fb: '9.6M', ig: '10M' },
+        { name: 'Zee Keralam', fb: '4M', ig: '643K' },
+        { name: 'Zee Tamil', fb: '14.3M', ig: '5M' },
+        { name: 'Zee Telugu', fb: '8.5M', ig: '3M' },
+      ],
       showMap: false,
     },
   },
@@ -41,99 +46,70 @@ const allCards = [
     title: 'Broadcast',
     image: broadcastCard,
     statImage: broadcastColour,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    description: 'Dominant broadcast presence across India.',
     stats: [
-      { value: '80+', label: 'Channels' },
-      { value: '265k', label: 'GEC Content Hours' },
-      { value: '1.3+', label: 'Billion', sublabel: 'Entertaining Hearts' },
-      { value: '16.8%', label: 'Channels' },
+      { value: '712 Mn', label: 'Monthly Reach' },
+      { value: '93%', label: 'TV Household Reach', sublabel: '9/10 HHs consume Z Network every month' },
+      { value: '302 Mn', label: 'Daily Tune-INs' },
+      { value: '55%', label: 'Premium Audience', sublabel: 'Network Monthly Reach NCCS A' },
     ],
-    comboStat: { value: '11+', label: 'Naive Language', sublabel: 'Average Time Spent per User' },
+    comboStat: {
+      heading: 'Regional Reach',
+      regions: [
+        { name: 'HSM', value: '495 Mn' },
+        { name: 'North', value: '170 Mn' },
+        { name: 'East', value: '131 Mn' },
+        { name: 'West', value: '195 Mn' },
+        { name: 'South', value: '217 Mn' },
+      ],
+      showMap: false,
+    },
   },
   {
-    title: 'OTT',
+    title: 'Zee5 OTT',
     image: ottCard,
     statImage: ottColour,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    statViews: [
-      {
-        tabLabel: 'CTV',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        stats: [
-          { value: '88+', label: 'Million', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-          { value: '100+', label: 'Million', sublabel: 'Monthly Active Users' },
-          { value: '10+', label: 'Billion', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-          { value: '0.5+', label: 'Million', sublabel: 'Hours Content Library' },
-        ],
-        comboStat: {
-          value: '42',
-          label: 'mins/day',
-          sublabel: 'Average Time Spent per User',
-          heading: 'Audience Split',
-          breakdown: [
-            { icon: 'female', value: '43%', label: 'Female' },
-            { icon: 'male', value: '57%', label: 'Male' },
-          ],
-        },
-      },
-      {
-        tabLabel: 'Premium SVOD',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        stats: [
-          { value: '88+', label: 'Million', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-          { value: '100+', label: 'Million', sublabel: 'Monthly Active Users' },
-          { value: '10+', label: 'Billion', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-          { value: '0.5+', label: 'Million', sublabel: 'Hours Content Library' },
-        ],
-        comboStat: {
-          value: '42',
-          label: 'mins/day',
-          sublabel: 'Average Time Spent per User',
-          heading: 'Audience Split',
-          breakdown: [
-            { icon: 'female', value: '43%', label: 'Female' },
-            { icon: 'male', value: '57%', label: 'Male' },
-          ],
-        },
-      },
-      {
-        tabLabel: 'Mobile',
-        description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        stats: [
-          { value: '88+', label: 'Million', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-          { value: '100+', label: 'Million', sublabel: 'Monthly Active Users' },
-          { value: '10+', label: 'Billion', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-          { value: '0.5+', label: 'Million', sublabel: 'Hours Content Library' },
-        ],
-        comboStat: {
-          value: '42',
-          label: 'mins/day',
-          sublabel: 'Average Time Spent per User',
-          heading: 'Audience Split',
-          breakdown: [
-            { icon: 'female', value: '43%', label: 'Female' },
-            { icon: 'male', value: '57%', label: 'Male' },
-          ],
-        },
-      },
+    description: 'Streamlined reach, premium engagement — on-demand, on point.',
+    stats: [
+      { value: '100+ Mn', label: 'Monthly Active Users', sublabel: '(MAUs)' },
+      { value: '10+ Bn', label: 'Monthly Video Views' },
+      { value: '88+ Mn', label: 'Premium Audience', sublabel: 'CTV, SVOD, LIVE, News' },
+      { value: '5L+', label: 'Hours', sublabel: 'Content Library' },
     ],
+    comboStat: {
+      value: '42',
+      label: 'mins/day',
+      sublabel: 'Avg Time Spent per User',
+      heading: 'Audience Split',
+      breakdown: [
+        { icon: 'female', value: '43%', label: 'Female' },
+        { icon: 'male', value: '57%', label: 'Male' },
+      ],
+      tiers: {
+        heading: 'City / Tier Split',
+        items: [
+          { value: '41%', label: 'Tier I' },
+          { value: '44%', label: 'Tier II' },
+          { value: '15%', label: 'Tier III' },
+        ],
+      },
+    },
   },
   {
     title: 'YouTube',
     image: youtubeCard,
     statImage: youtubeColour,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    description: 'Unskippable moments, endless impressions — where viewers choose you.',
     stats: [
-      { value: '284+', label: 'Million', sublabel: 'Monthly Active Views' },
-      { value: '12+', label: 'Billion', sublabel: 'Total Monthly Impressions' },
-      { value: '5+', label: 'Billion', sublabel: 'Total Monthly Video Views' },
-      { value: '60+', label: 'Zee Channels', sublabel: 'On YouTube' },
+      { value: '375+ Mn', label: 'Monthly Active Users', sublabel: 'Across Zee Channels Globally' },
+      { value: '12+ Bn', label: 'Monthly Impressions' },
+      { value: '5+ Bn', label: 'Monthly Video Views' },
+      { value: '60+', label: 'ZEE Channels/Handles', sublabel: 'On YouTube' },
     ],
     comboStat: {
       note: 'Zee YouTube drives massive viewership',
-      value: '58%',
-      label: 'YouTube Views',
-      sublabel: 'Average Time Spent per User',
+      value: '200+ Mn',
+      label: 'Total Subscribers',
       showMap: false,
     },
   },
@@ -141,39 +117,31 @@ const allCards = [
     title: 'Z Rise',
     image: zRiseCard,
     statImage: zRiseColour,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    description: 'Establishing Z RISE as a thought-leadership movement.',
     stats: [
-      { value: '88+', label: 'Million', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-      { value: '100+', label: 'Million', sublabel: 'Monthly Active Users' },
-      { value: '10+', label: 'Billion', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-      { value: '0.5+', label: 'Million', sublabel: 'Hours Content Library' },
+      { value: '12', label: 'High-Impact Events', sublabel: 'Conducted across Metro & Regional Markets' },
+      { value: '2,000+', label: 'Industry Stakeholders', sublabel: 'Entrepreneurs, Marketers & Agency Partners Engaged' },
+      { value: '500+', label: 'Trade Media Coverages', sublabel: 'Across Leading Platforms' },
     ],
     comboStat: {
-      value: '42',
-      label: 'mins/day',
-      sublabel: 'Average Time Spent per User',
-      heading: 'Audience Split',
-      breakdown: [
-        { icon: 'female', value: '43%', label: 'Female' },
-        { icon: 'male', value: '57%', label: 'Male' },
-      ],
+      hidden: true,
     },
   },
   {
     title: 'Dilfluencer',
     image: dilfluencerCard,
     statImage: dilfluencerColour,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    description: '',
     stats: [
-      { value: '88+', label: 'Million', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-      { value: '100+', label: 'Million', sublabel: 'Monthly Active Users' },
-      { value: '10+', label: 'Billion', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-      { value: '0.5+', label: 'Million', sublabel: 'Hours Content Library' },
+      { value: '700+ Mn', label: 'Monthly Audiences' },
+      { value: '350+', label: 'Influencers', sublabel: 'Across Regions' },
+      { value: '1 Bn', label: 'Weekly Cume', sublabel: 'Meta Reach' },
+      { value: '5 Bn', label: 'Monthly Video Views', sublabel: 'On YouTube' },
     ],
     comboStat: {
-      value: '10+',
-      label: 'Million',
-      sublabel: 'People connect with Zee\'s characters on social media',
+      value: '100+',
+      label: 'Dilfluencers',
+      sublabel: 'Across Languages',
       showMap: false,
     },
   },
@@ -181,21 +149,17 @@ const allCards = [
     title: 'Z Immerse',
     image: zImmerseCard,
     statImage: zImmerseColour,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    description: '',
     stats: [
-      { value: '88+', label: 'Million', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-      { value: '100+', label: 'Million', sublabel: 'Monthly Active Users' },
-      { value: '10+', label: 'Billion', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-      { value: '0.5+', label: 'Million', sublabel: 'Hours Content Library' },
+      { value: '712 Mn', label: 'Monthly Reach' },
+      { value: '302 Mn', label: 'Daily Tune-INs' },
+      { value: '15+ Bn', label: 'Impressions' },
     ],
     comboStat: {
-      value: '42',
-      label: 'mins/day',
-      sublabel: 'Average Time Spent per User',
-      heading: 'Audience Split',
+      heading: 'Gender Split',
       breakdown: [
-        { icon: 'female', value: '43%', label: 'Female' },
-        { icon: 'male', value: '57%', label: 'Male' },
+        { icon: 'female', value: '57%', label: 'Women' },
+        { icon: 'male', value: '43%', label: 'Men' },
       ],
     },
   },
@@ -205,10 +169,10 @@ const allCards = [
     statImage: zBrandworksColour,
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     stats: [
-      { value: '88+', label: 'Million', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-      { value: '100+', label: 'Million', sublabel: 'Monthly Active Users' },
-      { value: '10+', label: 'Billion', sublabel: 'Premium Audience: CTV, SVOD, Live' },
-      { value: '0.5+', label: 'Million', sublabel: 'Hours Content Library' },
+      { value: '88+ Mn', label: 'Premium Audience', sublabel: 'CTV, SVOD, Live' },
+      { value: '100+ Mn', label: 'Monthly Active Users' },
+      { value: '10+ Bn', label: 'Premium Audience', sublabel: 'CTV, SVOD, Live' },
+      { value: '0.5+ Mn', label: 'Hours Content Library' },
     ],
     comboStat: {
       value: '42',
@@ -290,7 +254,7 @@ const StatsModalCard = ({ card }) => {
 
         <p className="stats-modal-desc">{activeDescription}</p>
 
-        <div className="stats-grid">
+        <div className={`stats-grid ${activeStats.length <= 2 && activeComboStat.channels ? 'stats-grid-channels' : ''} ${activeStats.length <= 3 && !activeComboStat.channels ? 'stats-grid-minimal' : ''}`}>
           {activeStats.slice(0, 2).map((stat, index) => (
             <div className="stat-card" key={index}>
               <img src={card.statImage || card.image} alt="" className="stat-card-bg" decoding="async" />
@@ -304,16 +268,56 @@ const StatsModalCard = ({ card }) => {
 
           <div className="stat-card stat-card-combo">
             <img src={card.statImage || card.image} alt="" className="stat-card-bg" />
-            <div className={`stat-card-content ${activeComboStat.breakdown ? 'stat-card-content-breakdown' : ''}`}>
+            <div className={`stat-card-content ${activeComboStat.breakdown ? 'stat-card-content-breakdown' : ''} ${activeComboStat.channels ? 'stat-card-content-channels' : ''} ${activeComboStat.regions ? 'stat-card-content-regions' : ''}`}>
               {activeComboStat.note && (
                 <span className="stat-combo-note">{activeComboStat.note}</span>
               )}
-              <span className="stat-value">{activeComboStat.value}</span>
-              <span className="stat-label">{activeComboStat.label}</span>
+              {activeComboStat.value && (
+                <span className="stat-value">{activeComboStat.value}</span>
+              )}
+              {activeComboStat.label && (
+                <span className="stat-label">{activeComboStat.label}</span>
+              )}
               {activeComboStat.sublabel && (
                 <span className="stat-sublabel">{activeComboStat.sublabel}</span>
               )}
-              {activeComboStat.breakdown ? (
+              {activeComboStat.regions ? (
+                <div className="stat-regions">
+                  {activeComboStat.heading && (
+                    <span className="stat-regions-title">{activeComboStat.heading}</span>
+                  )}
+                  <div className="stat-regions-list">
+                    {activeComboStat.regions.map((region) => (
+                      <div className="stat-region-item" key={region.name}>
+                        <span className="stat-region-name">{region.name}</span>
+                        <span className="stat-region-value">{region.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : activeComboStat.channels ? (
+                <div className="stat-channels">
+                  {activeComboStat.heading && (
+                    <span className="stat-channels-title">{activeComboStat.heading}</span>
+                  )}
+                  <div className="stat-channels-header">
+                    <span></span>
+                    <span className="stat-channels-platform">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </span>
+                    <span className="stat-channels-platform">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </span>
+                  </div>
+                  {activeComboStat.channels.map((ch) => (
+                    <div className="stat-channels-row" key={ch.name}>
+                      <span className="stat-channels-name">{ch.name}</span>
+                      <span className="stat-channels-val">{ch.fb}</span>
+                      <span className="stat-channels-val">{ch.ig}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : activeComboStat.breakdown ? (
                 <div className="stat-breakdown">
                   {activeComboStat.heading && (
                     <span className="stat-breakdown-title">{activeComboStat.heading}</span>
@@ -329,6 +333,19 @@ const StatsModalCard = ({ card }) => {
                       </div>
                     ))}
                   </div>
+                  {activeComboStat.tiers && (
+                    <div className="stat-tiers">
+                      <span className="stat-tiers-title">{activeComboStat.tiers.heading}</span>
+                      <div className="stat-tiers-list">
+                        {activeComboStat.tiers.items.map((tier) => (
+                          <div className="stat-tier-item" key={tier.label}>
+                            <span className="stat-tier-value">{tier.value}</span>
+                            <span className="stat-tier-label">{tier.label}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ) : activeComboStat.showMap !== false ? (
                 <img src={indiaMap} alt="India Map" className="stat-india-map" />
