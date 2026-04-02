@@ -46,7 +46,7 @@ const allCards = [
     title: 'Broadcast',
     image: broadcastCard,
     statImage: broadcastColour,
-    description: 'Dominant broadcast presence across India.',
+    description: 'India\'s leading television network, delivering unparalleled reach, cultural influence, and mass scale brand impact.',
     stats: [
       { value: '712 Mn', label: 'Monthly Reach' },
       { value: '93%', label: 'TV Household Reach', sublabel: '9/10 HHs consume Z Network every month' },
@@ -69,7 +69,7 @@ const allCards = [
     title: 'Zee5 OTT',
     image: ottCard,
     statImage: ottColour,
-    description: 'Streamlined reach, premium engagement — on-demand, on point.',
+    description: 'Premium digital storytelling which delivers targeted reach, deep engagement, and high impact brand experiences across screens.',
     stats: [
       { value: '100+ Mn', label: 'Monthly Active Users', sublabel: '(MAUs)' },
       { value: '10+ Bn', label: 'Monthly Video Views' },
@@ -117,7 +117,7 @@ const allCards = [
     title: 'Z Rise',
     image: zRiseCard,
     statImage: zRiseColour,
-    description: 'Establishing Z RISE as a thought-leadership movement.',
+    description: 'A results first, omnichannel growth platform uniting content, data, and strategy to deliver measurable brand impact.',
     stats: [
       { value: '12', label: 'High-Impact Events', sublabel: 'Conducted across Metro & Regional Markets' },
       { value: '2,000+', label: 'Industry Stakeholders', sublabel: 'Entrepreneurs, Marketers & Agency Partners Engaged' },
@@ -131,7 +131,7 @@ const allCards = [
     title: 'Dilfluencer',
     image: dilfluencerCard,
     statImage: dilfluencerColour,
-    description: '',
+    description: 'Creator collaborations powered by iconic Z characters and narratives, transforming content fandom into authentic, scalable brand influence.',
     stats: [
       { value: '700+ Mn', label: 'Monthly Audiences' },
       { value: '350+', label: 'Influencers', sublabel: 'Across Regions' },
@@ -149,7 +149,7 @@ const allCards = [
     title: 'Z Immerse',
     image: zImmerseCard,
     statImage: zImmerseColour,
-    description: '',
+    description: 'End to end creation of scalable, immersive IPs designed to build culture, communities, and long term brand equity.',
     stats: [
       { value: '712 Mn', label: 'Monthly Reach' },
       { value: '302 Mn', label: 'Daily Tune-INs' },
@@ -167,7 +167,7 @@ const allCards = [
     title: 'Z Brandworks',
     image: zBrandworksCard,
     statImage: zBrandworksColour,
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+    description: 'Strategic brand integrations seamlessly woven into content to drive relevance, recall, and business impact.',
     stats: [
       { value: '88+ Mn', label: 'Premium Audience', sublabel: 'CTV, SVOD, Live' },
       { value: '100+ Mn', label: 'Monthly Active Users' },
