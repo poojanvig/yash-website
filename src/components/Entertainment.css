@@ -417,6 +417,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: left center;
   filter: brightness(0.82) saturate(0.96);
 }
 
@@ -425,7 +426,7 @@
   z-index: 2;
   min-height: 680px;
   background:
-    linear-gradient(180deg, rgba(26, 18, 37, 0.26) 0%, rgba(18, 13, 28, 0.54) 40%, rgba(14, 11, 24, 0.74) 100%);
+    linear-gradient(180deg, rgba(16, 10, 26, 0.72) 0%, rgba(14, 10, 24, 0.78) 30%, rgba(12, 9, 20, 0.82) 100%);
   padding: 48px 56px 38px;
   display: flex;
   flex-direction: column;
@@ -560,11 +561,12 @@
 
 .stats-modal-desc {
   font-size: 17px;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.92);
   text-align: center;
   max-width: 700px;
   line-height: 1.5;
   margin: 0 0 34px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .stats-grid {

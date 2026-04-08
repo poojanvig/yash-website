@@ -37,10 +37,6 @@ function Contact() {
 
       <div className="contact-container">
         <div className="contact-left">
-          <div className="contact-badge">
-            <span className="contact-badge-dot"></span>
-            Get in Touch
-          </div>
           <h2 className="contact-title">
             <span>Let's</span>
             <span className="contact-title-gradient">Get in</span>
