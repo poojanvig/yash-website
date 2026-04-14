@@ -120,7 +120,7 @@
 .ad-category-content {
   position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 36px;
   max-width: 1180px;
@@ -149,8 +149,8 @@
   border-radius: 50%;
   background: #9707FF;
   left: 1%;
-  top: 55%;
-  transform: translateY(-45%);
+  top: 50%;
+  transform: translateY(-50%);
   pointer-events: none;
   filter: none;
   z-index: 0;
@@ -179,36 +179,36 @@
 .mockup-masthead img { max-width: 390px; top: 50px; left: 5px; }
 .mockup-roadblock img { max-width: 320px; top: 40px; left: 100px; }
 .mockup-in-rail-static-ads { overflow: visible; }
-.mockup-in-rail-static-ads img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-in-rail-static-ads img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-app-exit-banner img { max-width: 280px; top: 10px; left: 110px; }
-.mockup-ctv-pause-ads img { width: 500px; max-width: none; top: 230px; left: -80px;  }
+.mockup-ctv-pause-ads img { width: 500px; max-width: none; top: 130px; left: -90px;  }
 .mockup-clickable-companion img { max-width: 320px; top: 25px; left: 95px; }
 .mockup-overlays-aston-bands { overflow: visible; }
-.mockup-overlays-aston-bands img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-overlays-aston-bands img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-disruptor-astons { overflow: visible; }
-.mockup-disruptor-astons img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-disruptor-astons img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-branded-carousel { overflow: visible; }
-.mockup-branded-carousel img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-branded-carousel img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-l-bands { overflow: visible; }
-.mockup-l-bands img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-l-bands img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-branded-window { overflow: visible; }
-.mockup-branded-window img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-branded-window img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-coming-up-window { overflow: visible; }
-.mockup-coming-up-window img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-coming-up-window img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-in-content-ads { overflow: visible; }
-.mockup-in-content-ads img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-in-content-ads img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-meta-tagged-aston { overflow: visible; }
-.mockup-meta-tagged-aston img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-meta-tagged-aston img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-pause-\&-play { overflow: visible; }
-.mockup-pause-\&-play img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-pause-\&-play img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-in-show-integration { overflow: visible; }
-.mockup-in-show-integration img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-in-show-integration img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-overlay-aston-bands { overflow: visible; }
-.mockup-overlay-aston-bands img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-overlay-aston-bands img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-qr-code-astons { overflow: visible; }
-.mockup-qr-code-astons img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-qr-code-astons img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-anchor-mentions { overflow: visible; }
-.mockup-anchor-mentions img { width: 500px; max-width: none; top: 230px; left: -80px; }
+.mockup-anchor-mentions img { width: 500px; max-width: none; top: 130px; left: -90px; }
 
 /* Mockup fade in / fade out */
 .mockup-img {
@@ -346,7 +346,9 @@
   font-weight: 700;
   color: #21212a;
   margin-bottom: 3px;
-  line-height: 1;
+  line-height: 1.15;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .buying-subtitle {
@@ -364,6 +366,43 @@
   line-height: 1.3;
   padding-right: 20px;
   max-width: 140px;
+}
+
+/* ===========================
+   Specifications Grid (Linear)
+   =========================== */
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.spec-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(180deg, #d8d8e0 0%, #ceced7 100%);
+  border-radius: 12px;
+  padding: 14px 8px;
+  gap: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.spec-card-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b6b78;
+}
+
+.spec-card-value {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #21212a;
+  line-height: 1.2;
 }
 
 /* ===========================
@@ -570,6 +609,24 @@
   .ad-tab-btn {
     padding: 8px 16px;
     font-size: 0.92rem;
+  }
+
+  .specs-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .spec-card {
+    padding: 10px 6px;
+    border-radius: 10px;
+  }
+
+  .spec-card-label {
+    font-size: 0.52rem;
+  }
+
+  .spec-card-value {
+    font-size: 0.72rem;
   }
 
   .buying-options-grid {

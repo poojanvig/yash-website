@@ -178,44 +178,34 @@ const categories = [
           name: "Disruptor Astons",
           displayTitle: "DISRUPTER ASTON BAND",
           description:
-            "Disrupter Aston Bands are high-visibility banner formats designed to interrupt the browsing journey and immediately grab user attention.",
+            "'Disruptor Aston' goes beyond regular Aston and catches attention through its disruptive Graphics and large size than a regular aston.",
           usage:
             "Ideal for Flash sales, Product launches and limited-time offers",
           image: disruptorAston,
-          buyingOptions: [
-            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
-            { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
-          ],
+          specs: { duration: "5/10 seconds", timeBand: "Twice Every Hour", genre: "Movies and OTT" },
+          buyingOptions: [],
         },
         {
           name: "Branded Carousel",
           displayTitle: "BRANDED CAROUSEL",
           description:
-            "Branded Carousel ads are interactive, multi-frame ad units that allow advertisers to showcase multiple creatives in a swipeable format.",
+            "'Branded Carousel' is a 10-seconder element which allows the brands to showcase multiple pictures/videos making it perfect offering for Brands who have catalogue/categories/features of products to showcase.",
           usage:
             "Ideal for Storytelling, Product showcases and Multi-offer campaigns.",
           image: brandedCarousel,
-          buyingOptions: [
-            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
-          ],
+          specs: { duration: "10 seconds", timeBand: "Once Every Hour", genre: "Movies" },
+          buyingOptions: [],
         },
         {
           name: "L-Bands",
           displayTitle: "L-BANDS",
           description:
-            "L-Bands are L-shaped overlay ad units that wrap around the content on two sides, providing high visibility without fully interrupting the viewing experience.",
+            "L-Band is a 10-seconder graphical elements that appear on the screen as part of content and capture left and bottom screen with brand message and product shots.",
           usage:
             "Ideal for Brand Awareness, Sponsorship integration and High-impact visibility.",
           image: lBand,
-          buyingOptions: [
-            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
-            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
-          ],
+          specs: { duration: "10 seconds", timeBand: "Once Every Hour", genre: "Movies" },
+          buyingOptions: [],
         },
       ],
     },
@@ -231,41 +221,32 @@ const categories = [
         name: "Branded Window",
         displayTitle: "BRANDED WINDOW",
         description:
-          "Branded Window (GEC) is a customized, high-visibility ad placement within General Entertainment Content (GEC).",
+          "Branded Window Branding is a premium, content-adjacent advertising format where a brand is integrated within a dedicated on-screen window or framed visual space during a program.",
         usage: "Ideal for Premium brand positioning, Mass audience reach within entertainment content.",
         image: brandedWindowGec,
-        buyingOptions: [
-          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
-          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
-        ],
+        specs: { duration: "10 seconds", timeBand: "Once Every Hour", genre: "GEC and Movies" },
+        buyingOptions: [],
       },
       {
         name: "Coming Up Window",
         displayTitle: "COMING UP WINDOW",
         description:
-          "Coming Up Window (GEC) is a branded ad placement that appears during the 'Coming Up Next' segment within General Entertainment Content.",
+          "Coming Up Next is a 10-seconder graphic window showcasing the brand logo &/or the product during the recap of key moments in a show.",
         usage:
           "Ideal for Brand Awareness, Audience anticipation and capturing attention during content transitions.",
         image: comingUpWindowGec,
-        buyingOptions: [
-          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
-          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
-        ],
+        specs: { duration: "10 seconds", timeBand: "Once Every PT Show", genre: "GEC" },
+        buyingOptions: [],
       },
       {
         name: "In-content Ads",
         displayTitle: "IN-CONTENT ADVERTISING",
         description:
-          "In-Content Advertising is a seamless ad integration within entertainment content, blending brand messaging naturally into the viewing experience.",
+          "In-Content Ads are placed in show between scene transitions as 7/8 secs shots. The shot typically is an outdoor shot with product features clearly displayed in form of a hoarding.",
         usage: "Ideal for Deep brand integration, High recall and Non-intrusive engagement.",
         image: inContentAdvertising,
-        buyingOptions: [
-          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
-          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
-        ],
+        specs: { duration: "7+8 seconds", timeBand: "", genre: "GEC - Org & Rpts" },
+        buyingOptions: [],
       },
     ],
   },
@@ -527,6 +508,27 @@ function PremiumAdFormats() {
             <h5>Usage</h5>
             <p>{activeAd.usage}</p>
           </div>
+          {activeAd.specs && (
+            <div className="ad-info-section">
+              <h5>Specifications</h5>
+              <div className="specs-grid">
+                <div className="spec-card">
+                  <span className="spec-card-label">Duration</span>
+                  <span className="spec-card-value">{activeAd.specs.duration}</span>
+                </div>
+                {activeAd.specs.timeBand && (
+                  <div className="spec-card">
+                    <span className="spec-card-label">Time-Band</span>
+                    <span className="spec-card-value">{activeAd.specs.timeBand}</span>
+                  </div>
+                )}
+                <div className="spec-card">
+                  <span className="spec-card-label">Genre</span>
+                  <span className="spec-card-value">{activeAd.specs.genre}</span>
+                </div>
+              </div>
+            </div>
+          )}
           {activeAd.buyingOptions.length > 0 && (
             <div className="ad-info-section">
               <h5>Buying Options</h5>
