@@ -159,47 +159,87 @@
 
 /* Mobile */
 @media (max-width: 768px) {
+  .footer {
+    background:
+      linear-gradient(180deg, #12121a 0%, #151827 100%);
+  }
+
   .footer-container {
-    padding: 30px 20px;
+    padding: 42px 20px;
   }
 
   .footer-logo {
-    margin-bottom: 30px;
+    justify-content: center;
+    margin-bottom: 28px;
   }
 
   .footer-content {
-    flex-direction: column;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
   }
 
   .footer-col {
     min-width: unset;
+    gap: 12px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-col:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-col-title {
+    font-size: 15px;
+    margin-bottom: 4px;
   }
 
   .footer-newsletter {
+    grid-column: 1 / -1;
+    width: 100%;
     max-width: 100%;
+    margin-top: 2px;
+    border-radius: 18px;
+    background:
+      linear-gradient(180deg, rgba(29, 39, 62, 0.96), rgba(25, 28, 42, 0.98));
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-reach-item {
+    min-width: 0;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.035);
   }
 
   .footer-reach-item a {
     font-size: 13px;
+    overflow-wrap: anywhere;
   }
 
   .newsletter-form {
-    flex-direction: column;
+    flex-direction: row;
+    border-radius: 12px;
   }
 
   .newsletter-form input {
-    border-radius: 8px 8px 0 0;
+    min-width: 0;
+    border-radius: 12px 0 0 12px;
+    padding: 15px 16px;
   }
 
   .newsletter-form button {
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 12px 12px 0;
+    padding: 15px 22px;
   }
 }
 
 @media (max-width: 480px) {
   .footer-container {
-    padding: 24px 16px;
+    padding: 30px 14px;
   }
 
   .footer-logo {
@@ -211,11 +251,18 @@
   }
 
   .footer-content {
+    grid-template-columns: 1fr;
     gap: 24px;
   }
 
   .footer-col {
     gap: 14px;
+    padding: 18px 16px;
+  }
+
+  .footer-col:first-child,
+  .footer-newsletter {
+    grid-column: auto;
   }
 
   .footer-col-title {
@@ -228,6 +275,23 @@
   }
 
   .footer-newsletter {
-    padding: 18px;
+    padding: 18px 14px;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-form input {
+    border-radius: 12px 12px 0 0;
+  }
+
+  .newsletter-form button {
+    border-radius: 0 0 12px 12px;
   }
 }

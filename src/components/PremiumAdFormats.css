@@ -543,51 +543,122 @@
    =========================== */
 @media (max-width: 768px) {
   .premium-ad-formats {
-    padding: 48px 20px 60px;
+    padding: 76px 18px 70px;
+    scroll-margin-top: 84px;
   }
 
   .premium-title {
-    font-size: 2rem;
+    font-size: clamp(30px, 6vw, 42px);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin-bottom: 30px;
   }
 
   .category-tabs {
-    gap: 6px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 8px;
     margin-bottom: 24px;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    padding: 0 16px 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .category-tabs::-webkit-scrollbar {
+    display: none;
   }
 
   .category-tab {
-    padding: 8px 18px;
-    font-size: 0.92rem;
+    flex: 0 0 auto;
+    padding: 12px 24px;
+    font-size: 1rem;
+    scroll-snap-align: start;
   }
 
   .category-description {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+    max-width: 640px;
+    font-size: 1rem;
+    margin-bottom: 24px;
+    line-height: 1.55;
   }
 
-  .platform-badges {
-    margin-bottom: 36px;
+  .platform-toggle {
+    margin-bottom: 34px;
+    max-width: 100%;
   }
 
   .ad-category-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 28px;
+    display: grid;
+    grid-template-columns: minmax(230px, 1fr) minmax(250px, 0.92fr);
+    flex-direction: row;
+    align-items: stretch;
+    gap: 16px;
+    max-width: 860px;
+    padding: 20px 18px 18px;
+    border-radius: 28px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+      rgba(14, 14, 24, 0.9);
+    box-shadow:
+      0 28px 80px rgba(0, 0, 0, 0.34),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+    overflow: hidden;
   }
 
   .ad-mockup {
-    width: 240px;
+    width: 100%;
+    height: auto;
+    min-height: 390px;
+    aspect-ratio: auto;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    isolation: isolate;
   }
 
   .mockup-glow {
-    width: 320px;
-    height: 320px;
+    width: min(86vw, 420px);
+    height: min(86vw, 420px);
     left: 50%;
-    transform: translate(-50%, -45%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.62;
+    filter: blur(12px);
   }
 
-  .ad-mockup img {
-    max-width: 220px;
+  .ad-mockup img,
+  .mockup-masthead img,
+  .mockup-roadblock img,
+  .mockup-in-rail-static-ads img,
+  .mockup-app-exit-banner img,
+  .mockup-ctv-pause-ads img,
+  .mockup-clickable-companion img,
+  .mockup-overlays-aston-bands img,
+  .mockup-disruptor-astons img,
+  .mockup-branded-carousel img,
+  .mockup-l-bands img,
+  .mockup-branded-window img,
+  .mockup-coming-up-window img,
+  .mockup-in-content-ads img,
+  .mockup-meta-tagged-aston img,
+  .mockup-pause-\&-play img,
+  .mockup-in-show-integration img,
+  .mockup-overlay-aston-bands img,
+  .mockup-qr-code-astons img,
+  .mockup-anchor-mentions img {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100% - 18px);
+    margin: 0 auto;
+    object-fit: contain;
+    transform: none;
   }
 
   .ad-info-card {
@@ -595,20 +666,72 @@
     max-width: none;
     width: 100%;
     min-height: 0;
-    padding: 24px 20px 20px;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 18px;
+    border-radius: 20px;
+    background:
+      linear-gradient(180deg, rgba(31, 45, 69, 0.9), rgba(25, 36, 57, 0.92));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .ad-info-card::before {
+    border-radius: 22px;
+    opacity: 0.75;
+  }
+
+  .ad-info-title {
+    font-size: clamp(26px, 4.8vw, 34px);
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+
+  .ad-info-section {
+    margin-bottom: 12px;
+  }
+
+  .ad-info-section h5 {
+    font-size: 0.78rem;
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .ad-info-section p {
+    max-width: none;
+    font-size: 0.78rem;
+    line-height: 1.42;
+    color: rgba(242, 241, 247, 0.84);
   }
 
   .ad-tabs-nav {
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     min-width: unset;
-    width: 100%;
+    grid-column: 1 / -1;
+    width: calc(100% + 36px);
+    margin: 18px -18px 0;
+    padding: 0 18px 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .ad-tabs-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .ad-tab-btn {
-    padding: 8px 16px;
-    font-size: 0.92rem;
+    flex: 0 0 auto;
+    padding: 10px 18px;
+    font-size: 0.96rem;
+    scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.04);
   }
 
   .specs-grid {
@@ -630,12 +753,42 @@
   }
 
   .buying-options-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .buying-option {
+    display: flex;
+    min-height: 64px;
+    padding: 12px 34px 10px 12px;
+    border-radius: 14px;
   }
 
   .buying-option-centered {
     width: 100%;
     max-width: none;
+  }
+
+  .buying-label {
+    font-size: 1.25rem;
+    margin-bottom: 2px;
+  }
+
+  .buying-subtitle {
+    font-size: 0.47rem;
+    margin-bottom: 0;
+    line-height: 1.15;
+  }
+
+  .buying-desc {
+    display: none;
+  }
+
+  .buying-option-arrow {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
   }
 }
 
@@ -644,11 +797,11 @@
    =========================== */
 @media (max-width: 480px) {
   .premium-ad-formats {
-    padding: 36px 16px 48px;
+    padding: 68px 14px 56px;
   }
 
   .premium-title {
-    font-size: 1.5rem;
+    font-size: 1.65rem;
   }
 
   .category-tabs {
@@ -657,8 +810,8 @@
   }
 
   .category-tab {
-    padding: 7px 14px;
-    font-size: 0.85rem;
+    padding: 10px 18px;
+    font-size: 0.9rem;
   }
 
   .category-description {
@@ -666,13 +819,14 @@
     margin-bottom: 18px;
   }
 
-  .platform-badges {
-    margin-bottom: 28px;
+  .platform-toggle-btn {
+    padding: 9px 26px;
   }
 
-  .platform-badge {
-    padding: 6px 18px;
-    font-size: 0.8rem;
+  .ad-category-content {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 18px 14px 18px;
   }
 
   .ad-info-title {
@@ -680,11 +834,53 @@
   }
 
   .ad-mockup {
-    width: 200px;
+    height: clamp(250px, 72vw, 330px);
+    min-height: 0;
+    aspect-ratio: auto;
   }
 
-  .ad-mockup img {
-    max-width: 200px;
+  .ad-mockup img,
+  .mockup-masthead img,
+  .mockup-roadblock img,
+  .mockup-in-rail-static-ads img,
+  .mockup-app-exit-banner img,
+  .mockup-ctv-pause-ads img,
+  .mockup-clickable-companion img,
+  .mockup-overlays-aston-bands img,
+  .mockup-disruptor-astons img,
+  .mockup-branded-carousel img,
+  .mockup-l-bands img,
+  .mockup-branded-window img,
+  .mockup-coming-up-window img,
+  .mockup-in-content-ads img,
+  .mockup-meta-tagged-aston img,
+  .mockup-pause-\&-play img,
+  .mockup-in-show-integration img,
+  .mockup-overlay-aston-bands img,
+  .mockup-qr-code-astons img,
+  .mockup-anchor-mentions img {
+    max-width: 100%;
+    max-height: calc(100% - 12px);
+  }
+
+  .buying-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buying-option {
+    display: flex;
+    min-height: 94px;
+    padding: 14px 28px 14px 14px;
+  }
+
+  .buying-desc {
+    display: block;
+  }
+
+  .buying-option-arrow {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
   }
 
   .ad-tab-btn {

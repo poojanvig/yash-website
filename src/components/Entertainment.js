@@ -373,6 +373,7 @@ const CARD_TRAVEL_DURATION_MS = 350;
 
 const Entertainment = () => {
   const [activeCardIndex, setActiveCardIndex] = useState(null);
+  const [activeMobileCardIndex, setActiveMobileCardIndex] = useState(0);
   const [transition, setTransition] = useState(null);
   const transitionTimeoutRef = useRef(null);
 
@@ -456,6 +457,15 @@ const Entertainment = () => {
     : null;
   const isStatsOpen = activeCardIndex !== null || transition !== null;
   const incomingCard = transition ? allCards[transition.toIndex] : null;
+  const activeMobileCard = allCards[activeMobileCardIndex];
+
+  const goMobileNext = useCallback(() => {
+    setActiveMobileCardIndex((index) => (index + 1) % allCards.length);
+  }, []);
+
+  const goMobilePrev = useCallback(() => {
+    setActiveMobileCardIndex((index) => (index - 1 + allCards.length) % allCards.length);
+  }, []);
 
   return (
     <section id="entertainment" className="entertainment">
@@ -532,6 +542,68 @@ const Entertainment = () => {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      <div className="mobile-entertainment-carousel" aria-label="Entertainment platforms carousel">
+        <div className="mobile-carousel-shell">
+          <button
+            type="button"
+            className="mobile-carousel-arrow mobile-carousel-arrow-prev"
+            onClick={goMobilePrev}
+            aria-label="Previous entertainment platform"
+          >
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          <div className="mobile-carousel-card">
+            <img
+              src={activeMobileCard.statImage || activeMobileCard.image}
+              alt={activeMobileCard.title}
+              className="mobile-carousel-bg"
+              decoding="async"
+            />
+            <div className="mobile-carousel-overlay">
+              <span className="mobile-carousel-count">
+                {String(activeMobileCardIndex + 1).padStart(2, '0')} / {String(allCards.length).padStart(2, '0')}
+              </span>
+              <h3 className="mobile-carousel-title">{activeMobileCard.title}</h3>
+              <p className="mobile-carousel-desc">{activeMobileCard.description}</p>
+              <button
+                type="button"
+                className="mobile-carousel-stats"
+                onClick={() => openStats(activeMobileCard.title)}
+              >
+                View Stats
+              </button>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="mobile-carousel-arrow mobile-carousel-arrow-next"
+            onClick={goMobileNext}
+            aria-label="Next entertainment platform"
+          >
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="mobile-carousel-dots" role="tablist" aria-label="Choose entertainment platform">
+          {allCards.map((card, index) => (
+            <button
+              type="button"
+              key={card.title}
+              className={`mobile-carousel-dot ${index === activeMobileCardIndex ? 'is-active' : ''}`}
+              onClick={() => setActiveMobileCardIndex(index)}
+              aria-label={`Show ${card.title}`}
+              aria-current={index === activeMobileCardIndex ? 'true' : undefined}
+            />
+          ))}
         </div>
       </div>
 

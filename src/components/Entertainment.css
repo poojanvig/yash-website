@@ -157,6 +157,10 @@
   transform: scale(0.95);
 }
 
+.mobile-entertainment-carousel {
+  display: none;
+}
+
 /* ===================== */
 /* Stats Modal           */
 /* ===================== */
@@ -1385,59 +1389,169 @@
 /* Mobile */
 @media (max-width: 768px) {
   .entertainment {
-    padding: 40px 0;
+    padding: 58px 18px 62px;
   }
 
   .entertainment-title {
-    font-size: 24px;
-    margin-bottom: 24px;
+    max-width: 560px;
+    margin: 0 auto 28px;
+    padding: 0;
+    font-size: clamp(28px, 6vw, 38px);
+    line-height: 1.12;
+    letter-spacing: 0;
   }
 
   .gradient-text {
-    font-size: 34px;
+    display: inline-block;
+    font-size: 1.08em;
   }
 
   .marquee-wrapper {
-    gap: 16px;
+    display: none;
   }
 
-  .marquee-track {
-    gap: 0;
+  .mobile-entertainment-carousel {
+    display: block;
+    max-width: 620px;
+    margin: 0 auto;
   }
 
-  .marquee-group {
-    gap: 16px;
-    padding-right: 16px;
+  .mobile-carousel-shell {
+    position: relative;
   }
 
-  .entertainment-card {
-    min-width: 280px;
-    height: 160px;
+  .mobile-carousel-card {
+    position: relative;
+    min-height: 390px;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #142340;
+    box-shadow: 0 26px 70px rgba(5, 4, 18, 0.38);
   }
 
-  .card-title {
-    font-size: 22px;
+  .mobile-carousel-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.8) brightness(0.76);
   }
 
-  .card-overlay {
-    padding: 20px;
+  .mobile-carousel-overlay {
+    position: relative;
+    z-index: 1;
+    min-height: 390px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 24px;
+    background:
+      linear-gradient(180deg, rgba(10, 13, 32, 0.12) 0%, rgba(9, 13, 34, 0.72) 56%, rgba(9, 12, 29, 0.94) 100%),
+      linear-gradient(90deg, rgba(27, 15, 69, 0.36), rgba(16, 33, 66, 0.3));
   }
 
-  .view-stats-btn {
-    padding: 8px 20px;
+  .mobile-carousel-count {
+    margin-bottom: auto;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.82);
     font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .mobile-carousel-title {
+    max-width: 360px;
+    margin: 0 0 10px;
+    color: #ffffff;
+    font-size: clamp(32px, 8vw, 48px);
+    line-height: 0.98;
+    font-weight: 800;
+  }
+
+  .mobile-carousel-desc {
+    max-width: 420px;
+    margin: 0 0 20px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .mobile-carousel-stats {
+    appearance: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  .mobile-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    background: rgba(13, 16, 31, 0.72);
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    transform: translateY(-50%);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+  }
+
+  .mobile-carousel-arrow-prev {
+    left: -8px;
+  }
+
+  .mobile-carousel-arrow-next {
+    right: -8px;
+  }
+
+  .mobile-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .mobile-carousel-dot {
+    width: 7px;
+    height: 7px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.28);
+    padding: 0;
+    cursor: pointer;
+    transition: width 0.25s ease, background 0.25s ease;
+  }
+
+  .mobile-carousel-dot.is-active {
+    width: 28px;
+    background: linear-gradient(90deg, #21d3f2, #82d648, #f39a32, #f34d9b);
   }
 
   /* Modal mobile */
   .stats-modal-overlay {
     align-items: flex-start;
     overflow-y: auto;
+    padding: 0;
   }
 
   .stats-stage {
     width: 100%;
-    min-height: auto;
-    padding: 28px 16px 110px;
+    min-height: 100svh;
+    padding: 26px 14px 96px;
     display: grid;
     justify-items: center;
     align-content: start;
@@ -1458,12 +1572,19 @@
 
   .stats-modal-stack {
     width: 100%;
-    max-width: 100%;
-    min-height: 540px;
+    max-width: none;
+    min-height: auto;
+    position: relative;
   }
 
   .stats-modal-panel {
-    min-height: 540px;
+    min-height: auto;
+    position: relative;
+    inset: auto;
+  }
+
+  .stats-modal {
+    border-radius: 18px;
   }
 
   .stats-modal-content {
@@ -1516,12 +1637,35 @@
 
   .stats-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 10px;
     max-width: none;
   }
 
+  .stats-grid-minimal,
+  .stats-grid-channels {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats-grid-minimal > .stat-card,
+  .stats-grid-minimal > .stat-card:nth-child(1),
+  .stats-grid-minimal > .stat-card:nth-child(2),
+  .stats-grid-minimal > .stat-card:nth-child(4),
+  .stat-card-combo,
+  .stats-grid-channels .stat-card-combo,
+  .stats-grid-minimal .stat-card-combo {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .stat-card-combo,
+  .stats-modal-ott .stat-card-combo {
+    grid-column: 1 / -1;
+    min-height: auto;
+  }
+
   .stat-card {
-    min-height: 150px;
+    min-height: 138px;
+    border-radius: 16px;
   }
 
   .stat-card-content {
@@ -1589,21 +1733,39 @@
 }
 
 @media (max-width: 480px) {
-  .entertainment-title {
-    font-size: 20px;
+  .entertainment {
+    padding: 52px 14px 58px;
   }
 
-  .gradient-text {
+  .entertainment-title {
     font-size: 28px;
   }
 
-  .entertainment-card {
-    min-width: 220px;
-    height: 128px;
+  .gradient-text {
+    font-size: 1.1em;
   }
 
-  .card-title {
-    font-size: 18px;
+  .mobile-carousel-card,
+  .mobile-carousel-overlay {
+    min-height: 330px;
+  }
+
+  .mobile-carousel-overlay {
+    padding: 20px;
+  }
+
+  .mobile-carousel-title {
+    font-size: 30px;
+  }
+
+  .mobile-carousel-desc {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+
+  .mobile-carousel-arrow {
+    width: 38px;
+    height: 38px;
   }
 
   /* Modal small mobile - switch to 2 cols */

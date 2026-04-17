@@ -77,11 +77,12 @@
 /* Mobile */
 @media (max-width: 768px) {
   .ad-formats {
-    padding: 40px 0 0;
+    padding: 56px 0 8px;
   }
 
   .ad-formats-title {
-    font-size: 24px;
+    font-size: 26px;
+    line-height: 1.18;
     margin-bottom: 24px;
   }
 
@@ -93,7 +94,7 @@
 
   .ad-formats-image {
     max-width: 100%;
-    padding: 0 20px;
+    padding: 0 12px;
   }
 }
 
@@ -103,7 +104,7 @@
   }
 
   .ad-formats-title {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 18px;
     padding: 0 16px;
   }

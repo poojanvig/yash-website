@@ -380,13 +380,13 @@
 /* ── Responsive: Mobile ── */
 @media (max-width: 768px) {
   .contact {
-    padding: 60px 20px;
+    padding: 62px 18px;
   }
 
   .contact-container {
     flex-direction: column;
     text-align: center;
-    gap: 48px;
+    gap: 34px;
   }
 
   .contact-left {
@@ -410,7 +410,7 @@
   }
 
   .contact-card {
-    padding: 28px 24px;
+    padding: 26px 20px;
   }
 
   .contact-form-row {
@@ -420,11 +420,11 @@
 
 @media (max-width: 480px) {
   .contact {
-    padding: 48px 16px;
+    padding: 52px 14px;
   }
 
   .contact-title span {
-    font-size: 40px;
+    font-size: 46px;
   }
 
   .contact-badge {
@@ -438,7 +438,7 @@
   }
 
   .contact-card {
-    padding: 24px 18px;
+    padding: 22px 14px;
     border-radius: 18px;
   }
 
