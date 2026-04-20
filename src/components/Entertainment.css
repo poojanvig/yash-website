@@ -1413,7 +1413,10 @@
   }
 
   .entertainment-card {
+    flex: 0 0 220px;
+    width: 220px;
     min-width: 220px;
+    max-width: 220px;
     height: 132px;
     border-radius: 14px;
   }
@@ -1795,7 +1798,10 @@
   }
 
   .entertainment-card {
+    flex: 0 0 190px;
+    width: 190px;
     min-width: 190px;
+    max-width: 190px;
     height: 116px;
     border-radius: 12px;
   }
@@ -1980,8 +1986,11 @@
 
 @media (max-width: 360px) {
   .entertainment-card {
-    min-width: 210px;
-    height: 128px;
+    flex: 0 0 170px;
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    height: 104px;
   }
 
   .card-title {
