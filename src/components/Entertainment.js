@@ -149,39 +149,43 @@ const allCards = [
     title: 'Z Immerse',
     image: zImmerseCard,
     statImage: zImmerseColour,
-    description: 'End to end creation of scalable, immersive IPs designed to build culture, communities, and long term brand equity.',
-    stats: [
-      { value: '712 Mn', label: 'Monthly Reach' },
-      { value: '302 Mn', label: 'Daily Tune-INs' },
-      { value: '15+ Bn', label: 'Impressions' },
-    ],
-    comboStat: {
-      heading: 'Gender Split',
-      breakdown: [
-        { icon: 'female', value: '57%', label: 'Women' },
-        { icon: 'male', value: '43%', label: 'Men' },
+    description: 'Immersive Ideas. Inclusive Impact. Storytelling that moves beyond screens into conversations, communities, and real-world experiences.',
+    editorial: {
+      tagline: 'Immersive Ideas. Inclusive Impact.',
+      intro: [
+        'In a world where audiences crave deeper connections, storytelling must be experienced, not just consumed.',
+        "Launched in December 2025, Zee Immerse is Zee Entertainment's specialized vertical redefining brand engagement through culture and community. We help brands co-create multi-platform IPs that integrate across movies, digital content, and influencer ecosystems—from long-form narratives to bite-sized stories.",
+        "This isn't traditional advertising. It's storytelling that moves beyond screens into conversations, communities, and real-world experiences.",
       ],
+      pillarsHeading: "Leveraging Zee's network and audience insights, we build content that's:",
+      pillars: [
+        { title: 'Immersive', body: 'Audiences participate, not just watch.' },
+        { title: 'Inclusive', body: 'Resonates across diverse communities.' },
+        { title: 'Impactful', body: 'Builds lasting brand equity.' },
+      ],
+      offeringsHeading: 'Our Offerings',
+      offerings: [
+        'Branded Content & Client IPs',
+        'Original Content & Format IPs',
+        'Digital Originals & Creator IPs',
+        'On-Ground & Live Experiences',
+        'Sports & Culture IPs',
+        'Extensions & Licensing',
+      ],
+      closing: "The future of storytelling isn't about being seen or heard. It's about being lived.",
     },
   },
   {
     title: 'Z Brandworks',
     image: zBrandworksCard,
     statImage: zBrandworksColour,
-    description: 'Strategic brand integrations seamlessly woven into content to drive relevance, recall, and business impact.',
-    stats: [
-      { value: '88+ Mn', label: 'Premium Audience', sublabel: 'CTV, SVOD, Live' },
-      { value: '100+ Mn', label: 'Monthly Active Users' },
-      { value: '10+ Bn', label: 'Premium Audience', sublabel: 'CTV, SVOD, Live' },
-      { value: '0.5+ Mn', label: 'Hours Content Library' },
-    ],
-    comboStat: {
-      value: '42',
-      label: 'mins/day',
-      sublabel: 'Average Time Spent per User',
-      heading: 'Audience Split',
-      breakdown: [
-        { icon: 'female', value: '43%', label: 'Female' },
-        { icon: 'male', value: '57%', label: 'Male' },
+    description: "Z Network's flagship platform for building high-value advertiser partnerships through curated, high-impact engagements.",
+    editorial: {
+      tagline: 'High-Value Partnerships. Real Business Outcomes.',
+      intro: [
+        "ZEE Brandworks is Z Network's flagship platform for building high-value advertiser partnerships through curated, high-impact engagements.",
+        'From exclusive roadshows to closed-door leadership forums and immersive brand experiences, it brings together CMOs and senior marketers for meaningful, insight-led conversations beyond traditional sales pitches.',
+        'Focused on influence, depth, and real business outcomes, ZEE Brandworks positions Z Network as a strategic media partner driving measurable brand growth.',
       ],
     },
   },
@@ -224,6 +228,56 @@ const StatsModalCard = ({ card }) => {
   const activeStats = activeView.stats || card.stats;
   const activeComboStat = activeView.comboStat || card.comboStat;
   const activeDescription = activeView.description || card.description;
+
+  if (card.editorial) {
+    const ed = card.editorial;
+    return (
+      <div className="stats-modal stats-modal-editorial">
+        <img src={card.statImage || card.image} alt={card.title} className="stats-modal-bg" decoding="async" />
+        <div className="stats-modal-content editorial-content">
+          <h3 className="stats-modal-title">{card.title}</h3>
+          {ed.tagline && <p className="editorial-tagline">{ed.tagline}</p>}
+          <div className="editorial-body">
+            {ed.intro && (
+              <div className="editorial-intro-grid">
+                {ed.intro.map((p, i) => (
+                  <p className="editorial-intro-card" key={i}>{p}</p>
+                ))}
+              </div>
+            )}
+            {ed.pillarsHeading && (
+              <p className="editorial-paragraph editorial-pillars-heading">{ed.pillarsHeading}</p>
+            )}
+            {ed.pillars && (
+              <div className="editorial-pillars">
+                {ed.pillars.map((pillar) => (
+                  <div className="editorial-pillar" key={pillar.title}>
+                    <span className="editorial-pillar-title">{pillar.title}</span>
+                    <span className="editorial-pillar-body">{pillar.body}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            {ed.offerings && (
+              <div className="editorial-offerings">
+                {ed.offeringsHeading && (
+                  <h4 className="editorial-offerings-title">{ed.offeringsHeading}</h4>
+                )}
+                <ul className="editorial-offerings-list">
+                  {ed.offerings.map((item) => (
+                    <li className="editorial-offerings-item" key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {ed.closing && (
+              <p className="editorial-closing">{ed.closing}</p>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`stats-modal ${card.title === 'OTT' ? 'stats-modal-ott' : ''}`}>
@@ -616,7 +670,7 @@ const Entertainment = () => {
           <div className="gradient-blob blob-4"></div>
 
           <div
-            className="stats-stage"
+            className={`stats-stage ${activeCard.editorial ? 'stats-stage-editorial' : ''}`}
             onClick={(event) => event.stopPropagation()}
             role="dialog"
             aria-modal="true"

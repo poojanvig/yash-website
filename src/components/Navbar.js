@@ -4,13 +4,23 @@ import zLogo from '../assets/z-logo.webp';
 
 const navItems = [
   { name: 'Ad Solutions', id: 'ad-formats' },
-  { name: 'Resources', id: 'entertainment' },
+  {
+    name: 'Resources',
+    id: 'resources',
+    dropdown: [
+      { name: 'Intelligence Monitor', href: 'https://zee5adworld.com/intelligence-monitor/' },
+      { name: 'BrandWorks', href: 'https://zee5adworld.com/brandworks/' },
+      { name: 'Content Sponsorship', href: 'https://zee5adworld.com/content-sponsorship/' },
+      { name: 'Articles', href: 'https://zee5adworld.com/articles/' }
+    ]
+  },
   { name: 'Advertise with us', id: 'contact' },
   { name: 'Z Rise', id: 'hero' }
 ];
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   const handleNavClick = (id) => {
     const element = document.getElementById(id);
@@ -18,6 +28,11 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     setMobileMenuOpen(false);
+    setOpenDropdown(null);
+  };
+
+  const toggleDropdown = (name) => {
+    setOpenDropdown((current) => (current === name ? null : name));
   };
 
   const toggleMobileMenu = () => {
@@ -47,31 +62,99 @@ const Navbar = () => {
             </button>
           </div>
           {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={`#${item.id}`}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick(item.id);
-              }}
-            >
-              <span className="mobile-link-text">{item.name}</span>
-              <svg
-                className="mobile-link-arrow"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
+            item.dropdown ? (
+              <div
+                key={item.name}
+                className={`navbar-dropdown ${openDropdown === item.name ? 'open' : ''}`}
+                onMouseEnter={() => setOpenDropdown(item.name)}
+                onMouseLeave={() => setOpenDropdown(null)}
               >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </a>
+                <a
+                  href={`#${item.id}`}
+                  className="navbar-dropdown-trigger"
+                  aria-haspopup="true"
+                  aria-expanded={openDropdown === item.name}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    toggleDropdown(item.name);
+                  }}
+                >
+                  <span className="mobile-link-text">{item.name}</span>
+                  <svg
+                    className="navbar-dropdown-caret"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                  <svg
+                    className="mobile-link-arrow"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </a>
+                <div className="navbar-dropdown-menu" role="menu">
+                  {item.dropdown.map((sub) => (
+                    <a
+                      key={sub.name}
+                      href={sub.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      role="menuitem"
+                      onClick={() => {
+                        setOpenDropdown(null);
+                        setMobileMenuOpen(false);
+                      }}
+                    >
+                      {sub.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a
+                key={item.name}
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(item.id);
+                }}
+              >
+                <span className="mobile-link-text">{item.name}</span>
+                <svg
+                  className="mobile-link-arrow"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            )
           ))}
         </div>
 
