@@ -187,7 +187,8 @@
 .category-synergize .mockup-glow { background: #F84E00; }
 .category-engage .mockup-glow { background: #4603FF; }
 
-.ad-mockup img {
+.ad-mockup img,
+.ad-mockup video {
   width: 100%;
   max-width: 390px;
   height: auto;
@@ -211,7 +212,9 @@
 .mockup-disruptor-astons { overflow: visible; }
 .mockup-disruptor-astons img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-branded-carousel { overflow: visible; }
-.mockup-branded-carousel img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-branded-carousel img,
+.mockup-branded-carousel video { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-branded-carousel video { top: 60px; }
 .mockup-l-bands { overflow: visible; }
 .mockup-l-bands img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-branded-window { overflow: visible; }
@@ -223,9 +226,13 @@
 .mockup-meta-tagged-aston { overflow: visible; }
 .mockup-meta-tagged-aston img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-pause-\&-play { overflow: visible; }
-.mockup-pause-\&-play img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-pause-\&-play img,
+.mockup-pause-\&-play video { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-pause-\&-play video { top: 110px; }
 .mockup-in-show-integration { overflow: visible; }
-.mockup-in-show-integration img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-in-show-integration img,
+.mockup-in-show-integration video { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-in-show-integration video { top: 110px; }
 .mockup-overlay-aston-bands { overflow: visible; }
 .mockup-overlay-aston-bands img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-qr-code-astons { overflow: visible; }
@@ -236,24 +243,27 @@
 /* Mockup fade in / fade out */
 .mockup-img {
   pointer-events: none;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .mockup-fade-out {
-  animation: mockupFadeOut 0.35s ease forwards;
+  animation: mockupFadeOut 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .mockup-fade-in {
-  animation: mockupFadeIn 0.4s ease forwards;
+  animation: mockupFadeIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes mockupFadeOut {
-  from { opacity: 1; transform: scale(1); }
-  to   { opacity: 0; transform: scale(0.97); }
+  from { opacity: 1; transform: translateZ(0) scale(1); }
+  to   { opacity: 0; transform: translateZ(0) scale(0.98); }
 }
 
 @keyframes mockupFadeIn {
-  from { opacity: 0; transform: scale(0.97); }
-  to   { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: translateZ(0) scale(0.98); }
+  to   { opacity: 1; transform: translateZ(0) scale(1); }
 }
 
 /* ===========================
@@ -537,7 +547,8 @@
     left: 0;
   }
 
-  .ad-mockup img {
+  .ad-mockup img,
+  .ad-mockup video {
     max-width: 240px;
   }
 
@@ -665,6 +676,7 @@
   }
 
   .ad-mockup img,
+  .ad-mockup video,
   .mockup-masthead img,
   .mockup-roadblock img,
   .mockup-in-rail-static-ads img,
@@ -674,6 +686,7 @@
   .mockup-overlays-aston-bands img,
   .mockup-disruptor-astons img,
   .mockup-branded-carousel img,
+  .mockup-branded-carousel video,
   .mockup-l-bands img,
   .mockup-branded-window img,
   .mockup-coming-up-window img,
@@ -902,6 +915,7 @@
   }
 
   .ad-mockup img,
+  .ad-mockup video,
   .mockup-masthead img,
   .mockup-roadblock img,
   .mockup-in-rail-static-ads img,
@@ -911,6 +925,7 @@
   .mockup-overlays-aston-bands img,
   .mockup-disruptor-astons img,
   .mockup-branded-carousel img,
+  .mockup-branded-carousel video,
   .mockup-l-bands img,
   .mockup-branded-window img,
   .mockup-coming-up-window img,

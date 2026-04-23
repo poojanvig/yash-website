@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import "./PremiumAdFormats.css";
 import spotlightMockup from "../assets/spotlight-mockup.webp";
 import displayMockup from "../assets/display-mockup.webp";
@@ -6,6 +6,10 @@ import inRailStaticBanner from "../assets/in-rail-static-banner.webp";
 import overlayAstonBand from "../assets/overlay-aston-band.webp";
 import disruptorAston from "../assets/disruptor-aston.webp";
 import brandedCarousel from "../assets/branded-carousel.webp";
+import brandedCarouselVideo from "../assets/branded-carousel.mp4";
+import pauseAndPlayVideo from "../assets/pause-and-play.mp4";
+import inShowIntegrationVideo from "../assets/in-show-integration.mp4";
+import inSceneBrandShowcaseVideo from "../assets/in-scene-brand-showcase.mp4";
 import lBand from "../assets/l-band.webp";
 import brandedWindowGec from "../assets/branded-window-gec.webp";
 import comingUpWindowGec from "../assets/coming-up-window-gec.webp";
@@ -193,6 +197,7 @@ const categories = [
           usage:
             "Ideal for Storytelling, Product showcases and Multi-offer campaigns.",
           image: brandedCarousel,
+          video: brandedCarouselVideo,
           specs: { duration: "10 seconds", timeBand: "Once Every Hour", genre: "Movies" },
           buyingOptions: [],
         },
@@ -295,6 +300,7 @@ const categories = [
           usage:
             "Ideal for High brand recall, Non-intrusive engagement during content consumption.",
           image: pauseAndPlay,
+          video: pauseAndPlayVideo,
           buyingOptions: [
             { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
             { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
@@ -308,6 +314,7 @@ const categories = [
             "In Show Integration is a seamless brand placement within the show's storyline, creating organic and memorable brand associations.",
           usage: "Ideal for Deep brand integration, High recall and Authentic audience connection.",
           image: inShowIntegration,
+          video: inShowIntegrationVideo,
           buyingOptions: [
             { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
             { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
@@ -403,6 +410,8 @@ function PremiumAdFormats() {
 
   const [fadeClass, setFadeClass] = useState("mockup-fade-in");
   const pendingRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const AUTO_ADVANCE_MS = 4000;
 
   const fadeSwitch = useCallback((nextSrc, applyState) => {
     if (pendingRef.current) return;
@@ -455,6 +464,40 @@ function PremiumAdFormats() {
     });
   };
 
+  useEffect(() => {
+    if (isPaused || tabs.length <= 1) return;
+    const delay = activeAd.video ? 12000 : AUTO_ADVANCE_MS;
+    const id = setTimeout(() => {
+      const nextIndex = (activeTab + 1) % tabs.length;
+      fadeSwitch(tabs[nextIndex].image, () => setActiveTab(nextIndex));
+    }, delay);
+    return () => clearTimeout(id);
+  }, [activeTab, tabs, fadeSwitch, isPaused, activeAd.video]);
+
+  useEffect(() => {
+    const sources = [];
+    categories.forEach((cat) => {
+      const allTabs = cat.tabs || Object.values(cat.platformTabs || {}).flat();
+      allTabs.forEach((t) => {
+        if (t.video) sources.push(t.video);
+      });
+    });
+    const preloaders = sources.map((src) => {
+      const v = document.createElement("video");
+      v.preload = "auto";
+      v.muted = true;
+      v.src = src;
+      v.load();
+      return v;
+    });
+    return () => {
+      preloaders.forEach((v) => {
+        v.removeAttribute("src");
+        v.load();
+      });
+    };
+  }, []);
+
   return (
     <section id="premium-ad-formats" className="premium-ad-formats">
       <h2 className="premium-title">
@@ -487,15 +530,34 @@ function PremiumAdFormats() {
         ))}
       </div>
 
-      <div className={`ad-category-content category-${category.key}`}>
+      <div
+        className={`ad-category-content category-${category.key}`}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <div className="mockup-glow"></div>
         <div className={`ad-mockup mockup-${activeAd.name.toLowerCase().replace(/\s+/g, '-')}`}>
-          <img
-            src={mockupSrc}
-            alt={activeAd.displayTitle}
-            className={`mockup-img ${fadeClass}`}
-            decoding="async"
-          />
+          {activeAd.video ? (
+            <video
+              key={activeAd.video}
+              src={activeAd.video}
+              poster={activeAd.image}
+              className={`mockup-img ${fadeClass}`}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              aria-label={activeAd.displayTitle}
+            />
+          ) : (
+            <img
+              src={mockupSrc}
+              alt={activeAd.displayTitle}
+              className={`mockup-img ${fadeClass}`}
+              decoding="async"
+            />
+          )}
         </div>
 
         <div className="ad-info-card">
