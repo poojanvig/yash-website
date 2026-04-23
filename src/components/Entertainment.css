@@ -500,7 +500,6 @@
 }
 
 .stats-modal-ott .stats-modal-desc {
-  font-size: 15px;
   max-width: 640px;
   margin-bottom: 24px;
 }
@@ -564,13 +563,17 @@
 }
 
 .stats-modal-desc {
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 600;
   text-align: center;
   max-width: 700px;
   line-height: 1.5;
-  margin: 0 0 34px;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  margin: 0 0 28px;
+  background: linear-gradient(90deg, #2fd7f8 0%, #71d85b 35%, #f29c35 70%, #f24ca1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.01em;
 }
 
 .stats-grid {
@@ -1671,7 +1674,6 @@
   }
 
   .stats-modal-desc {
-    font-size: 15px;
     margin-bottom: 20px;
   }
 
