@@ -250,6 +250,7 @@ const categories = [
           "In-Content Ads are placed in show between scene transitions as 7/8 secs shots. The shot typically is an outdoor shot with product features clearly displayed in form of a hoarding.",
         usage: "Ideal for Deep brand integration, High recall and Non-intrusive engagement.",
         image: inContentAdvertising,
+        video: inSceneBrandShowcaseVideo,
         specs: { duration: "7+8 seconds", timeBand: "", genre: "GEC - Org & Rpts" },
         buyingOptions: [],
       },

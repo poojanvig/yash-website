@@ -222,7 +222,9 @@
 .mockup-coming-up-window { overflow: visible; }
 .mockup-coming-up-window img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-in-content-ads { overflow: visible; }
-.mockup-in-content-ads img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-in-content-ads img,
+.mockup-in-content-ads video { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-in-content-ads video { top: 110px; }
 .mockup-meta-tagged-aston { overflow: visible; }
 .mockup-meta-tagged-aston img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-pause-\&-play { overflow: visible; }
