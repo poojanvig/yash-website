@@ -51,7 +51,7 @@ const allCards = [
       { value: '683 Mn', label: 'Monthly Reach' },
       { value: '93%', label: 'TV Household Reach', sublabel: '9/10 HHs consume Z Network every month' },
       { value: '274 Mn', label: 'Daily Reach' },
-      { value: '300+', label: 'Dilfluencers' },
+      { value: '300+', label: 'Dillfluencers' },
     ],
     comboStat: {
       heading: 'Regional Reach',
@@ -71,19 +71,19 @@ const allCards = [
     statImage: ottColour,
     description: 'Premium digital storytelling which delivers targeted reach, deep engagement, and high impact brand experiences across screens.',
     stats: [
-      { value: '100+ Mn', label: 'Monthly Active Users', sublabel: '(MAUs)' },
-      { value: '10+ Bn', label: 'Monthly Video Views' },
+      { value: '140+ Mn', label: 'Monthly Active Users', sublabel: '(MAUs)' },
+      { value: '3+ Bn', label: 'Monthly Video Views' },
       { value: '88+ Mn', label: 'Premium Audience', sublabel: 'CTV, SVOD, LIVE, News' },
       { value: '5L+', label: 'Hours', sublabel: 'Content Library' },
     ],
     comboStat: {
-      value: '42',
+      value: '64+',
       label: 'mins/day',
-      sublabel: 'Avg Time Spent per User',
+      sublabel: 'Time Spent per User per Day',
       heading: 'Audience Split',
       breakdown: [
-        { icon: 'female', value: '43%', label: 'Female' },
-        { icon: 'male', value: '57%', label: 'Male' },
+        { icon: 'male', value: '59%', label: 'Male' },
+        { icon: 'female', value: '41%', label: 'Female' },
       ],
       tiers: {
         heading: 'City / Tier Split',
@@ -101,7 +101,7 @@ const allCards = [
     statImage: youtubeColour,
     description: 'Unskippable moments, endless impressions — where viewers choose you.',
     stats: [
-      { value: '375+ Mn', label: 'Monthly Active Users', sublabel: 'Across Zee Channels Globally' },
+      { value: '284 Mn', label: 'Monthly Active Users', sublabel: 'Across Zee Channels Globally' },
       { value: '12+ Bn', label: 'Monthly Impressions' },
       { value: '5+ Bn', label: 'Monthly Video Views' },
       { value: '60+', label: 'ZEE Channels/Handles', sublabel: 'On YouTube' },
@@ -128,7 +128,7 @@ const allCards = [
     },
   },
   {
-    title: 'Dilfluencer',
+    title: 'Dillfluencer',
     image: dilfluencerCard,
     statImage: dilfluencerColour,
     description: 'Creator collaborations powered by iconic Z characters and narratives, transforming content fandom into authentic, scalable brand influence.',
@@ -140,7 +140,7 @@ const allCards = [
     ],
     comboStat: {
       value: '100+',
-      label: 'Dilfluencers',
+      label: 'Dillfluencers',
       sublabel: 'Across Languages',
       showMap: false,
     },
@@ -425,6 +425,123 @@ const StatsModalCard = ({ card }) => {
 
 const CARD_TRAVEL_DURATION_MS = 350;
 
+const useMarqueeRow = (direction = 'left', speedPxPerSec = 70) => {
+  const ref = useRef(null);
+  const stateRef = useRef({
+    paused: false,
+    dragging: false,
+    pointerId: null,
+    startClientX: 0,
+    lastClientX: 0,
+    movedSinceDown: 0,
+    lastTs: null,
+  });
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return undefined;
+
+    if (direction === 'right') {
+      requestAnimationFrame(() => {
+        if (!ref.current) return;
+        ref.current.scrollLeft = ref.current.scrollWidth / 2;
+      });
+    }
+
+    let raf = 0;
+    const tick = (ts) => {
+      const s = stateRef.current;
+      const last = s.lastTs;
+      s.lastTs = ts;
+      if (last !== null && !s.paused && !s.dragging) {
+        const dt = Math.min((ts - last) / 1000, 0.05);
+        const half = el.scrollWidth / 2;
+        if (half > 0) {
+          const dir = direction === 'left' ? 1 : -1;
+          let next = el.scrollLeft + speedPxPerSec * dt * dir;
+          if (next >= half) next -= half;
+          if (next < 0) next += half;
+          el.scrollLeft = next;
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [direction, speedPxPerSec]);
+
+  const onPointerEnter = () => {
+    stateRef.current.paused = true;
+  };
+  const onPointerLeave = () => {
+    stateRef.current.paused = false;
+    stateRef.current.dragging = false;
+    stateRef.current.pointerId = null;
+  };
+  const onPointerDown = (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    const s = stateRef.current;
+    s.pointerId = e.pointerId;
+    s.startClientX = e.clientX;
+    s.lastClientX = e.clientX;
+    s.dragging = false;
+    s.movedSinceDown = 0;
+  };
+  const onPointerMove = (e) => {
+    const el = ref.current;
+    if (!el) return;
+    const s = stateRef.current;
+    if (s.pointerId !== e.pointerId) return;
+    if (!s.dragging) {
+      if (Math.abs(e.clientX - s.startClientX) > 6) {
+        s.dragging = true;
+        s.lastClientX = e.clientX;
+        try { el.setPointerCapture(e.pointerId); } catch (_) {}
+      }
+      return;
+    }
+    const dx = e.clientX - s.lastClientX;
+    s.lastClientX = e.clientX;
+    s.movedSinceDown += Math.abs(dx);
+    const half = el.scrollWidth / 2;
+    if (half > 0) {
+      let next = el.scrollLeft - dx;
+      if (next >= half) next -= half;
+      if (next < 0) next += half;
+      el.scrollLeft = next;
+    }
+  };
+  const onPointerUp = (e) => {
+    const el = ref.current;
+    if (!el) return;
+    const s = stateRef.current;
+    if (s.pointerId !== e.pointerId) return;
+    s.dragging = false;
+    s.pointerId = null;
+    try { el.releasePointerCapture?.(e.pointerId); } catch (_) {}
+  };
+  const onClickCapture = (e) => {
+    if (stateRef.current.movedSinceDown > 6) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    stateRef.current.movedSinceDown = 0;
+  };
+
+  return {
+    ref,
+    rowProps: {
+      onPointerEnter,
+      onPointerLeave,
+      onPointerDown,
+      onPointerMove,
+      onPointerUp,
+      onPointerCancel: onPointerUp,
+      onClickCapture,
+    },
+  };
+};
+
 const Entertainment = () => {
   const [activeCardIndex, setActiveCardIndex] = useState(null);
   const [activeMobileCardIndex, setActiveMobileCardIndex] = useState(0);
@@ -521,6 +638,9 @@ const Entertainment = () => {
     setActiveMobileCardIndex((index) => (index - 1 + allCards.length) % allCards.length);
   }, []);
 
+  const row1Marquee = useMarqueeRow('left');
+  const row2Marquee = useMarqueeRow('right');
+
   return (
     <section id="entertainment" className="entertainment">
       <h2 className="entertainment-title">
@@ -529,7 +649,13 @@ const Entertainment = () => {
 
       <div className="marquee-wrapper">
         {/* Row 1 */}
-        <div className="marquee-row">
+        <div
+          className="marquee-row"
+          ref={row1Marquee.ref}
+          {...row1Marquee.rowProps}
+          role="region"
+          aria-label="Entertainment platforms — row 1, scroll or drag to browse"
+        >
           <div className="marquee-track row1-track">
             {[0, 1].map((groupIndex) => (
               <div
@@ -564,7 +690,13 @@ const Entertainment = () => {
         </div>
 
         {/* Row 2 */}
-        <div className="marquee-row">
+        <div
+          className="marquee-row"
+          ref={row2Marquee.ref}
+          {...row2Marquee.rowProps}
+          role="region"
+          aria-label="Entertainment platforms — row 2, scroll or drag to browse"
+        >
           <div className="marquee-track row2-track">
             {[0, 1].map((groupIndex) => (
               <div

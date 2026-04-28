@@ -29,17 +29,31 @@
 }
 
 .marquee-row {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
   padding: 12px 0;
+  cursor: grab;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: pan-y;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.marquee-row::-webkit-scrollbar {
+  display: none;
+}
+
+.marquee-row:active {
+  cursor: grabbing;
 }
 
 .marquee-track {
   display: flex;
   width: max-content;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
+  will-change: scroll-position;
 }
 
 .marquee-group {
@@ -47,36 +61,6 @@
   gap: 24px;
   flex-shrink: 0;
   padding-right: 24px;
-}
-
-.row1-track {
-  animation: scrollLeft 55s linear infinite;
-}
-
-.row2-track {
-  animation: scrollRight 55s linear infinite;
-}
-
-.marquee-row:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-@keyframes scrollLeft {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-@keyframes scrollRight {
-  0% {
-    transform: translate3d(-50%, 0, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
 }
 
 .entertainment-card {
@@ -176,16 +160,17 @@
     radial-gradient(circle at 50% 92%, rgba(128, 38, 255, 0.5), transparent 24%),
     linear-gradient(180deg, rgba(20, 21, 29, 0.98) 0%, rgba(55, 22, 88, 0.94) 56%, rgba(31, 17, 51, 0.98) 100%);
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   animation: fadeIn 0.3s ease;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 .stats-stage {
   position: relative;
   width: min(1700px, 100%);
+  margin: 0 auto;
   min-height: 100vh;
   padding: 46px 88px 80px;
   display: flex;
@@ -212,7 +197,7 @@
 /* ===================== */
 
 .gradient-blob {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   border-radius: 50%;
@@ -1440,11 +1425,6 @@
   .marquee-group {
     gap: 14px;
     padding-right: 14px;
-  }
-
-  .row1-track,
-  .row2-track {
-    animation-duration: 38s;
   }
 
   .mobile-entertainment-carousel {
