@@ -41,9 +41,6 @@ const categories = [
         image: spotlightMockup,
 
         buyingOptions: [
-          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-          { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
-          { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
           { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
         ],
       },
@@ -56,9 +53,6 @@ const categories = [
           "Ideal for High brand visibility, Strong impact during campaigns.",
         image: displayMockup,
         buyingOptions: [
-          { label: "CPC", subtitle: "(Cost Per Click)", desc: "One click and money is charged, no extra charges on any ad" },
-          { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads only" },
-          { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by ads" },
           { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility on the app" },
         ],
       },
@@ -71,9 +65,6 @@ const categories = [
           "Deliver seamless, non-intrusive brand visibility within browsing content feeds.",
         image: inRailStaticBanner,
         buyingOptions: [
-          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-          { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
-          { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
           { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
@@ -86,10 +77,7 @@ const categories = [
           "Ideal for Brand Recall, Re-engagement and redirecting users to a website or app.",
         image: appExitBannerMobile,
         buyingOptions: [
-          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-          { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
-          { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
-          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
       {
@@ -102,8 +90,6 @@ const categories = [
         image: ctvPauseAdDesktop,
         buyingOptions: [
           { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
-          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
         ],
       },
       {
@@ -116,10 +102,7 @@ const categories = [
         image: companionAdsMobile,
 
         buyingOptions: [
-          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-          { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
-          { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
-          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
       {
@@ -132,8 +115,6 @@ const categories = [
         image: overlayAstonBand,
         buyingOptions: [
           { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
-          { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
         ],
       },
     ],
@@ -155,9 +136,6 @@ const categories = [
             "Deliver seamless, non-intrusive brand visibility within browsing content feeds.",
           image: inRailStaticBanner,
           buyingOptions: [
-            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
-            { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
             { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
@@ -170,10 +148,7 @@ const categories = [
             "Ideal for Brand Recall, Re-engagement and redirecting users to a website or app.",
           image: appExitBannerMobile,
           buyingOptions: [
-            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
-            { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
-            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
       ],
@@ -274,8 +249,6 @@ const categories = [
           image: ctvPauseAdDesktop,
           buyingOptions: [
             { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
-            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
           ],
         },
       ],
@@ -342,10 +315,7 @@ const categories = [
             "Ideal for Brand Reinforcement, High Recall and supporting video ad campaigns",
           image: companionAdsMobile,
           buyingOptions: [
-            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-            { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
-            { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
-            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
         {
@@ -358,8 +328,6 @@ const categories = [
           image: overlayAstonBand,
           buyingOptions: [
             { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
-            { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
-            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
           ],
         },
       ],
