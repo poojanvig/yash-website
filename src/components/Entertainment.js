@@ -133,9 +133,8 @@ const allCards = [
     statImage: dilfluencerColour,
     description: 'Creator collaborations powered by iconic Z characters and narratives, transforming content fandom into authentic, scalable brand influence.',
     stats: [
-      { value: '700+ Mn', label: 'Monthly Audiences' },
       { value: '350+', label: 'Influencers', sublabel: 'Across Regions' },
-      { value: '1 Bn', label: 'Weekly Cume', sublabel: 'Meta Reach' },
+      { value: '1 Bn', label: 'Weekly Cume Reach', sublabel: 'Meta' },
       { value: '5 Bn', label: 'Monthly Video Views', sublabel: 'On YouTube' },
     ],
     comboStat: {

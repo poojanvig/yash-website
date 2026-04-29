@@ -19,6 +19,10 @@ import pauseAndPlay from "../assets/pause-and-play.webp";
 import inShowIntegration from "../assets/in-show-integration.webp";
 import qrAstons from "../assets/qr-astons.webp";
 import anchorMentions from "../assets/anchor-mentions.webp";
+import companionCarousel from "../assets/companion-carousel.webp";
+import independentCarousel from "../assets/independent-carousel.webp";
+import threeDBillboard from "../assets/3d-billboard.webp";
+import threeDBillboardVideo from "../assets/3D Billboard.mp4";
 import ctvPauseAdDesktop from "../assets/CtV Pause Ad.webp";
 import companionAdsMobile from "../assets/COMPANION ADS.webp";
 import appExitBannerMobile from "../assets/App Exit banner.webp";
@@ -106,7 +110,7 @@ const categories = [
         ],
       },
       {
-        name: "Overlays Aston Bands",
+        name: "Overlay Aston Bands",
         displayTitle: "OVERLAYS ASTON BANDS",
         description:
           "Aston Bands are overlay-style advertising units that appear as slim, non-intrusive bands on the video player.",
@@ -114,6 +118,7 @@ const categories = [
           "Ideal for Brand Presence, Driving consideration without disrupting viewing.",
         image: overlayAstonBand,
         buyingOptions: [
+          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
           { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
@@ -147,6 +152,19 @@ const categories = [
           usage:
             "Ideal for Brand Recall, Re-engagement and redirecting users to a website or app.",
           image: appExitBannerMobile,
+          buyingOptions: [
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          ],
+        },
+        {
+          name: "3D Billboard",
+          displayTitle: "3D BILLBOARD",
+          description:
+            "A visually immersive 3D Masthead that dominates the OTT home screen, creating strong brand recall through rich, cinematic impact.",
+          usage:
+            "Ideal for High-impact brand launches, Premium storytelling and cinematic brand experiences.",
+          image: threeDBillboard,
+          video: threeDBillboardVideo,
           buyingOptions: [
             { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
           ],
@@ -326,6 +344,30 @@ const categories = [
           usage:
             "Ideal for Brand Presence, Driving consideration without disrupting viewing.",
           image: overlayAstonBand,
+          buyingOptions: [
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          ],
+        },
+        {
+          name: "Companion Carousel",
+          displayTitle: "COMPANION CAROUSEL",
+          description:
+            "A video-linked carousel banner combining multiple product images and deep links into one high-impact, conversion-driving format.",
+          usage:
+            "Ideal for Multi-product showcases, Storytelling and supporting video ad campaigns.",
+          image: companionCarousel,
+          buyingOptions: [
+            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          ],
+        },
+        {
+          name: "Independent Carousel",
+          displayTitle: "INDEPENDENT CAROUSEL",
+          description:
+            "A carousel banner with multiple product images and deeplinks integrated into a single ad format that drives conversions.",
+          usage:
+            "Ideal for Multi-offer campaigns, Storytelling and Driving deeper product exploration.",
+          image: independentCarousel,
           buyingOptions: [
             { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
           ],

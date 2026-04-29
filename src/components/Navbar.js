@@ -68,16 +68,6 @@ const applySearchHighlights = (query) => {
 
 const navItems = [
   { name: 'Ad Solutions', id: 'ad-formats' },
-  {
-    name: 'Resources',
-    id: 'resources',
-    dropdown: [
-      { name: 'Intelligence Monitor', href: 'https://zee5adworld.com/intelligence-monitor/' },
-      { name: 'BrandWorks', href: 'https://zee5adworld.com/brandworks/' },
-      { name: 'Content Sponsorship', href: 'https://zee5adworld.com/content-sponsorship/' },
-      { name: 'Articles', href: 'https://zee5adworld.com/articles/' }
-    ]
-  },
   { name: 'Advertise with us', id: 'contact' },
   { name: 'Z Rise', href: 'https://zee5adworld.com/rise/' }
 ];

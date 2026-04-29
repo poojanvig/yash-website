@@ -241,6 +241,9 @@
 .mockup-qr-code-astons img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-anchor-mentions { overflow: visible; }
 .mockup-anchor-mentions img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-independent-carousel img { max-width: 240px; top: 20px; left: 120px; }
+.mockup-3d-billboard img,
+.mockup-3d-billboard video { max-width: 220px; top: 10px; left: 130px; }
 
 /* Mockup fade in / fade out */
 .mockup-img {
@@ -698,7 +701,10 @@
   .mockup-in-show-integration img,
   .mockup-overlay-aston-bands img,
   .mockup-qr-code-astons img,
-  .mockup-anchor-mentions img {
+  .mockup-anchor-mentions img,
+  .mockup-independent-carousel img,
+  .mockup-3d-billboard img,
+  .mockup-3d-billboard video {
     position: relative;
     top: auto;
     left: auto;
