@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from "react";
 import "./PremiumAdFormats.css";
 import spotlightMockup from "../assets/spotlight-mockup.webp";
 import displayMockup from "../assets/display-mockup.webp";
-import inRailStaticBanner from "../assets/in-rail-static-banner.webp";
+import inRailStaticBanner from "../assets/in-rail-static-ads.png";
 import overlayAstonBand from "../assets/overlay-aston-band.webp";
 import disruptorAston from "../assets/disruptor-aston.webp";
 import brandedCarousel from "../assets/branded-carousel.webp";
@@ -110,8 +110,8 @@ const categories = [
         ],
       },
       {
-        name: "Overlay Aston Bands",
-        displayTitle: "OVERLAYS ASTON BANDS",
+        name: "Overlay Aston Band",
+        displayTitle: "OVERLAYS ASTON BAND",
         description:
           "Aston Bands are overlay-style advertising units that appear as slim, non-intrusive bands on the video player.",
         usage:
@@ -337,8 +337,8 @@ const categories = [
           ],
         },
         {
-          name: "Overlay Aston Bands",
-          displayTitle: "OVERLAY ASTON BANDS",
+          name: "Overlay Aston Band",
+          displayTitle: "OVERLAY ASTON BAND",
           description:
             "Aston Bands are overlay-style advertising units that appear as slim, non-intrusive bands on the video player.",
           usage:
