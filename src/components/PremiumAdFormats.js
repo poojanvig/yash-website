@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from "react";
 import "./PremiumAdFormats.css";
 import spotlightMockup from "../assets/spotlight-mockup.webp";
 import displayMockup from "../assets/display-mockup.webp";
-import inRailStaticBanner from "../assets/in-rail-static-ads.png";
+import inRailStaticBanner from "../assets/in-rail-static-ads.webp";
 import overlayAstonBand from "../assets/overlay-aston-band.webp";
 import disruptorAston from "../assets/disruptor-aston.webp";
 import brandedCarousel from "../assets/branded-carousel.webp";
@@ -42,6 +42,7 @@ const categories = [
           "The Masthead is a high-impact ad unit that appears at the top of the home screen, making it the first banner to capture user attention.",
         usage:
           "Ideal for Brand Recall, Mass reach and Driving traffic to the website or app.",
+        creative: "Static / Video",
         image: spotlightMockup,
 
         buyingOptions: [
@@ -195,8 +196,8 @@ const categories = [
           buyingOptions: [],
         },
         {
-          name: "L-Bands",
-          displayTitle: "L-BANDS",
+          name: "L-Band",
+          displayTitle: "L-BAND",
           description:
             "L-Band is a 10-seconder graphical elements that appear on the screen as part of content and capture left and bottom screen with brand message and product shots.",
           usage:
@@ -581,6 +582,12 @@ function PremiumAdFormats() {
             <h5>Usage</h5>
             <p>{activeAd.usage}</p>
           </div>
+          {activeAd.creative && (
+            <div className="ad-info-section">
+              <h5>Creative</h5>
+              <p>{activeAd.creative}</p>
+            </div>
+          )}
           {activeAd.specs && (
             <div className="ad-info-section">
               <h5>Specifications</h5>

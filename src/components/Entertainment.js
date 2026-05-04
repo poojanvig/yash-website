@@ -51,7 +51,7 @@ const allCards = [
       { value: '683 Mn', label: 'Monthly Reach' },
       { value: '93%', label: 'TV Household Reach', sublabel: '9/10 HHs consume Z Network every month' },
       { value: '274 Mn', label: 'Daily Reach' },
-      { value: '300+', label: 'Dillfluencers' },
+      { value: '300+', label: 'Dilfluencers' },
     ],
     comboStat: {
       heading: 'Regional Reach',
@@ -66,7 +66,7 @@ const allCards = [
     },
   },
   {
-    title: 'Zee5 OTT',
+    title: 'Zee 5 OTT',
     image: ottCard,
     statImage: ottColour,
     description: 'Premium digital storytelling which delivers targeted reach, deep engagement, and high impact brand experiences across screens.',
@@ -128,18 +128,17 @@ const allCards = [
     },
   },
   {
-    title: 'Dillfluencer',
+    title: 'Dilfluencer',
     image: dilfluencerCard,
     statImage: dilfluencerColour,
     description: 'Creator collaborations powered by iconic Z characters and narratives, transforming content fandom into authentic, scalable brand influence.',
     stats: [
       { value: '350+', label: 'Influencers', sublabel: 'Across Regions' },
-      { value: '1 Bn', label: 'Weekly Cume Reach', sublabel: 'Meta' },
-      { value: '5 Bn', label: 'Monthly Video Views', sublabel: 'On YouTube' },
+      { value: '1 Bn', label: 'Weekly Reach', sublabel: 'Cumulative' },
     ],
     comboStat: {
       value: '100+',
-      label: 'Dillfluencers',
+      label: 'Dilfluencers',
       sublabel: 'Across Languages',
       showMap: false,
     },
