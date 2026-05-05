@@ -119,7 +119,6 @@ const categories = [
           "Ideal for Brand Presence, Driving consideration without disrupting viewing.",
         image: overlayAstonBand,
         buyingOptions: [
-          { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
           { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
@@ -167,7 +166,7 @@ const categories = [
           image: threeDBillboard,
           video: threeDBillboardVideo,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
           ],
         },
       ],
@@ -530,18 +529,6 @@ function PremiumAdFormats() {
 
       <p className="category-description">{category.description}</p>
 
-      <div className="platform-toggle">
-        {category.platforms.map((p, i) => (
-          <button
-            key={p}
-            className={`platform-toggle-btn ${i === activePlatform ? "active" : ""}`}
-            onClick={() => handlePlatformChange(i)}
-          >
-            {p}
-          </button>
-        ))}
-      </div>
-
       <div
         className={`ad-category-content category-${category.key}`}
         onMouseEnter={() => setIsPaused(true)}
@@ -634,16 +621,29 @@ function PremiumAdFormats() {
           )}
         </div>
 
-        <div className="ad-tabs-nav">
-          {tabs.map((tab, i) => (
-            <button
-              key={tab.name}
-              className={`ad-tab-btn ${activeTab === i ? "active" : ""}`}
-              onClick={() => handleTabChange(i)}
-            >
-              {tab.name}
-            </button>
-          ))}
+        <div className="ad-tabs-column">
+          <div className="platform-toggle">
+            {category.platforms.map((p, i) => (
+              <button
+                key={p}
+                className={`platform-toggle-btn ${i === activePlatform ? "active" : ""}`}
+                onClick={() => handlePlatformChange(i)}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+          <div className="ad-tabs-nav">
+            {tabs.map((tab, i) => (
+              <button
+                key={tab.name}
+                className={`ad-tab-btn ${activeTab === i ? "active" : ""}`}
+                onClick={() => handleTabChange(i)}
+              >
+                {tab.name}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>

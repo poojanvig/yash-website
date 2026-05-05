@@ -447,13 +447,26 @@
 /* ===========================
    Tab Navigation (Right Side)
    =========================== */
+.ad-tabs-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.ad-tabs-column .platform-toggle {
+  margin: 0;
+  flex-shrink: 0;
+}
+
 .ad-tabs-nav {
   display: flex;
   flex-direction: column;
   gap: 10px;
   flex-shrink: 0;
   min-width: 170px;
-  align-self: center;
+  margin: auto 0;
 }
 
 .ad-tab-btn {
