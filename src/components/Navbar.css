@@ -153,6 +153,90 @@
   opacity: 1;
 }
 
+.navbar-newsletter-btn {
+  position: relative;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #15cae5 0%, #75c847 34%, #f0c23d 67%, #f45b9a 100%);
+  background-size: 180% 100%;
+  background-position: 0% 0%;
+  color: #ffffff;
+  font-family: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow:
+    0 8px 22px rgba(21, 202, 229, 0.22),
+    0 4px 12px rgba(244, 91, 154, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.22s ease, box-shadow 0.3s ease, background-position 0.6s ease;
+}
+
+.navbar-newsletter-inner {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.navbar-newsletter-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 55%);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.navbar-newsletter-icon {
+  transition: transform 0.35s cubic-bezier(0.5, 1.6, 0.4, 1);
+  flex-shrink: 0;
+}
+
+.navbar-newsletter-btn:hover {
+  transform: translateY(-2px);
+  background-position: 100% 0%;
+  box-shadow:
+    0 12px 28px rgba(21, 202, 229, 0.32),
+    0 6px 16px rgba(244, 91, 154, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.navbar-newsletter-btn:hover .navbar-newsletter-glow {
+  opacity: 1;
+}
+
+.navbar-newsletter-btn:hover .navbar-newsletter-icon {
+  transform: translateY(2px);
+}
+
+.navbar-newsletter-btn:active {
+  transform: translateY(0);
+}
+
+.navbar-newsletter-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.65);
+  outline-offset: 3px;
+}
+
+.navbar.search-open .navbar-newsletter-btn {
+  opacity: 0;
+  transform: translateX(-12px);
+  pointer-events: none;
+  filter: blur(2px);
+  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
 .search-btn {
   width: 48px;
   height: 48px;
@@ -584,6 +668,20 @@ mark.search-highlight.search-highlight-current {
     height: 42px;
   }
 
+  .navbar-newsletter-btn {
+    height: 42px;
+  }
+
+  .navbar-newsletter-inner {
+    padding: 0 14px;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .navbar-newsletter-text {
+    display: none;
+  }
+
   .mobile-menu-backdrop {
     display: block;
     position: fixed;
@@ -661,6 +759,14 @@ mark.search-highlight.search-highlight-current {
   .search-btn {
     width: 36px;
     height: 36px;
+  }
+
+  .navbar-newsletter-btn {
+    height: 36px;
+  }
+
+  .navbar-newsletter-inner {
+    padding: 0 10px;
   }
 
   .hamburger-btn {

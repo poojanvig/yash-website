@@ -82,6 +82,15 @@ const Navbar = () => {
   const matchesRef = useRef([]);
   const searchInputRef = useRef(null);
 
+  const downloadNewsletter = () => {
+    const link = document.createElement('a');
+    link.href = '/newsletter.pdf';
+    link.download = 'newsletter.pdf';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
   const focusMatch = useCallback((idx) => {
     const list = matchesRef.current;
     if (!list.length) return;
@@ -323,6 +332,23 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-actions">
+          <button
+            type="button"
+            className="navbar-newsletter-btn"
+            onClick={downloadNewsletter}
+            aria-label="Download Newsletter"
+          >
+            <span className="navbar-newsletter-glow" aria-hidden="true"></span>
+            <span className="navbar-newsletter-inner">
+              <svg className="navbar-newsletter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span className="navbar-newsletter-text">Newsletter</span>
+            </span>
+          </button>
+
           <div className={`search-container ${searchOpen ? 'expanded' : ''}`}>
             <div className="search-panel" aria-hidden={!searchOpen}>
               <input
