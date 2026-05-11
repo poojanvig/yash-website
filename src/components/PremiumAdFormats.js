@@ -70,7 +70,7 @@ const categories = [
           "Deliver seamless, non-intrusive brand visibility within browsing content feeds.",
         image: inRailStaticBanner,
         buyingOptions: [
-          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
       {
@@ -82,7 +82,7 @@ const categories = [
           "Ideal for Brand Recall, Re-engagement and redirecting users to a website or app.",
         image: appExitBannerMobile,
         buyingOptions: [
-          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
       {
@@ -94,7 +94,7 @@ const categories = [
           "Ideal for Strong brand recall and High brand visibility on the big screen.",
         image: ctvPauseAdDesktop,
         buyingOptions: [
-          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
       {
@@ -107,7 +107,7 @@ const categories = [
         image: companionAdsMobile,
 
         buyingOptions: [
-          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
       {
@@ -119,7 +119,7 @@ const categories = [
           "Ideal for Brand Presence, Driving consideration without disrupting viewing.",
         image: overlayAstonBand,
         buyingOptions: [
-          { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+          { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
         ],
       },
     ],
@@ -141,7 +141,7 @@ const categories = [
             "Deliver seamless, non-intrusive brand visibility within browsing content feeds.",
           image: inRailStaticBanner,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
         {
@@ -153,7 +153,7 @@ const categories = [
             "Ideal for Brand Recall, Re-engagement and redirecting users to a website or app.",
           image: appExitBannerMobile,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
         {
@@ -165,6 +165,7 @@ const categories = [
             "Ideal for High-impact brand launches, Premium storytelling and cinematic brand experiences.",
           image: threeDBillboard,
           video: threeDBillboardVideo,
+          hidePoster: true,
           buyingOptions: [
             { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
           ],
@@ -266,7 +267,7 @@ const categories = [
             "Ideal for Strong brand recall and High brand visibility on the big screen.",
           image: ctvPauseAdDesktop,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
       ],
@@ -279,7 +280,7 @@ const categories = [
           usage: "Ideal for Enhancing discoverability through contextual tagging.",
           image: metaTaggedAston,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
             { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
             { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
           ],
@@ -294,7 +295,7 @@ const categories = [
           image: pauseAndPlay,
           video: pauseAndPlayVideo,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
             { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
             { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
           ],
@@ -308,7 +309,7 @@ const categories = [
           image: inShowIntegration,
           video: inShowIntegrationVideo,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
             { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
             { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
           ],
@@ -333,7 +334,7 @@ const categories = [
             "Ideal for Brand Reinforcement, High Recall and supporting video ad campaigns",
           image: companionAdsMobile,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
         {
@@ -345,7 +346,7 @@ const categories = [
             "Ideal for Brand Presence, Driving consideration without disrupting viewing.",
           image: overlayAstonBand,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
         {
@@ -357,7 +358,7 @@ const categories = [
             "Ideal for Multi-product showcases, Storytelling and supporting video ad campaigns.",
           image: companionCarousel,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
         {
@@ -369,7 +370,7 @@ const categories = [
             "Ideal for Multi-offer campaigns, Storytelling and Driving deeper product exploration.",
           image: independentCarousel,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
       ],
@@ -385,7 +386,7 @@ const categories = [
             { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
             { label: "CPL", subtitle: "(Cost Per Lead)", desc: "Pay for qualified leads generated." },
             { label: "CPI", subtitle: "(Cost Per Install)", desc: "Pay for app installs driven by the ad." },
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
           ],
         },
         {
@@ -396,7 +397,7 @@ const categories = [
           usage: "Ideal for Authentic brand endorsement, High trust and Credibility building.",
           image: anchorMentions,
           buyingOptions: [
-            { label: "CPM", subtitle: "(Cost Per Mile)", desc: "Cost per 1,000 ad impressions." },
+            { label: "CPM", subtitle: "(Cost Per Mille)", desc: "Cost per 1,000 ad impressions." },
             { label: "CPC", subtitle: "(Cost Per Click)", desc: "Cost incurred when a viewer clicks on the ad." },
             { label: "CPD", subtitle: "(Cost Per Day)", desc: "Fixed cost for exclusive visibility per day." },
           ],
@@ -540,7 +541,7 @@ function PremiumAdFormats() {
             <video
               key={activeAd.video}
               src={activeAd.video}
-              poster={activeAd.image}
+              poster={activeAd.hidePoster ? undefined : activeAd.image}
               className={`mockup-img ${fadeClass}`}
               autoPlay
               loop

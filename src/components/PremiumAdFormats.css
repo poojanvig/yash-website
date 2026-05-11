@@ -206,16 +206,16 @@
 .mockup-app-exit-banner img { max-width: 280px; top: 10px; left: 110px; }
 .mockup-ctv-pause-ads img { width: 500px; max-width: none; top: 130px; left: -90px;  }
 .mockup-clickable-companion img { max-width: 320px; top: 25px; left: 95px; }
-.mockup-overlays-aston-bands { overflow: visible; }
-.mockup-overlays-aston-bands img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-overlay-aston-band { overflow: visible; }
+.mockup-overlay-aston-band img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-disruptor-astons { overflow: visible; }
 .mockup-disruptor-astons img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-branded-carousel { overflow: visible; }
 .mockup-branded-carousel img,
 .mockup-branded-carousel video { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-branded-carousel video { top: 60px; }
-.mockup-l-bands { overflow: visible; }
-.mockup-l-bands img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-l-band { overflow: visible; }
+.mockup-l-band img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-branded-window { overflow: visible; }
 .mockup-branded-window img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-coming-up-window { overflow: visible; }
@@ -234,8 +234,6 @@
 .mockup-in-show-integration img,
 .mockup-in-show-integration video { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-in-show-integration video { top: 110px; }
-.mockup-overlay-aston-bands { overflow: visible; }
-.mockup-overlay-aston-bands img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-qr-code-astons { overflow: visible; }
 .mockup-qr-code-astons img { width: 500px; max-width: none; top: 130px; left: -90px; }
 .mockup-anchor-mentions { overflow: visible; }
@@ -702,18 +700,17 @@
   .mockup-app-exit-banner img,
   .mockup-ctv-pause-ads img,
   .mockup-clickable-companion img,
-  .mockup-overlays-aston-bands img,
+  .mockup-overlay-aston-band img,
   .mockup-disruptor-astons img,
   .mockup-branded-carousel img,
   .mockup-branded-carousel video,
-  .mockup-l-bands img,
+  .mockup-l-band img,
   .mockup-branded-window img,
   .mockup-coming-up-window img,
   .mockup-in-content-ads img,
   .mockup-meta-tagged-aston img,
   .mockup-pause-\&-play img,
   .mockup-in-show-integration img,
-  .mockup-overlay-aston-bands img,
   .mockup-qr-code-astons img,
   .mockup-anchor-mentions img,
   .mockup-independent-carousel img,
@@ -944,18 +941,17 @@
   .mockup-app-exit-banner img,
   .mockup-ctv-pause-ads img,
   .mockup-clickable-companion img,
-  .mockup-overlays-aston-bands img,
+  .mockup-overlay-aston-band img,
   .mockup-disruptor-astons img,
   .mockup-branded-carousel img,
   .mockup-branded-carousel video,
-  .mockup-l-bands img,
+  .mockup-l-band img,
   .mockup-branded-window img,
   .mockup-coming-up-window img,
   .mockup-in-content-ads img,
   .mockup-meta-tagged-aston img,
   .mockup-pause-\&-play img,
   .mockup-in-show-integration img,
-  .mockup-overlay-aston-bands img,
   .mockup-qr-code-astons img,
   .mockup-anchor-mentions img {
     max-width: 100%;

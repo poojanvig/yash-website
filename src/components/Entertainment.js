@@ -124,7 +124,13 @@ const allCards = [
       { value: '500+', label: 'Trade Media Coverages', sublabel: 'Across Leading Platforms' },
     ],
     comboStat: {
-      hidden: true,
+      heading: 'Upcoming Schedule',
+      schedule: [
+        { date: 'TBD', city: 'TBD', event: 'TBD Event' },
+        { date: 'TBD', city: 'TBD', event: 'TBD Event' },
+        { date: 'TBD', city: 'TBD', event: 'TBD Event' },
+        { date: 'TBD', city: 'TBD', event: 'TBD Event' },
+      ],
     },
   },
   {
@@ -398,6 +404,21 @@ const StatsModalCard = ({ card }) => {
                       </div>
                     </div>
                   )}
+                </div>
+              ) : activeComboStat.schedule ? (
+                <div className="stat-schedule">
+                  {activeComboStat.heading && (
+                    <span className="stat-schedule-title">{activeComboStat.heading}</span>
+                  )}
+                  <div className="stat-schedule-list">
+                    {activeComboStat.schedule.map((row, idx) => (
+                      <div className="stat-schedule-item" key={`${row.date}-${idx}`}>
+                        <span className="stat-schedule-date">{row.date}</span>
+                        <span className="stat-schedule-event">{row.event}</span>
+                        <span className="stat-schedule-city">{row.city}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ) : activeComboStat.showMap !== false ? (
                 <img src={indiaMap} alt="India Map" className="stat-india-map" />
