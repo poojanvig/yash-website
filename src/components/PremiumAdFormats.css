@@ -193,56 +193,53 @@
   max-width: 390px;
   height: auto;
   position: absolute;
-  top: 50px;
-  left: 5px;
+  top: 50%;
+  left: 50%;
   z-index: 2;
   filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.24));
+  transform: translate(-50%, -50%);
 }
 
-/* Per-tab mockup overrides */
-.mockup-masthead img { max-width: 390px; top: 50px; left: 5px; }
-.mockup-roadblock img { max-width: 320px; top: 40px; left: 100px; }
-.mockup-in-rail-static-ads img { max-width: 320px; width: auto; top: 30px; left: 95px; }
-.mockup-app-exit-banner img { max-width: 280px; top: 10px; left: 110px; }
-.mockup-ctv-pause-ads img { width: 500px; max-width: none; top: 130px; left: -90px;  }
-.mockup-clickable-companion img { max-width: 320px; top: 25px; left: 95px; }
+/* Per-tab mockup size overrides — vertical/horizontal centering is unified above */
+.mockup-masthead img { max-width: 390px; }
+.mockup-roadblock img { max-width: 320px; }
+.mockup-in-rail-static-ads img { max-width: 320px; width: auto; }
+.mockup-app-exit-banner img { max-width: 280px; }
+.mockup-ctv-pause-ads img { width: 500px; max-width: none; }
+.mockup-clickable-companion img { max-width: 320px; }
 .mockup-overlay-aston-band { overflow: visible; }
-.mockup-overlay-aston-band img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-overlay-aston-band img { width: 500px; max-width: none; }
 .mockup-disruptor-astons { overflow: visible; }
-.mockup-disruptor-astons img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-disruptor-astons img { width: 500px; max-width: none; }
 .mockup-branded-carousel { overflow: visible; }
 .mockup-branded-carousel img,
-.mockup-branded-carousel video { width: 500px; max-width: none; top: 130px; left: -90px; }
-.mockup-branded-carousel video { top: 60px; }
+.mockup-branded-carousel video { width: 500px; max-width: none; }
 .mockup-l-band { overflow: visible; }
-.mockup-l-band img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-l-band img { width: 500px; max-width: none; }
 .mockup-branded-window { overflow: visible; }
-.mockup-branded-window img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-branded-window img { width: 500px; max-width: none; }
 .mockup-coming-up-window { overflow: visible; }
-.mockup-coming-up-window img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-coming-up-window img { width: 500px; max-width: none; }
 .mockup-in-content-ads { overflow: visible; }
 .mockup-in-content-ads img,
-.mockup-in-content-ads video { width: 500px; max-width: none; top: 130px; left: -90px; }
-.mockup-in-content-ads video { top: 110px; }
+.mockup-in-content-ads video { width: 500px; max-width: none; }
 .mockup-meta-tagged-aston { overflow: visible; }
-.mockup-meta-tagged-aston img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-meta-tagged-aston img { width: 500px; max-width: none; }
 .mockup-pause-\&-play { overflow: visible; }
 .mockup-pause-\&-play img,
-.mockup-pause-\&-play video { width: 500px; max-width: none; top: 130px; left: -90px; }
-.mockup-pause-\&-play video { top: 110px; }
+.mockup-pause-\&-play video { width: 500px; max-width: none; }
 .mockup-in-show-integration { overflow: visible; }
 .mockup-in-show-integration img,
-.mockup-in-show-integration video { width: 500px; max-width: none; top: 130px; left: -90px; }
-.mockup-in-show-integration video { top: 110px; }
+.mockup-in-show-integration video { width: 500px; max-width: none; }
 .mockup-qr-code-astons { overflow: visible; }
-.mockup-qr-code-astons img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-qr-code-astons img { width: 500px; max-width: none; }
 .mockup-anchor-mentions { overflow: visible; }
-.mockup-anchor-mentions img { width: 500px; max-width: none; top: 130px; left: -90px; }
+.mockup-anchor-mentions img { width: 500px; max-width: none; }
 .mockup-companion-carousel { overflow: visible; }
-.mockup-companion-carousel img { width: 500px; max-width: none; top: 40px; left: -90px; }
-.mockup-independent-carousel img { max-width: 240px; top: 20px; left: 120px; }
+.mockup-companion-carousel img { width: 500px; max-width: none; }
+.mockup-independent-carousel img { max-width: 240px; }
 .mockup-3d-billboard img,
-.mockup-3d-billboard video { max-width: 220px; top: 10px; left: 130px; }
+.mockup-3d-billboard video { max-width: 220px; }
 
 /* Mockup fade in / fade out */
 .mockup-img {
@@ -261,13 +258,13 @@
 }
 
 @keyframes mockupFadeOut {
-  from { opacity: 1; transform: translateZ(0) scale(1); }
-  to   { opacity: 0; transform: translateZ(0) scale(0.98); }
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to   { opacity: 0; transform: translate(-50%, -50%) scale(0.98); }
 }
 
 @keyframes mockupFadeIn {
-  from { opacity: 0; transform: translateZ(0) scale(0.98); }
-  to   { opacity: 1; transform: translateZ(0) scale(1); }
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.98); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
 /* ===========================

@@ -69,7 +69,7 @@ const applySearchHighlights = (query) => {
 const navItems = [
   { name: 'Ad Solutions', id: 'ad-formats' },
   { name: 'Advertise with us', id: 'contact' },
-  { name: 'Z Rise', href: 'https://zee5adworld.com/rise/' }
+  { name: 'Z Rise', href: '/rise/index.html' }
 ];
 
 const Navbar = () => {
