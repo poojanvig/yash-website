@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zee Rise</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./Zee All Images:Videos/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <div id="loader">
+        <img class="loader-logo" src="./Zee All Images:Videos/Zee Logo.png" alt="Z r.i.s.e logo">
+        <div class="loader-track">
+            <div class="loader-line"></div>
+        </div>
+    </div>
+
+    <main class="hidden" role="main" aria-live="polite">
+        <section class="home-hero">
+            <header class="site-header">
+                <div class="header-left">
+                    <img class="site-logo" src="./Zee All Images:Videos/Zee Logo.png" alt="Z r.i.s.e">
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="main-nav" aria-label="Primary">
+                    <ul class="nav-list">
+                        <li><a href="#home">HOME</a></li>
+                        <li><a href="#who">WHO IS IT FOR ?</a></li>
+                        <li><a href="#agenda">AGENDA</a></li>
+                        <li><a href="#speakers">SPEAKERS</a></li>
+                        <li><a href="#recap">RECAP</a></li>
+                    </ul>
+                    <a class="btn-gradient" href="#register">REGISTER YOUR INTEREST-NOW!</a>
+                </nav>
+            </header>
+            <!-- Mobile Menu Overlay Page -->
+            <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+                <button class="mobile-menu-close" aria-label="Close menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="mobile-menu-content">
+                    <div class="mobile-menu-logo">
+                        <img src="./Zee All Images:Videos/Zee Logo.png" alt="Z r.i.s.e">
+                    </div>
+                    <nav class="mobile-menu-nav">
+                        <ul class="mobile-nav-list">
+                            <li><a href="#home">HOME</a></li>
+                            <li><a href="#who">WHO IS IT FOR ?</a></li>
+                            <li><a href="#agenda">AGENDA</a></li>
+                            <li><a href="#recap">RECAP</a></li>
+                            <li><a href="#speakers">SPEAKERS</a></li>
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu-button">
+                        <a class="btn-gradient" href="#register">REGISTER YOUR INTEREST-NOW!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-swiper swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1: Image -->
+                    <div class="swiper-slide">
+                        <div class="slide-bg" style="background-image:url('./Zee All Images:Videos/slider i1.png');">
+                        </div>
+                        <div class="home-logo">
+                            <img class="brand-mini" src="./Zee All Images:Videos/Zee Logo.png" alt="Z r.i.s.e">
+                        </div>
+                        <div class="hero-bottom">
+                            <h1>EMPOWERING GROWTH. ENABLING CONNECTIONS . UNLOCKING INNOVATIONS</h1>
+                            <a class="btn-gradient" href="#register">REGISTER YOUR INTEREST-NOW!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="about-section">
+            <div class="about-container">
+                <h2 class="about-title">ABOUT 'Z'RISE</h2>
+                <div class="about-gradient-line"></div>
+
+                <div class="about-content">
+                    <div class="about-logo-section">
+                        <img class="about-logo" src="./Zee All Images:Videos/Zee Logo.png" alt="Z r.i.s.e">
+                    </div>
+
+                    <div class="about-text">
+                        <p class="about-para">
+                            RISE is 'Z's flagship stakeholder engagement initiative, launched in 2025 to bring industry
+                            leaders, partners, and key stakeholders together on one platform. Conceived as a traveling
+                            knowledge-sharing and networking series, RISE explores regional opportunities, consumer
+                            insights, market trends, and innovative strategies—helping partners unlock growth across
+                            diverse audiences. Its core objectives are to empower stakeholders with actionable insights,
+                            strengthen 'Z's partnerships across markets, spotlight innovation in content and
+                            distribution, and celebrate regional strengths while reinforcing 'Z's national presence.
+                        </p>
+                        <p class="about-para">
+                            Since its inception, RISE has completed successful editions in major cities including
+                            Mumbai, Delhi, Bangalore, Chennai, Kolkata, Pune and Coimbatore. Each edition has been tailored to the
+                            region, ensuring relevance and impact while fostering meaningful connections. By blending
+                            deep local resonance with 'Z's national vision, RISE has established itself as a powerful
+                            platform for collaboration, innovation, and growth.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="who" class="who-is-it-for">
+            <div class="who-container">
+                <h2 class="who-title">WHO IS IT FOR?</h2>
+                <div class="about-gradient-line"></div>
+
+
+                <div class="who-cards">
+                    <div class="who-card ">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">RETAIL BRANDS & SMBs</h3>
+                        <p class="card-desc">Learn how TV + Digital can drive footfalls and sales.<br> <br>Case studies
+                            from scaled-up regional brands</p>
+                    </div>
+
+                    <div class="who-card">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">NEW AGE CLIENTS</h3>
+                        <p class="card-desc"><br>Access to simplified packages<br> End-to-end support from 'Z' sales
+                            cluster heads</p>
+                    </div>
+
+                    <div class="who-card">
+                        <div class="card-icon">
+                            <img src="./Zee All Images:Videos/digital-marketing-1 1.svg" alt="Marketers" width="48" height="48" style="filter: brightness(0) invert(1);">
+                        </div>
+                        <h3 class="card-title">MARKETERS</h3>
+                        <p class="card-desc"><br>Get insights from India's top marketing leaders. <br> <br>Explore
+                            omnichannel impact and audience segmentation</p>
+                    </div>
+
+                    <div class="who-card">
+                        <div class="card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">VCs & GROWTH ADVISORS</h3>
+                        <p class="card-desc">Discover rising regional brands.<br> <br>Explore co-investment and
+                            media-for-equity partnership models</p>
+                    </div>
+
+                    <div class="who-card">
+                        <div class="card-icon">
+                            <img src="./Zee All Images:Videos/men-couple-sitting-on-a-table-talking-about-business 1.svg" alt="Agencies & Consultants" width="48" height="48" style="filter: brightness(0) invert(1);">
+                        </div>
+                        <h3 class="card-title">AGENCIES & CONSULTANTS</h3>
+                        <p class="card-desc">Understand 'Z's integrated offerings.<br> <br>New business prospecting
+                            with retail/SMB founders in the room.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="agenda" class="agenda-section">
+            <div class="agenda-container">
+                <h2 class="agenda-title">AGENDA</h2>
+                <div class="about-gradient-line"></div>
+                <!-- City Tabs Swiper -->
+                <div class="city-tabs-swiper swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <button class="city-tab active" data-city="hyderabad">
+                                <span class="city-name">Hyderabad</span>
+                                <span class="city-date">12th December</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="kanpur">
+                                <span class="city-name">Kanpur</span>
+                                <span class="city-date">10th December</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="madurai">
+                                <span class="city-name">Madurai</span>
+                                <span class="city-date">6th December</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="kochi">
+                                <span class="city-name">Kochi</span>
+                                <span class="city-date">5th December</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="mysuru">
+                                <span class="city-name">Mysuru</span>
+                                <span class="city-date">29th November</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="coimbatore">
+                                <span class="city-name">Coimbatore</span>
+                                <span class="city-date">26th September</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="pune">
+                                <span class="city-name">Pune</span>
+                                <span class="city-date">15th November</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="kolkata">
+                                <span class="city-name">Kolkata</span>
+                                <span class="city-date">28th July</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="chennai">
+                                <span class="city-name">Chennai</span>
+                                <span class="city-date">25th July</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="bangalore">
+                                <span class="city-name">Bangalore</span>
+                                <span class="city-date">23rd July</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="delhi">
+                                <span class="city-name">Delhi</span>
+                                <span class="city-date">18th July</span>
+                            </button>
+                        </div>
+                        <div class="swiper-slide">
+                            <button class="city-tab" data-city="mumbai">
+                                <span class="city-name">Mumbai</span>
+                                <span class="city-date">11th July</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- City Tabs Navigation Arrows -->
+                <div class="city-tabs-nav">
+                    <button class="city-nav-btn city-nav-prev" aria-label="Previous">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="60" y1="12" x2="4" y2="12"></line>
+                            <polyline points="8 8 4 12 8 16"></polyline>
+                        </svg>
+                    </button>
+                    <button class="city-nav-btn city-nav-next" aria-label="Next">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="-50" y1="12" x2="20" y2="12"></line>
+                            <polyline points="16 8 20 12 16 16"></polyline>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Event Details -->
+                <div class="event-details">
+                    <div class="details-left">
+                        <p><strong>Date:</strong> <span class="event-date">December 12th, 2025</span></p>
+                        <p><strong>Location:</strong> <span class="event-location">Hyderabad</span></p>
+                        <p><strong>Venue:</strong> <span class="event-venue">ITC Kohenur, Hyderabad Knowledge City, Plot No. 5, Madhapur / Park Hyatt, Road No. 2, Banjara Hills</span></p>
+                    </div>
+                </div>
+
+                <!-- View Schedule Button - Centered -->
+                <div class="view-schedule-wrapper">
+                    <button class="btn-view-schedule btn-gradient" onclick="toggleSchedule()">VIEW SCHEDULE</button>
+                </div>
+
+                <!-- Timeline Schedule (Hidden by default) -->
+                <div class="timeline-schedule" id="timeline-schedule" style="display: none;">
+                    <div class="timeline-wrapper">
+                        <div class="timeline-line"></div>
+                        <div class="timeline-items">
+                            <div class="timeline-item right">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-time">9:00 AM - 10:00 AM</div>
+                                    <div class="timeline-title">WELCOME & REGISTRATION + BREAKFAST</div>
+                                    <div class="timeline-desc">Guest arrivals and registration</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item left">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">10:00 AM - 10:20 AM</div>
+                                    <div class="timeline-title">OPENING ADDRESS: MR.ASHISH SEHGAL</div>
+                                    <div class="timeline-desc">Welcome note and an overview of Z's omnichannel Ecosystem
+                                    </div>
+                                </div>
+                                <div class="timeline-dot"></div>
+                            </div>
+                            <div class="timeline-item right">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">10:20 AM – 10:40 AM</div>
+                                    <div class="timeline-title">Speaker Session 1: Mr. Abhijit Roy</div>
+                                    <div class="timeline-desc">"INNOVATION- Core engine of brand growth"</div>
+                                </div>
+                                <div class="timeline-dot"></div>
+                            </div>
+                            <div class="timeline-item left">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">10:40 AM – 11:00 AM</div>
+                                    <div class="timeline-title">Speaker Session 2: Ms. Poulomi Roy</div>
+                                    <div class="timeline-desc">Scaling with Story: The Strategic Role of Media in Brand
+                                        Growth</div>
+                                </div>
+                                <div class="timeline-dot"></div>
+                            </div>
+                            <div class="timeline-item right">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-time">11:00 AM - 11:20 AM</div>
+                                    <div class="timeline-title">Speaker Session 4: Mr Ashish Beriwala</div>
+                                    <div class="timeline-desc">Success of SRMB and its journey and the rise of MSME
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item left">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">11:50 AM - 12:20 PM</div>
+                                    <div class="timeline-title">Fireside Chat: Moderated by Mr Samrat Sengupta</div>
+                                    <div class="timeline-desc">Mr Samrat Sengupta - AVP, Brand Building, Ultratech
+                                        Cement</div>
+                                    <div class="timeline-desc">Cultural Capital to Market Capital: Building Scalable
+                                        MSMEs from the East</div>
+                                    <div class="timeline-title">Panelists:</div>
+                                    <div class="timeline-desc">• Mr. Ankit Daga - Director, Mcnroe Consumer Products
+                                        Pvt. Ltd.</div>
+                                    <div class="timeline-desc">• Ms. Poulami Roy - CMO, Joy Personal Care (RSH Global)
+                                    </div>
+                                    <div class="timeline-desc">• Mr. Muralikrishnan L - CMO & Co-founder, Wow Momo</div>
+                                    <div class="timeline-desc">• Dr. Suborno Bose - Chairman & CEO (I.I.H.M) & Indismart
+                                        Group Worldwide</div>
+                                </div>
+                                <div class="timeline-dot"></div>
+                            </div>
+                            <div class="timeline-item right">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">12:20 PM – 12:40 PM</div>
+                                    <div class="timeline-title">Speaker Session 4: Ms. Swarnali Kanjilal</div>
+                                    <div class="timeline-desc">Changing Customer Preference</div>
+                                </div>
+                                <div class="timeline-dot"></div>
+                            </div>
+                            <div class="timeline-item left">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">12:40 PM – 01:00 PM</div>
+                                    <div class="timeline-title">Speaker Session 5: Mr. Mahesh Motwani & Mr. Debarshi
+                                        Chakravorti</div>
+                                    <div class="timeline-desc">The Media Multiplier: Media Impact on Brands in Indian
+                                    </div>
+                                </div>
+                                <div class="timeline-dot"></div>
+                            </div>
+                            <div class="timeline-item right">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">01:00 PM Onwards</div>
+                                    <div class="timeline-title">Closing Note + Breakout Session</div>
+                                </div>
+                                <div class="timeline-dot"></div>
+                            </div>
+                            <div class="timeline-item left">
+                                <div class="timeline-content">
+                                    <div class="timeline-time">02:00 PM Onwards</div>
+                                    <div class="timeline-title">Networking Lunch</div>
+                                </div>
+                                <div class="timeline-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Speakers Section -->
+                <div id="speakers" class="speakers-section">
+                    <h3 class="speakers-title">Speakers at a glance</h3>
+                    <div class="speakers-slider swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="speaker-card">
+                                    <img src="./Zee All Images:Videos/Speakers 1.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="speaker-card"
+                                    onclick="openSpeakerModal('Mr.Ashish Sehgal', 'Chief Growth Officer', 'Zee Entertainment Enterprises Ltd.', './Zee All Images:Videos/speaker2.jpg')">
+                                    <img src="./Zee All Images:Videos/Speakers 2.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="speaker-card"
+                                    onclick="openSpeakerModal('Mr.Ashish Sehgal', 'Chief Growth Officer', 'Zee Entertainment Enterprises Ltd.', './Zee All Images:Videos/speaker3.jpg')">
+                                    <img src="./Zee All Images:Videos/Speakers 3.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="speaker-card"
+                                    onclick="openSpeakerModal('Mr.Ashish Sehgal', 'Chief Growth Officer', 'Zee Entertainment Enterprises Ltd.', './Zee All Images:Videos/speaker3.jpg')">
+                                    <img src="./Zee All Images:Videos/Speakers 4.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="speaker-card"
+                                    onclick="openSpeakerModal('Mr.Ashish Sehgal', 'Chief Growth Officer', 'Zee Entertainment Enterprises Ltd.', './Zee All Images:Videos/speaker3.jpg')">
+                                    <img src="./Zee All Images:Videos/Speakers 5.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="speaker-card">
+                                    <img src="./Zee All Images:Videos/Speakers 6.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="speaker-card"
+                                    onclick="openSpeakerModal('Mr.Ashish Sehgal', 'Chief Growth Officer', 'Zee Entertainment Enterprises Ltd.', './Zee All Images:Videos/speaker2.jpg')">
+                                    <img src="./Zee All Images:Videos/Speakers 7.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="speaker-card"
+                                    onclick="openSpeakerModal('Mr.Ashish Sehgal', 'Chief Growth Officer', 'Zee Entertainment Enterprises Ltd.', './Zee All Images:Videos/speaker3.jpg')">
+                                    <img src="./Zee All Images:Videos/Speakers 8.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="speaker-card"
+                                    onclick="openSpeakerModal('Mr.Ashish Sehgal', 'Chief Growth Officer', 'Zee Entertainment Enterprises Ltd.', './Zee All Images:Videos/speaker3.jpg')">
+                                    <img src="./Zee All Images:Videos/Speakers 9.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="speaker-card"
+                                    onclick="openSpeakerModal('Mr.Ashish Sehgal', 'Chief Growth Officer', 'Zee Entertainment Enterprises Ltd.', './Zee All Images:Videos/speaker3.jpg')">
+                                    <img src="./Zee All Images:Videos/Speakers 10.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="speaker-card"
+                                    onclick="openSpeakerModal('Mr.Ashish Sehgal', 'Chief Growth Officer', 'Zee Entertainment Enterprises Ltd.', './Zee All Images:Videos/speaker3.jpg')">
+                                    <img src="./Zee All Images:Videos/Speakers 11.png" alt="Mr.Ashish Sehgal"
+                                        class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                                    <div class="speaker-name">Mr.Ashish Sehgal</div>
+                                    <div class="speaker-title">Chief Growth Officer</div>
+                                    <div class="speaker-company">Zee Entertainment Enterprises Ltd.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+        <section id="recap" class="recap-section">
+            <div class="recap-container">
+                <!-- Mumbai Recap -->
+                <div class="recap-item" id="mumbai-recap">
+                    <h2 class="recap-title">MUMBAI RECAP</h2>
+                    <div class="about-gradient-line"></div>
+                    <button class="recap-btn btn-gradient" onclick="showMumbaiHighlights()">VIEW HIGHLIGHTS</button>
+
+                    <div class="recap-swiper recap-swiper-mumbai swiper recap-hidden">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/mumbai-recap-1.jpg" alt="Mumbai Recap 1"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/recap s1.png" alt="Mumbai Recap 1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/mumbai-recap-2.jpg" alt="Mumbai Recap 2"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/recap s2.png" alt="Mumbai Recap 2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/mumbai-recap-3.jpg" alt="Mumbai Recap 3"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen video-container">
+                                            <video autoplay muted loop src="./Zee All Images:Videos/vedant s2.mp4" alt="Mumbai Recap 3"></video>
+                                            <div class="video-controls">
+                                                <button class="video-btn play-pause-btn" aria-label="Play/Pause">
+                                                    <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                    <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                                                        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                                                    </svg>
+                                                </button>
+                                                <span class="video-time">
+                                                    <span class="current-time">0:00</span> / <span class="total-time">0:00</span>
+                                                </span>
+                                                <div class="video-progress-bar">
+                                                    <div class="video-progress"></div>
+                                                </div>
+                                                <button class="video-btn mute-btn" aria-label="Mute/Unmute">
+                                                    <svg class="unmute-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                                                    </svg>
+                                                    <svg class="mute-icon" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                                                        <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/mumbai-recap-4.jpg" alt="Mumbai Recap 4"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/vedant s3.jpg" alt="Mumbai Recap 4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/mumbai-recap-5.jpg" alt="Mumbai Recap 5"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/vedant s4.jpg" alt="Mumbai Recap 5">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/mumbai-recap-4.jpg" alt="Mumbai Recap 4"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen video-container">
+                                            <video autoplay muted loop src="./Zee All Images:Videos/vedant s5.mp4" alt="Mumbai Recap 4"></video>
+                                            <div class="video-controls">
+                                                <button class="video-btn play-pause-btn" aria-label="Play/Pause">
+                                                    <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                    <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                                                        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                                                    </svg>
+                                                </button>
+                                                <span class="video-time">
+                                                    <span class="current-time">0:00</span> / <span class="total-time">0:00</span>
+                                                </span>
+                                                <div class="video-progress-bar">
+                                                    <div class="video-progress"></div>
+                                                </div>
+                                                <button class="video-btn mute-btn" aria-label="Mute/Unmute">
+                                                    <svg class="unmute-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                                                    </svg>
+                                                    <svg class="mute-icon" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                                                        <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/mumbai-recap-5.jpg" alt="Mumbai Recap 5"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/vedant s6.jpg" alt="Mumbai Recap 5">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/mumbai-recap-5.jpg" alt="Mumbai Recap 5"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/vedant s7.jpg" alt="Mumbai Recap 5">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/mumbai-recap-4.jpg" alt="Mumbai Recap 4"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen video-container">
+                                            <video autoplay muted loop src="./Zee All Images:Videos/vedant s8.mp4" alt="Mumbai Recap 4"></video>
+                                            <div class="video-controls">
+                                                <button class="video-btn play-pause-btn" aria-label="Play/Pause">
+                                                    <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                        <path d="M8 5v14l11-7z"/>
+                                                    </svg>
+                                                    <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                                                        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                                                    </svg>
+                                                </button>
+                                                <span class="video-time">
+                                                    <span class="current-time">0:00</span> / <span class="total-time">0:00</span>
+                                                </span>
+                                                <div class="video-progress-bar">
+                                                    <div class="video-progress"></div>
+                                                </div>
+                                                <button class="video-btn mute-btn" aria-label="Mute/Unmute">
+                                                    <svg class="unmute-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                                                    </svg>
+                                                    <svg class="mute-icon" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                                                        <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/mumbai-recap-5.jpg" alt="Mumbai Recap 5"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/vedant s9.jpg" alt="Mumbai Recap 5">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <!-- Delhi Recap -->
+                <div class="recap-item" id="delhi-recap">
+                    <h2 class="recap-title">DELHI RECAP</h2>
+                    <div class="about-gradient-line"></div>
+                    <button class="recap-btn btn-gradient" onclick="showDelhiHighlights()">VIEW HIGHLIGHTS</button>
+
+                    <div class="recap-swiper recap-swiper-delhi swiper recap-hidden">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/delhi-recap-1.jpg" alt="Delhi Recap 1"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/recap d1.jpg" alt="Delhi Recap 1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/delhi-recap-2.jpg" alt="Delhi Recap 2"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/recap d2.jpg" alt="Delhi Recap 2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/delhi-recap-3.jpg" alt="Delhi Recap 3"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/recap d3.jpg" alt="Delhi Recap 3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/delhi-recap-4.jpg" alt="Delhi Recap 4"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/recap d4.jpg" alt="Delhi Recap 4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/delhi-recap-5.jpg" alt="Delhi Recap 5"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/recap d5.jpg" alt="Delhi Recap 5">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/delhi-recap-4.jpg" alt="Delhi Recap 4"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/recap d6.jpg" alt="Delhi Recap 4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="recap-slide-content">
+                                    <img src="./Zee All Images:Videos/delhi-recap-5.jpg" alt="Delhi Recap 5"
+                                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="recap-placeholder" style="display:none;">
+                                        <div class="recap-screen">
+                                            <img src="./Zee All Images:Videos/recap d7.jpg" alt="Delhi Recap 5">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="register" class="register-section">
+            <div class="register-container">
+                <h2 class="register-title">REGISTER YOUR INTEREST</h2>
+                <div class="about-gradient-line"></div>
+
+                <div class="register-content">
+                    <form id="register-form" class="register-form"
+                        action="https://formsubmit.co/vedantmodh8055@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="RISE Event Registration">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="#register">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="form-field">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" name="fullname" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="tel" id="mobile" name="mobile" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="city">City of Interest</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+
+                        <p class="privacy-text">YOUR INFORMATION WILL BE KEPT CONFIDENTIAL AND ONLY USED FOR RISE EVENT
+                            COMMUNICATION (WE WON'T SPAM YOU)</p>
+
+                        <button type="submit" class="register-submit btn-gradient">SUBMIT</button>
+                    </form>
+
+                    <div class="register-logo">
+                        <img src="./Zee All Images:Videos/Zee Logo.png" alt="Z r.i.s.e">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <h2 class="footer-heading">GOT A <br> QUESTION<br>OR INQUIRY ?</h2>
+                        <p class="footer-email">REACH OUT TO US AT<br><a
+                                href="mailto:khushboo.shah@zee.com">khushboo.shah@zee.com</a><br>
+                        <a href="mailto:ralston.marquis@zee.com">ralston.marquis@zee.com</a></p>
+                           
+                    </div>
+
+                    <div class="footer-right">
+                        <div class="footer-logo">
+                            <img src="./Zee All Images:Videos/Zee Logo.png" alt="Z r.i.s.e" class="footer-logo-img">
+                        </div>
+                        <div class="footer-social">
+                            <a href="https://www.linkedin.com/company/zee5adworld/" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.instagram.com/zeeadworld/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.facebook.com/ZeeAdWorld" class="social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-copyright">
+                    <p>ZEEL2025.ALL RIGHTS RESERVED</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Speaker Modal -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.14/dist/lenis.min.js"></script> 
+    <script src="script.js"></script>
+    <script>  document.getElementById('register-form').addEventListener('submit', function(e) {    var mobileInput = document.getElementById('mobile');    if (mobileInput) {      var val = mobileInput.value.trim();      if (!val.startsWith('+91')) {        mobileInput.value = '+91' + val;      }    }  });</script>
+
+</body>
+
+</html>

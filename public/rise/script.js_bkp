@@ -1,0 +1,2375 @@
+// Disable right-click, inspect, and developer tools
+(function () {
+  "use strict";
+
+  // Disable right-click context menu
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S, Ctrl+P, Ctrl+Shift+C
+  document.addEventListener("keydown", function (e) {
+    // F12
+    if (e.key === "F12") {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+Shift+I (Inspect)
+    if (e.ctrlKey && e.shiftKey && e.key === "I") {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+Shift+J (Console)
+    if (e.ctrlKey && e.shiftKey && e.key === "J") {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+Shift+C (Inspect Element)
+    if (e.ctrlKey && e.shiftKey && e.key === "C") {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+U (View Source)
+    if (e.ctrlKey && e.key === "u") {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+S (Save Page)
+    if (e.ctrlKey && e.key === "s") {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+P (Print)
+    if (e.ctrlKey && e.key === "p") {
+      e.preventDefault();
+      return false;
+    }
+
+    // Ctrl+Shift+K (Web Console in Firefox)
+    if (e.ctrlKey && e.shiftKey && e.key === "K") {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Disable text selection (optional - can be removed if needed)
+  document.addEventListener("selectstart", function (e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // Disable drag
+  document.addEventListener("dragstart", function (e) {
+    e.preventDefault();
+    return false;
+  });
+
+  // Clear console on load
+  //  console.clear();
+
+  // Override console methods
+  const noop = () => {};
+  const methods = [
+    "log",
+    "debug",
+    "info",
+    "warn",
+    "error",
+    "assert",
+    "dir",
+    "dirxml",
+    "group",
+    "groupEnd",
+    "time",
+    "timeEnd",
+    "count",
+    "trace",
+    "profile",
+    "profileEnd",
+  ];
+  methods.forEach((method) => {
+    //  window.console[method] = noop;
+  });
+})();
+
+// Mobile Menu Toggle
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.querySelector(".mobile-menu-toggle");
+  const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+  const mobileMenuClose = document.querySelector(".mobile-menu-close");
+  const mobileNavLinks = document.querySelectorAll(
+    ".mobile-nav-list a, .mobile-menu-button .btn-gradient"
+  );
+
+  function closeMenu() {
+    if (menuToggle) menuToggle.classList.remove("active");
+    if (mobileMenuOverlay) mobileMenuOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+    document.body.style.position = "";
+    document.body.style.width = "";
+    // Re-enable Lenis scrolling
+    if (lenis) {
+      lenis.start();
+    }
+  }
+
+  function openMenu() {
+    if (mobileMenuOverlay) mobileMenuOverlay.classList.add("active");
+    if (menuToggle) menuToggle.classList.add("active");
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+    // Disable Lenis scrolling when menu is open
+    if (lenis) {
+      lenis.stop();
+    }
+  }
+
+  if (menuToggle && mobileMenuOverlay) {
+    menuToggle.addEventListener("click", () => {
+      const isActive = !menuToggle.classList.contains("active");
+      if (isActive) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+    });
+
+    // Close button
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener("click", closeMenu);
+    }
+
+    // Close menu when clicking on a link
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    // Prevent scrolling on mobile menu
+    mobileMenuOverlay.addEventListener(
+      "touchmove",
+      (e) => {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
+
+    mobileMenuOverlay.addEventListener(
+      "wheel",
+      (e) => {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
+  }
+});
+
+// Play loader animation once, then open home when animation completes
+window.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("loader");
+  const main = document.querySelector("main");
+  const line = document.querySelector(".loader-line");
+
+  if (!loader || !main || !line) return;
+
+  // Ensure page behind loader is not scrollable/visible interactively
+  document.body.classList.add("no-scroll");
+
+  const finish = () => {
+    loader.classList.add("fade-out");
+
+    // Start GSAP timeline immediately with loader fade so there's no gap
+    if (window.gsap) {
+      const hero = document.querySelector(".home-hero");
+      const header = document.querySelector(".site-header"); // header is now fixed outside slider
+      const active =
+        document.querySelector(".swiper-slide-active") ||
+        document.querySelector(".swiper-slide");
+      const logo = active
+        ? active.querySelector(".home-logo")
+        : document.querySelector(".home-logo");
+      const h1 = active
+        ? active.querySelector(".hero-bottom h1")
+        : document.querySelector(".hero-bottom h1");
+      const cta = active
+        ? active.querySelector(".hero-bottom .btn-gradient, .hero-bottom .cta")
+        : document.querySelector(
+            ".hero-bottom .btn-gradient, .hero-bottom .cta"
+          );
+
+      // Split heading into word spans
+      if (h1 && !h1.dataset.split) {
+        const text = h1.textContent;
+        // Split by spaces and filter out empty strings
+        const words = text.split(/\s+/).filter((word) => word.length > 0);
+        h1.innerHTML = words
+          .map((word) => `<span class="word">${word}</span>`)
+          .join(" ");
+        h1.dataset.split = "true";
+      }
+
+      const words = document.querySelectorAll(".hero-bottom .word");
+
+      gsap.set(hero, { opacity: 0 });
+      gsap.set(header, { opacity: 0, y: -20 });
+      gsap.set(logo, { opacity: 0, scale: 0.98 });
+      gsap.set(words, { opacity: 0 });
+      if (cta) gsap.set(cta, { opacity: 0, y: 50 });
+
+      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+      tl.to(hero, { opacity: 1, duration: 0.6 })
+        .to(header, { opacity: 1, y: 0, duration: 0.5 }, "-=0.2")
+        .to(logo, { opacity: 1, scale: 1, duration: 0.5 }, "-=0.1")
+        .to(words, { opacity: 1, duration: 0.3, stagger: 0.1 }, "-=0.1")
+        .to(cta, { opacity: 1, y: 0, duration: 0.45 }, "-=0.1");
+    }
+
+    setTimeout(() => {
+      // Hide and then remove from DOM so it cannot reappear
+      loader.classList.add("hidden");
+      main.classList.remove("hidden");
+      if (loader.parentNode) loader.parentNode.removeChild(loader);
+      document.body.classList.remove("no-scroll");
+
+      // Initialize ScrollTrigger animations after loader finishes
+      initScrollAnimations();
+    }, 420);
+  };
+
+  // If user prefers reduced motion, don't wait long
+  const prefersReduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  if (prefersReduced) {
+    setTimeout(finish, 300);
+    return;
+  }
+
+  // Initialize Swiper early so it's ready when loader finishes
+  let swiper;
+  try {
+    if (window.Swiper) {
+      swiper = new Swiper(".hero-swiper", {
+        speed: 700,
+        loop: false,
+        allowTouchMove: false,
+        navigation: false,
+        pagination: false,
+      });
+    }
+  } catch (e) {}
+
+  // Wait for the CSS animation to end exactly once
+  line.addEventListener("animationend", finish, { once: true });
+});
+
+// Initialize Lenis Smooth Scroll
+let lenis = null;
+
+function initLenis() {
+  if (typeof Lenis !== "undefined") {
+    // Check if mobile device
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ) ||
+      (window.innerWidth <= 768 && "ontouchstart" in window);
+
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: isMobile ? true : false, // Enable on mobile for smooth scrolling
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    // Integrate Lenis with GSAP ScrollTrigger
+    if (window.gsap && window.ScrollTrigger) {
+      lenis.on("scroll", ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      // Fallback animation frame loop if GSAP is not available
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+  }
+}
+
+// ScrollTrigger animations for About section
+function initScrollAnimations() {
+  if (!window.gsap || !window.ScrollTrigger) {
+    console.log("GSAP or ScrollTrigger not loaded");
+    return;
+  }
+
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Initialize Lenis after GSAP is ready
+  if (!lenis) {
+    initLenis();
+  }
+
+  // Wait a bit for DOM to be ready
+  setTimeout(() => {
+    const aboutSection = document.querySelector(".about-section");
+    if (!aboutSection) {
+      console.log("About section not found");
+      return;
+    }
+
+    const title = aboutSection.querySelector(".about-title");
+    const gradientLine = aboutSection.querySelector(".about-gradient-line");
+    const logoSection = aboutSection.querySelector(".about-logo-section");
+    const textParas = aboutSection.querySelectorAll(".about-para");
+
+    // Set initial states
+    if (title) gsap.set(title, { opacity: 0, y: -30 });
+    if (gradientLine)
+      gsap.set(gradientLine, { scaleX: 0, transformOrigin: "center" });
+    if (logoSection) gsap.set(logoSection, { opacity: 0, x: -50 });
+    if (textParas.length) gsap.set(textParas, { opacity: 0, x: 50 });
+
+    // Animate title
+    if (title) {
+      gsap.to(title, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: "top 60%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+
+    // Animate gradient line
+    if (gradientLine) {
+      gsap.to(gradientLine, {
+        scaleX: 1,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: "top 55%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+
+    // Animate logo section
+    if (logoSection) {
+      gsap.to(logoSection, {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: "top 50%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+
+    // Animate text paragraphs with stagger
+    if (textParas.length) {
+      gsap.to(textParas, {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: aboutSection,
+          start: "top 50%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+
+    // Animate WHO IS IT FOR section
+    const whoSection = document.querySelector(".who-is-it-for");
+    if (whoSection) {
+      const whoTitle = whoSection.querySelector(".who-title");
+      const whoGradientLine = whoSection.querySelector(".about-gradient-line");
+      const whoCards = whoSection.querySelectorAll(".who-card");
+
+      // Set initial states
+      if (whoTitle) gsap.set(whoTitle, { opacity: 0, y: -30 });
+      if (whoGradientLine)
+        gsap.set(whoGradientLine, { scaleX: 0, transformOrigin: "center" });
+      if (whoCards.length) gsap.set(whoCards, { opacity: 0, y: 50 });
+
+      // Animate title
+      if (whoTitle) {
+        gsap.to(whoTitle, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: whoSection,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      // Animate gradient line
+      if (whoGradientLine) {
+        gsap.to(whoGradientLine, {
+          scaleX: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: whoSection,
+            start: "top 55%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      // Animate cards
+      if (whoCards.length) {
+        gsap.to(whoCards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: whoSection,
+            start: "top 50%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+    }
+
+    // Animate RECAP section
+    const recapSection = document.querySelector(".recap-section");
+    if (recapSection) {
+      const recapItems = recapSection.querySelectorAll(
+        ".recap-item:not(.recap-hidden)"
+      );
+      recapItems.forEach((item) => {
+        const recapTitle = item.querySelector(".recap-title");
+        const recapGradientLine = item.querySelector(".about-gradient-line");
+        const recapBtn = item.querySelector(".recap-btn");
+
+        // Set initial states
+        if (recapTitle) gsap.set(recapTitle, { opacity: 0, y: -30 });
+        if (recapGradientLine)
+          gsap.set(recapGradientLine, { scaleX: 0, transformOrigin: "center" });
+        if (recapBtn) gsap.set(recapBtn, { opacity: 0, y: 20 });
+
+        // Create a timeline for synchronized animation
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: "top 70%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        // Animate all elements together
+        if (recapTitle)
+          tl.to(
+            recapTitle,
+            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+            0
+          );
+        if (recapGradientLine)
+          tl.to(
+            recapGradientLine,
+            { scaleX: 1, duration: 0.8, ease: "power2.out" },
+            0.1
+          );
+        if (recapBtn)
+          tl.to(
+            recapBtn,
+            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+            0.2
+          );
+      });
+    }
+
+    // Animate REGISTER section
+    const registerSection = document.querySelector(".register-section");
+    if (registerSection) {
+      const registerTitle = registerSection.querySelector(".register-title");
+      const registerGradientLine = registerSection.querySelector(
+        ".about-gradient-line"
+      );
+      const registerForm = registerSection.querySelector(".register-form");
+      const registerLogo = registerSection.querySelector(".register-logo");
+
+      if (registerTitle) gsap.set(registerTitle, { opacity: 0, y: -30 });
+      if (registerGradientLine)
+        gsap.set(registerGradientLine, {
+          scaleX: 0,
+          transformOrigin: "center",
+        });
+      if (registerForm) gsap.set(registerForm, { opacity: 0, x: -50 });
+      if (registerLogo) gsap.set(registerLogo, { opacity: 0, x: 50 });
+
+      if (registerTitle) {
+        gsap.to(registerTitle, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: registerSection,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      if (registerGradientLine) {
+        gsap.to(registerGradientLine, {
+          scaleX: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: registerSection,
+            start: "top 55%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      if (registerForm) {
+        gsap.to(registerForm, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: registerSection,
+            start: "top 50%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      if (registerLogo) {
+        gsap.to(registerLogo, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: registerSection,
+            start: "top 50%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+    }
+
+    // Animate AGENDA section
+    const agendaSection = document.querySelector(".agenda-section");
+    if (agendaSection) {
+      const agendaTitle = agendaSection.querySelector(".agenda-title");
+      const agendaGradientLine = agendaSection.querySelector(
+        ".about-gradient-line"
+      );
+      const cityTabs = agendaSection.querySelector(".city-tabs-swiper");
+      const speakersTitle = agendaSection.querySelector(".speakers-title");
+
+      if (agendaTitle) gsap.set(agendaTitle, { opacity: 0, y: -30 });
+      if (agendaGradientLine)
+        gsap.set(agendaGradientLine, { scaleX: 0, transformOrigin: "center" });
+      if (cityTabs) gsap.set(cityTabs, { opacity: 0, y: 20 });
+      if (speakersTitle) gsap.set(speakersTitle, { opacity: 0, x: -30 });
+
+      if (agendaTitle) {
+        gsap.to(agendaTitle, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: agendaSection,
+            start: "top 60%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      if (agendaGradientLine) {
+        gsap.to(agendaGradientLine, {
+          scaleX: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: agendaSection,
+            start: "top 55%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      if (cityTabs) {
+        gsap.to(cityTabs, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: agendaSection,
+            start: "top 50%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      if (speakersTitle) {
+        gsap.to(speakersTitle, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: agendaSection,
+            start: "top 40%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+    }
+
+    // Animate FOOTER section
+    const footerSection = document.querySelector(".site-footer");
+    if (footerSection) {
+      const footerContent = footerSection.querySelector(".footer-content");
+      const footerLeft = footerSection.querySelector(".footer-left");
+      const footerRight = footerSection.querySelector(".footer-right");
+      const footerCopyright = footerSection.querySelector(".footer-copyright");
+
+      if (footerLeft) gsap.set(footerLeft, { opacity: 0, x: -50 });
+      if (footerRight) gsap.set(footerRight, { opacity: 0, x: 50 });
+      if (footerCopyright) gsap.set(footerCopyright, { opacity: 0, y: 20 });
+
+      if (footerLeft) {
+        gsap.to(footerLeft, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: footerSection,
+            start: "top 99%",
+            end: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      if (footerRight) {
+        gsap.to(footerRight, {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: footerSection,
+            start: "top 99%",
+            end: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      if (footerCopyright) {
+        gsap.to(footerCopyright, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: footerSection,
+            start: "top 99%",
+            end: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+    }
+
+    // Refresh ScrollTrigger to recalculate positions
+    ScrollTrigger.refresh();
+  }, 100);
+}
+
+// Recap Section Toggle Functions
+let mumbaiSwiper = null;
+let delhiSwiper = null;
+
+// Function to refresh scroll after content changes
+function refreshScroll() {
+  // Force a reflow to ensure height is recalculated
+  void document.body.offsetHeight;
+
+  // Refresh ScrollTrigger if available
+  if (window.ScrollTrigger) {
+    ScrollTrigger.refresh();
+  }
+
+  // Refresh Lenis if available
+  if (lenis) {
+    lenis.resize();
+  }
+
+  // Additional refresh after a short delay to ensure all content is rendered
+  setTimeout(() => {
+    if (window.ScrollTrigger) {
+      ScrollTrigger.refresh();
+    }
+    if (lenis) {
+      lenis.resize();
+    }
+  }, 300);
+}
+
+function initRecapSwiper(swiperEl, swiperInstance) {
+  if (!swiperInstance && window.Swiper && swiperEl) {
+    return new Swiper(swiperEl, {
+      slidesPerView: 1.2,
+      centeredSlides: true,
+      spaceBetween: 30,
+      pagination: {
+        el: swiperEl.querySelector(".swiper-pagination"),
+        clickable: true,
+      },
+      loop: false,
+      speed: 600,
+      breakpoints: {
+        640: {
+          slidesPerView: 1.3,
+          spaceBetween: 30,
+        },
+        768: {
+          slidesPerView: 1.4,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 1.5,
+          spaceBetween: 50,
+        },
+      },
+    });
+  } else if (swiperInstance) {
+    swiperInstance.update();
+    return swiperInstance;
+  }
+  return null;
+}
+
+function showMumbaiHighlights() {
+  const mumbaiRecap = document.getElementById("mumbai-recap");
+  const mumbaiSwiperEl = mumbaiRecap?.querySelector(".recap-swiper-mumbai");
+  const mumbaiBtn = mumbaiRecap?.querySelector(".recap-btn");
+
+  if (mumbaiSwiperEl && mumbaiBtn) {
+    // Toggle slider visibility
+    mumbaiSwiperEl.classList.toggle("recap-hidden");
+
+    if (!mumbaiSwiperEl.classList.contains("recap-hidden")) {
+      // Show slider
+      mumbaiBtn.textContent = "HIDE HIGHLIGHTS";
+      mumbaiBtn.classList.remove("btn-gradient");
+      mumbaiBtn.classList.add("btn-dark");
+      mumbaiBtn.setAttribute("onclick", "hideMumbaiHighlights()");
+
+      // Initialize Swiper
+      setTimeout(() => {
+        mumbaiSwiper = initRecapSwiper(mumbaiSwiperEl, mumbaiSwiper);
+        // Refresh scroll after swiper is initialized
+        refreshScroll();
+      }, 100);
+    } else {
+      // Hide slider
+      mumbaiBtn.textContent = "VIEW HIGHLIGHTS";
+      mumbaiBtn.classList.remove("btn-dark");
+      mumbaiBtn.classList.add("btn-gradient");
+      mumbaiBtn.setAttribute("onclick", "showMumbaiHighlights()");
+      // Refresh scroll after hiding
+      refreshScroll();
+    }
+  }
+}
+
+function hideMumbaiHighlights() {
+  showMumbaiHighlights(); // Toggle
+}
+
+function showDelhiHighlights() {
+  const delhiRecap = document.getElementById("delhi-recap");
+  const delhiSwiperEl = delhiRecap?.querySelector(".recap-swiper-delhi");
+  const delhiBtn = delhiRecap?.querySelector(".recap-btn");
+
+  if (delhiSwiperEl && delhiBtn) {
+    // Toggle slider visibility
+    delhiSwiperEl.classList.toggle("recap-hidden");
+
+    if (!delhiSwiperEl.classList.contains("recap-hidden")) {
+      // Show slider
+      delhiBtn.textContent = "HIDE HIGHLIGHTS";
+      delhiBtn.classList.remove("btn-gradient");
+      delhiBtn.classList.add("btn-dark");
+      delhiBtn.setAttribute("onclick", "hideDelhiHighlights()");
+
+      // Initialize Swiper
+      setTimeout(() => {
+        delhiSwiper = initRecapSwiper(delhiSwiperEl, delhiSwiper);
+        // Refresh scroll after swiper is initialized
+        refreshScroll();
+      }, 100);
+    } else {
+      // Hide slider
+      delhiBtn.textContent = "VIEW HIGHLIGHTS";
+      delhiBtn.classList.remove("btn-dark");
+      delhiBtn.classList.add("btn-gradient");
+      delhiBtn.setAttribute("onclick", "showDelhiHighlights()");
+      // Refresh scroll after hiding
+      refreshScroll();
+    }
+  }
+}
+
+function hideDelhiHighlights() {
+  showDelhiHighlights(); // Toggle
+}
+
+// Video Controls Functionality
+function initVideoControls() {
+  const videoContainers = document.querySelectorAll(".video-container");
+
+  videoContainers.forEach((container) => {
+    // Skip if already initialized
+    if (container.dataset.controlsInitialized === "true") return;
+
+    const video = container.querySelector("video");
+    if (!video) return;
+
+    // Mark as initialized
+    container.dataset.controlsInitialized = "true";
+
+    const playPauseBtn = container.querySelector(".play-pause-btn");
+    const muteBtn = container.querySelector(".mute-btn");
+    const progressBar = container.querySelector(".video-progress-bar");
+    const progress = container.querySelector(".video-progress");
+    const currentTimeEl = container.querySelector(".current-time");
+    const totalTimeEl = container.querySelector(".total-time");
+    const playIcon = container.querySelector(".play-icon");
+    const pauseIcon = container.querySelector(".pause-icon");
+    const unmuteIcon = container.querySelector(".unmute-icon");
+    const muteIcon = container.querySelector(".mute-icon");
+
+    // Format time helper
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs.toString().padStart(2, "0")}`;
+    }
+
+    // Update time display
+    function updateTime() {
+      if (currentTimeEl) {
+        currentTimeEl.textContent = formatTime(video.currentTime);
+      }
+      if (totalTimeEl && !isNaN(video.duration)) {
+        totalTimeEl.textContent = formatTime(video.duration);
+      }
+    }
+
+    // Update progress bar
+    function updateProgress() {
+      if (progress && !isNaN(video.duration) && video.duration > 0) {
+        const percent = (video.currentTime / video.duration) * 100;
+        progress.style.width = percent + "%";
+      }
+    }
+
+    // Play/Pause functionality
+    if (playPauseBtn) {
+      playPauseBtn.addEventListener("click", () => {
+        if (video.paused) {
+          video.play();
+          if (playIcon) playIcon.style.display = "none";
+          if (pauseIcon) pauseIcon.style.display = "block";
+        } else {
+          video.pause();
+          if (playIcon) playIcon.style.display = "block";
+          if (pauseIcon) pauseIcon.style.display = "none";
+        }
+      });
+    }
+
+    // Mute/Unmute functionality
+    if (muteBtn) {
+      muteBtn.addEventListener("click", () => {
+        video.muted = !video.muted;
+        if (video.muted) {
+          if (unmuteIcon) unmuteIcon.style.display = "none";
+          if (muteIcon) muteIcon.style.display = "block";
+        } else {
+          if (unmuteIcon) unmuteIcon.style.display = "block";
+          if (muteIcon) muteIcon.style.display = "none";
+        }
+      });
+    }
+
+    // Progress bar click to seek
+    if (progressBar) {
+      progressBar.addEventListener("click", (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        video.currentTime = percent * video.duration;
+      });
+    }
+
+    // Update progress and time
+    video.addEventListener("timeupdate", () => {
+      updateProgress();
+      updateTime();
+    });
+
+    // Update total time when video metadata loads
+    video.addEventListener("loadedmetadata", () => {
+      updateTime();
+      updateProgress();
+    });
+
+    // Update play/pause icon based on video state
+    video.addEventListener("play", () => {
+      if (playIcon) playIcon.style.display = "none";
+      if (pauseIcon) pauseIcon.style.display = "block";
+    });
+
+    video.addEventListener("pause", () => {
+      if (playIcon) playIcon.style.display = "block";
+      if (pauseIcon) pauseIcon.style.display = "none";
+    });
+
+    // Initial state - show pause icon if video is playing
+    if (!video.paused) {
+      if (playIcon) playIcon.style.display = "none";
+      if (pauseIcon) pauseIcon.style.display = "block";
+    }
+
+    // Initial mute state
+    if (video.muted) {
+      if (unmuteIcon) unmuteIcon.style.display = "none";
+      if (muteIcon) muteIcon.style.display = "block";
+    }
+  });
+}
+
+// Initialize video controls when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  initVideoControls();
+
+  // Re-initialize when recap sliders are shown (videos might be dynamically loaded)
+  // Use MutationObserver to watch for new video containers
+  const observer = new MutationObserver(() => {
+    initVideoControls();
+  });
+
+  // Observe changes in recap sections
+  const mumbaiRecap = document.getElementById("mumbai-recap");
+  const delhiRecap = document.getElementById("delhi-recap");
+
+  if (mumbaiRecap) {
+    observer.observe(mumbaiRecap, { childList: true, subtree: true });
+  }
+  if (delhiRecap) {
+    observer.observe(delhiRecap, { childList: true, subtree: true });
+  }
+});
+
+// Registration Form Handler
+window.addEventListener("DOMContentLoaded", () => {
+  const registerForm = document.getElementById("register-form");
+
+  if (!registerForm) {
+    console.error("Register form not found");
+    return;
+  }
+
+  // Handle form field filled state and label visibility
+  if (registerForm) {
+    const formFields = registerForm.querySelectorAll(".form-field input");
+    formFields.forEach((input) => {
+      const formField = input.closest(".form-field");
+      const label = formField.querySelector("label");
+
+      // Handle input event
+      input.addEventListener("input", () => {
+        if (input.value.trim() !== "") {
+          formField.classList.add("filled");
+          if (label) label.style.opacity = "0";
+          if (label) label.style.visibility = "hidden";
+        } else {
+          formField.classList.remove("filled");
+          if (!input.matches(":focus")) {
+            if (label) label.style.opacity = "1";
+            if (label) label.style.visibility = "visible";
+          }
+        }
+      });
+
+      // Handle focus event
+      input.addEventListener("focus", () => {
+        if (label) {
+          label.style.opacity = "0";
+          label.style.visibility = "hidden";
+        }
+      });
+
+      // Handle blur event
+      input.addEventListener("blur", () => {
+        if (input.value.trim() === "") {
+          if (label) {
+            label.style.opacity = "1";
+            label.style.visibility = "visible";
+          }
+        }
+      });
+
+      // Check initial state
+      if (input.value.trim() !== "") {
+        formField.classList.add("filled");
+        if (label) {
+          label.style.opacity = "0";
+          label.style.visibility = "hidden";
+        }
+      } else {
+        // Ensure label is visible if input is empty
+        if (label) {
+          label.style.opacity = "1";
+          label.style.visibility = "visible";
+        }
+      }
+    });
+  }
+if (registerForm) {
+  registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!registerForm.checkValidity()) {
+      registerForm.reportValidity();
+      return;
+    }
+
+    const submitBtn = registerForm.querySelector(".register-submit");
+    const originalText = submitBtn.textContent;
+
+    submitBtn.textContent = "SUBMITTING...";
+    submitBtn.disabled = true;
+
+    const formData = new FormData(registerForm);
+
+    try {
+      const response = await fetch(
+        "https://certatio-prod.zee5.com/certatio/zee-adworld-rise/entry",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.get("fullname"),
+            emailID: formData.get("email"),
+            mobile: formData.get("mobile"),
+            company: formData.get("company"),
+            city: formData.get("city"),
+          }),
+        }
+      );
+
+      let result = {};
+      try {
+        result = await response.json();
+      } catch {
+        result = {};
+      }
+
+      console.log("response", result);
+
+      // ---- SUCCESS ----
+     if (response.ok) {
+        alert("Thank you! Your registration has been submitted successfully.");
+        registerForm.reset();
+
+        // Reset labels after reset
+        registerForm.querySelectorAll(".form-field label").forEach((label) => {
+          label.style.opacity = "1";
+          label.style.visibility = "visible";
+        });
+      }
+      // ---- ERROR ----
+      else {
+        const errorMsg =
+          result?.error?.userDisplayMessage ||
+          result?.error?.errorMessage ||
+          "Submission failed. Please try again.";
+        alert(errorMsg);
+      }
+
+    } catch (err) {
+      console.error("Network or unexpected error:", err);
+      alert("Something went wrong. Please try again later.");
+    }
+
+    // ---- RESET BUTTON ----
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  });
+}
+
+
+  /* if (registerForm) {
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            console.log('Form submit event triggered');
+
+            // Validate form
+            if (!registerForm.checkValidity()) {
+                console.log('Form validation failed');
+                registerForm.reportValidity();
+                return;
+            }
+
+            console.log('Form is valid, proceeding with submission');
+
+            const submitBtn = registerForm.querySelector('.register-submit');
+            if (!submitBtn) {
+                console.error('Submit button not found');
+                return;
+            }
+
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'SUBMITTING...';
+            submitBtn.disabled = true;
+
+            // Get form data
+            const formData = new FormData(registerForm)
+
+            // Add email explicitly to form data
+           // formData.append('_to', 'vedantmodh8055@gmail.com');
+           let data;
+            try {
+                // Submit to FormSubmit service
+                console.log('Sending form data to FormSubmit...');
+                      const response1 = await fetch("https://certatio-prod.zee5.com/certatio/zee-adworld-rise/entry", {
+                        method: "POST",
+                        headers: {
+                            "content-type": "application/json",
+                            "sec-fetch-mode": "cors",
+                            "sec-fetch-site": "cross-site",
+                        },
+                        body: JSON.stringify({
+                                name: formData.get("fullname"),
+                                emailID: formData.get("email"),
+                                mobile: formData.get("mobile"),
+                                company:formData.get("company"),
+                                city: formData.get("city"),
+                            })
+                        });
+
+                        const response = await response1.json();
+
+
+
+                try {
+                    data =  response
+                } catch (parseError) {
+                    console.error('Failed to parse JSON:', parseError);
+                    // If response is not JSON, check if it's a success message
+                    if (response.status === 200 || response.status === 302  ) {
+                        data = { success: true };
+                    } else {
+                        // Try to extract error message
+
+                    }
+                }
+
+                console.log('Response data:', data);
+
+                // Check for success (FormSubmit.co returns success in different formats)
+                // Status 200 or 302 usually means success
+                if (data.success === true || response.status === 200 || response.status === 302 || data.message  ) {
+                    alert('Thank you! Your registration has been submitted successfully. We will contact you soon.');
+                    registerForm.reset();
+                    // Reset label visibility after form reset
+                    const formFields = registerForm.querySelectorAll('.form-field input');
+                    formFields.forEach(input => {
+                        const formField = input.closest('.form-field');
+                        const label = formField.querySelector('label');
+                        if (label && input.value.trim() === '') {
+                            label.style.opacity = '1';
+                            label.style.visibility = 'visible';
+                        }
+                    });
+                } else {
+                    throw new Error('Submission failed: ' + (data.message || 'Unknown error'));
+                }
+            } catch (error) {
+                 alert(data.error.userDisplayMessage);
+                console.error('Form submission error:', error);
+              //  alert('There was an error submitting your registration. Please try again or contact us directly at vedantmodh8055@gmail.com\n\nError: ' + error.message);
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    } */
+});
+
+// AGENDA Section Functions
+let cityTabsSwiper = null;
+let speakersSwiper = null;
+
+// City data
+const cityData = {
+  "pune": {
+    "date": "November 15th, 2025",
+    "location": "Pune",
+    "venue": "The Westin, Koregaon Park",
+    "timeline": [
+      {
+        "time": "05:00 PM – 5:30 PM",
+        "title": "Registration & Hi-Tea",
+        "desc": "",
+        "side": "right"
+      },
+      {
+        "time": "05:30 PM – 6:00 PM",
+        "title": "Ms. Laxmi Shetty",
+        "desc": "Z’s Omnichannel Ecosystem",
+        "presentedBy": "Ms. Laxmi Shetty - Head - Advertisement Revenue, Broadcast & Digital, Zee Entertainment Enterprises Ltd",
+        "side": "left"
+      },
+      {
+        "time": "6:00 PM – 6:30 PM",
+        "title": "Mrs. Zelam Chaubal",
+        "desc": "",
+        "presentedBy": "Mrs. Zelam Chaubal - Joint M.D, Kesari Tours & Travels",
+        "side": "right"
+      },
+      {
+        "time": "6:30 PM – 7:00 PM",
+        "title": "Mr. Tanmay Kanitkar",
+        "desc": "The Art of Staying Relevant: Navigating the Ever-Changing Landscape of Marriage",
+        "presentedBy": "Mr. Tanmay Kanitkar - Director, Anuroop Wiwaha Pvt Ltd",
+        "side": "left"
+      },
+      {
+        "time": "7:00 PM – 7:30 PM",
+        "title": "Mr. Girish Chitale",
+        "desc": "",
+        "presentedBy": "Mr. Girish Chitale - Acting Partner, M/S B.G. Chitale",
+        "side": "right"
+      },
+      {
+        "time": "7:30 PM – 7:45 PM",
+        "title": "Mr. Manoj Gokhale",
+        "desc": "The Media Mix Decoded: Getting the Right Ad in the Right Place",
+        "presentedBy": "Mr. Manoj Gokhale - Director, Media & TA",
+        "side": "left"
+      },
+      {
+        "time": "7:45 PM – 8:15 PM",
+        "title": "Mr. Sunil Musti & Mr. Hemanth Rohera",
+        "desc": "From Idea to Impact: Building Scalable Strategies in a Changing Market",
+        "presentedBy": "Mr. Sunil Musti - Investor/Head Strategy, eMedica & Mr. Hemanth Rohera - Founder & CEO, eMedica",
+        "side": "right"
+      },
+      {
+        "time": "8:15 PM – 8:45 PM",
+        "title": "Ms. Laxmi Shetty & Mr. Gunjarav Nayak",
+        "desc": "Z' Omnichannel Strength & Custom Package Offering",
+        "presentedBy": "Ms. Laxmi Shetty - Head - Advertisement Revenue, Broadcast & Digital, ZEEL & Mr. Gunjarav Nayak - Chief Sales Officer, Hindi Movies, Youth Cluster, Brand Works & Influencer Marketing, Digital, ZEEL",
+        "side": "left"
+      },
+      {
+        "time": "8:45 PM Onwards",
+        "title": "Closing Note + Networking Cocktails + Dinner",
+        "desc": "",
+        "side": "right"
+      }
+    ],
+    "speakers": [
+    {
+      "name": "Ms. Laxmi Shetty",
+      "title": "Head - Advertisement Revenue, Broadcast & Digital",
+      "company": "Zee Entertainment Enterprises Ltd",
+      "image": "./Zee All Images:Videos/Speakers cm1.jpg"
+    },
+    {
+      "name": "Mrs. Zelam Chaubal",
+      "title": "Joint M.D",
+      "company": "Kesari Tours & Travels",
+      "image": "./Zee All Images:Videos/Speakers p1.jpg"
+    },
+    {
+      "name": "Mr. Tanmay Kanitkar",
+      "title": "Director",
+      "company": "Anuroop Wiwaha Pvt Ltd",
+      "image": "./Zee All Images:Videos/Speakers p2.jpg"
+    },
+    {
+      "name": "Mr. Girish Chitale",
+      "title": "Acting Partner",
+      "company": "M/S B.G. Chitale",
+      "image": "./Zee All Images:Videos/Speakers p3.jpg"
+    },
+    {
+      "name": "Mr. Manoj Gokhale",
+      "title": "Director, Media & TA",
+      "company": "",
+      "image": "./Zee All Images:Videos/Speakers p4.jpg"
+    },
+    {
+      "name": "Mr. Sunil Musti",
+      "title": "Investor / Head Strategy",
+      "company": "eMedica",
+      "image": "./Zee All Images:Videos/Speakers p5.jpg"
+    },
+    {
+      "name": "Mr. Hemanth Rohera",
+      "title": "Founder & CEO",
+      "company": "eMedica",
+      "image": "./Zee All Images:Videos/Speakers p6.jpg"
+    },
+    {
+      "name": "Mr. Gunjarav Nayak",
+      "title": "Chief Sales Officer - Hindi Movies, Youth Cluster, Brand Works & Influencer Marketing, Digital",
+      "company": "Zee Entertainment Enterprises Ltd",
+      "image": "./Zee All Images:Videos/Speakers p7.jpg"
+    }
+  ],
+  },
+  coimbatore: {
+    date: "September 26th, 2025",
+    location: "Coimbatore",
+    venue: "Fairfield by Marriot",
+    timeline: [
+      {
+        time: "03:00 PM – 03:30 PM",
+        title: "Welcome & Registration / High Tea",
+        desc: "Guest arrivals and registration",
+        side: "right",
+      },
+      {
+        time: "03:30 PM – 04:15 PM",
+        title: "Opening Address: Mrs. Laxmi Shetty",
+        desc: 'Laxmi Shetty, Head - Advertisement Revenue, Broadcast & Digital, Zee Entertainment Enterprises | Welcome note and an overview of "Z’s Omnichannel Ecosystem"',
+        side: "left",
+      },
+      {
+        time: "04:15 PM – 04:45 PM",
+        title: "Speaker Session 1: Mr. P.K. Aroomugum",
+        desc: "IMr. P.K. Aroomugum | Managing Director | The Chennai Silks & Sree Kumaran Thangamaligai | Gold of Our Culture: Building a National Brand on Regional Roots",
+        side: "right",
+      },
+      {
+        time: "04:45 PM – 05:15 PM",
+        title: "Speaker Session 2: Mr. B. Gokul",
+        desc: "Mr. B. Gokul | Partner | VNC Electrodes (Indicus Paints) | Building Bharat’s New-Age Manufacturing Brands: From Legacy to Innovation",
+        side: "left",
+      },
+      {
+        time: "05:15 PM – 05:45 PM",
+        title: "Speaker Session 3: Mr. G. Muralidharan",
+        desc: "Mr. G. Muralidharan | Managing Director | KAG Tiles India Pvt Ltd | From Floor to Fame: Building a Pan-India Brand from the South (KAG Tiles)",
+        side: "right",
+      },
+      {
+        time: "05:45 PM – 06:15 PM",
+        title:
+          "Speaker Session 4: Mr. N. R .R. Vijayakumar (Venture Capitalist)",
+        desc: "Mr. N. R .R. Vijayakumar | Managing Director | FounderPassion Foundation (VC) | From Ideas to Impact: Building an Innovation-First Generation",
+        side: "left",
+      },
+      {
+        time: "06:15 PM – 07:00 PM",
+        title: "'Z' Network Ecosystem Showcase: Rajnish Gupta",
+        desc: "Rajnish Gupta, Chief Sales Officer, South Cluster | Showcase of 'Z' Channels omnichannel strength + custom offering packages",
+        side: "right",
+      },
+      {
+        time: "07:00 PM – 07:30 PM",
+        title: "Closing Note + Breakout Session",
+        side: "left",
+      },
+      {
+        time: "07:30 PM Onwards",
+        title: "Networking Dinner",
+        desc: "-",
+        side: "right",
+      },
+    ],
+    speakers: [
+      // { name: 'Mr.Ashish Sehgal', title: 'Chief Growth Officer', company: 'Zee Entertainment Enterprises Ltd.', image: './Zee All Images:Videos/Speakers 1.png' },
+      {
+        name: "Laxmi Shetty",
+        title: "Head - Advertisement Revenue, Broadcast & Digital",
+        company: "Zee Entertainment Enterprises",
+        image: "./Zee All Images:Videos/Speakers cm1.jpg",
+      },
+      {
+        name: "Mr. P.K. Aroomugum",
+        title: "Managing Director",
+        company: "The Chennai Silks & Sree Kumaran Thangamaligai",
+        image: "./Zee All Images:Videos/Speakers cm2.jpg",
+      },
+      {
+        name: "Mr. B. Gokul",
+        title: "Partner",
+        company: "VNC Electrodes (Indicus Paints)",
+        image: "./Zee All Images:Videos/Speakers cm3.jpg",
+      },
+      {
+        name: "Mr. G. Muralidharan",
+        title: "Managing Director",
+        company: "KAG Tiles India Pvt Ltd",
+        image: "./Zee All Images:Videos/Speakers cm4.jpg",
+      },
+      {
+        name: "Mr. N. R .R. Vijayakumar",
+        title: "Managing Director",
+        company: "FounderPassion Foundation (VC)",
+        image: "./Zee All Images:Videos/Speakers cm5.jpg",
+      },
+      {
+        name: "Rajnish Gupta",
+        title: "Chief Sales Officer",
+        company: "South Cluster",
+        image: "./Zee All Images:Videos/Speakers cm6.jpg",
+      },
+    ],
+  },
+  kolkata: {
+    date: "July 28th, 2025",
+    location: "Kolkata",
+    venue: "ITC Royal Bengal",
+    timeline: [
+      {
+        time: "9:00 AM - 10:00 AM",
+        title: "WELCOME & REGISTRATION + BREAKFAST",
+        desc: "Guest arrivals and registration",
+        side: "right",
+      },
+      {
+        time: "10:00 AM - 10:20 AM",
+        title: "OPENING ADDRESS: MR.ASHISH SEHGAL",
+        desc: "Welcome note and an overview of Z's omnichannel Ecosystem",
+        side: "left",
+      },
+      {
+        time: "10:20 AM – 10:40 AM",
+        title: "Speaker Session 1: Mr. Abhijit Roy",
+        desc: '"INNOVATION- Core engine of brand growth"',
+        side: "right",
+      },
+      {
+        time: "10:40 AM – 11:00 AM",
+        title: "Speaker Session 2: Ms. Poulomi Roy",
+        desc: "Scaling with Story: The Strategic Role of Media in Brand Growth",
+        side: "left",
+      },
+      {
+        time: "11:00 AM - 11:20 AM",
+        title: "Speaker Session 4: Mr Ashish Beriwala",
+        desc: "Success of SRMB and its journey and the rise of MSME",
+        side: "right",
+      },
+      {
+        time: "11:50 AM - 12:20 PM",
+        title: "Fireside Chat: Moderated by Mr Samrat Sengupta",
+        desc: "Mr Samrat Sengupta - AVP, Brand Building, Ultratech Cement | Cultural Capital to Market Capital: Building Scalable MSMEs from the East | Panelists: • Mr. Ankit Daga - Director, Mcnroe Consumer Products Pvt. Ltd. • Ms. Poulami Roy - CMO, Joy Personal Care (RSH Global) • Mr. Muralikrishnan L - CMO & Co-founder, Wow Momo • Dr. Suborno Bose - Chairman & CEO (I.I.H.M) & Indismart Group Worldwide",
+        side: "left",
+      },
+      {
+        time: "12:20 PM – 12:40 PM",
+        title: "Speaker Session 4: Ms. Swarnali Kanjilal",
+        desc: "Changing Customer Preference",
+        side: "right",
+      },
+      {
+        time: "12:40 PM – 01:00 PM",
+        title:
+          "Speaker Session 5: Mr. Mahesh Motwani & Mr. Debarshi Chakravorti",
+        desc: "The Media Multiplier: Media Impact on Brands in Indian",
+        side: "left",
+      },
+      {
+        time: "01:00 PM Onwards",
+        title: "Closing Note + Breakout Session",
+        desc: "",
+        side: "right",
+      },
+      {
+        time: "02:00 PM Onwards",
+        title: "Networking Lunch",
+        desc: "",
+        side: "left",
+      },
+    ],
+    speakers: [
+      // { name: 'Mr.Ashish Sehgal', title: 'Chief Growth Officer', company: 'Zee Entertainment Enterprises Ltd.', image: './Zee All Images:Videos/Speakers 1.png' },
+      {
+        name: "Mr. Abhijit Roy",
+        title: "MD & CEO",
+        company: "Berger Paints India Ltd.",
+        image: "./Zee All Images:Videos/Speakers 3.jpg",
+      },
+      {
+        name: "Ms. Poulami Roy",
+        title: "CMO",
+        company: "Joy Personal Care (RSH Global)",
+        image: "./Zee All Images:Videos/Speakers 4.png",
+      },
+      {
+        name: "Ms. Swarnali Kanjilal",
+        title: "Director",
+        company: "Adi Mohan Kanjilal Marketing Private Limited",
+        image: "./Zee All Images:Videos/Speakers 5.png",
+      },
+      {
+        name: "Mr. Ashish Beriwala",
+        title: "Director",
+        company: "SRMB Group",
+        image: "./Zee All Images:Videos/Speakers 6.png",
+      },
+      {
+        name: "Mr. Mahesh Motwani",
+        title: "Executive VP",
+        company: "Initiative Media",
+        image: "./Zee All Images:Videos/Speakers 7.png",
+      },
+      {
+        name: "Mr. Debarshi Chakravorti",
+        title: "VP, Business & Communications Planning",
+        company: "Interactive Avenues",
+        image: "./Zee All Images:Videos/Speakers 8.png",
+      },
+      {
+        name: "Mr. Samrat Sengupta",
+        title: "AVP, Brand Building",
+        company: "Ultratech Cement",
+        image: "./Zee All Images:Videos/Speakers 9.png",
+      },
+      {
+        name: "Mr. Ankit Daga",
+        title: "Director",
+        company: "Mcnroe Consumer Products Pvt. Ltd.",
+        image: "./Zee All Images:Videos/Speakers 10.png",
+      },
+      {
+        name: "Mr. Muralikrishnan L",
+        title: "CMO & Co-founder",
+        company: "ZWow Momo",
+        image: "./Zee All Images:Videos/Speakers 11.png",
+      },
+      {
+        name: "Dr. Suborno Bose",
+        title: "Chairman & CEO",
+        company: "I.I.H.M. & Indismart Group Worldwide",
+        image: "./Zee All Images:Videos/Speakers 12.png",
+      },
+      {
+        name: "Ms. Laxmi Shetty",
+        title:
+          "Chief Sales Strategy & Maximisation Officer • Sales Planning & Strategy",
+        company: "Zee Entertainment Enterprises Ltd.",
+        image: "./Zee All Images:Videos/Speakers cm1.jpg",
+      },
+      {
+        name: "Mr. Sanjoy Chatterjee",
+        title: "Chief Sales Officer",
+        company: "Zee Entertainment Enterprises Ltd.",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+    ],
+  },
+  chennai: {
+    date: "July 25th, 2025",
+    location: "Chennai",
+    venue: "Westin Velchary",
+    timeline: [
+      {
+        time: "9:00 AM - 10:00 AM",
+        title: "WELCOME & REGISTRATION + BREAKFAST",
+        desc: "Guest arrivals and registration",
+        side: "right",
+      },
+      {
+        time: "10:00 AM - 10:20 AM",
+        title: "OPENING ADDRESS: MR.ASHISH SEHGAL",
+        desc: "Welcome note and an overview of Z's omnichannel Ecosystem",
+        side: "left",
+      },
+      {
+        time: "10:20 AM – 10:40 AM",
+        title: "Speaker Session 1: Shri. BA. Ramesh",
+        desc: "Tradition Meets Transformation: The Thangamayil Way of Building a Future-Ready Retail Brand",
+        side: "right",
+      },
+      {
+        time: "10:40 AM – 11:00 AM",
+        title: "Speaker Session 2: Mr. Senthil Kumar Suthanandam",
+        desc: "Churn, Don’t Burn: Sustaining Legacy Brands in the Age of Disruption",
+        side: "left",
+      },
+      {
+        time: "11:00 AM - 11:30 AM",
+        title:
+          "Z Network Ecosystem Showcase: Ms. Laxmi Shetty & Mr. Rajnish Gupta",
+        desc: "Showcase of 'Z' Channels omnichannel strength & custom offering packages",
+        side: "right",
+      },
+      {
+        time: "11:30 AM - 11:50 AM",
+        title: "Speaker Session 3: Mr. Navaraja Murugan",
+        desc: "From Local Legacy to Lifestyle Leader: Navigating Ecommerce with Purpose & People",
+        side: "left",
+      },
+      {
+        time: "11:50 AM – 12:10 PM ",
+        title: "Speaker Session 4: Mr. Chandrasekar Kupperi",
+        desc: "CCapital Meets Culture: Backing Bharat’s Next-Gen Brands with Local Soul and Global Ambition",
+        side: "right",
+      },
+      {
+        time: "12:10 PM - 12:40 PM",
+        title: "Fireside Chat: Moderated by Mr. K. Satyanarayana",
+        desc: "Mr. K. Satyanarayana - Sr. Vice President - R.K. Swamy Media Group | Panel Topic: Decoding the TN Playbook – Growth, Granularity & the Power of Regional Love",
+        title: "Panelists:",
+        desc: "• Mr. Hari Hara Sudhan - Head of Marketing Communication - Nippon Paint India |• Mr. A. Senthil Kumar - Chief Business Officer - Thalappakatti Hotels Pvt. Ltd.|• Mr. Arvind Naidu - Head of Marketing - KTV Health Foods (Sunland) | • Mr. Ashish Sehgal - Chief Growth Officer - Zee Entertainment Enterprises Ltd.,• Mr. Arvind Naidu - Head of Marketing - KTV Health Foods (Sunland)• Mr Ashish Sehgal - Chief Growth Officer - Zee Entertainment Enterprises Ltd.",
+        side: "left",
+      },
+      {
+        time: "12:40 PM Onwards",
+        title: "Closing Note + Breakout Session",
+        desc: "",
+        side: "right",
+      },
+      {
+        time: "01:00 PM Onwards",
+        title: "Networking Lunch",
+        desc: "",
+        side: "left",
+      },
+    ],
+    speakers: [
+      // { name: 'Mr.Ashish Sehgal', title: 'Chief Growth Officer', company: 'Zee Entertainment Enterprises Ltd.', image: './Zee All Images:Videos/Speakers 1.png' },
+      {
+        name: "Mr. Arvind Naidu",
+        title: "Head of Marketing",
+        company: "KTV Health Foods (Sunland)",
+        image: "./Zee All Images:Videos/Speakers 2.png",
+      },
+      {
+        name: "Mr. A. Senthil Kumar",
+        title: "Chief Business Officer",
+        company: "Thalappakatti Hotels Pvt. Ltd.",
+        image: "./Zee All Images:Videos/Speakers c3.png",
+      },
+      {
+        name: "Mr. Navaraja Murugan",
+        title: "Director",
+        company: "Darling Digital World Pvt Ltd.",
+        image: "./Zee All Images:Videos/Speakers c4.png",
+      },
+      {
+        name: "Mr. K. Satyanarayana",
+        title: "Sr. Vice President",
+        company: "R.K. Swamy Media Group",
+        image: "./Zee All Images:Videos/Speakers c5.png",
+      },
+      {
+        name: "Mr. Hari Hara Sudhan",
+        title: "Head of Marketing Communication",
+        company: "Nippon Paint India",
+        image: "./Zee All Images:Videos/Speakers c6.png",
+      },
+      {
+        name: "Shri. BA. Ramesh",
+        title: "Joint Managing Director",
+        company: "Thangamayil Jewellery Ltd.",
+        image: "./Zee All Images:Videos/Speakers c7.png",
+      },
+      {
+        name: "Mr. Senthil Kumar Suthanandam",
+        title: "Senior General Manager",
+        company: "Hatsun Agro Products Ltd.",
+        image: "./Zee All Images:Videos/Speakers c8.png",
+      },
+      {
+        name: "Mr. Chandrasekar Kupperi",
+        title: "Founder",
+        company: "Anova Corporate Services Pvt. Ltd.",
+        image: "./Zee All Images:Videos/Speakers c9.png",
+      },
+      {
+        name: "Ms. Laxmi Shetty",
+        title:
+          "Chief Sales Strategy & Maximisation Officer • Sales Planning & Strategy",
+        company: "Zee Entertainment Enterprises Ltd.",
+        image: "./Zee All Images:Videos/Speakers cm1.jpg",
+      },
+      {
+        name: "Mr. Rajnish Gupta",
+        title: "Chief Sales Officer",
+        company: "Zee Entertainment Enterprises Ltd.",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+    ],
+  },
+  bangalore: {
+    date: "July 23rd, 2025",
+    location: "Bangalore",
+    venue: "ITC Gardenia",
+    timeline: [
+      {
+        time: "09:00 AM – 10:15 AM",
+        title: "WELCOME & REGISTRATION + BREAKFAST",
+        desc: "Guest arrivals and registration",
+        side: "right",
+      },
+      {
+        time: "10:15 AM – 10:45 AM",
+        title: "OPENING ADDRESS: MR.ASHISH SEHGAL",
+        desc: "Welcome note and an overview of Z's omnichannel Ecosystem",
+        side: "left",
+      },
+      {
+        time: "10:45 AM – 11:05 AM",
+        title: "Speaker Session 1 - Mrs. Rasika Prashant",
+        desc: '"Winning attention in cluttered world - FMCG strategies in influencing modern consumer"',
+        side: "right",
+      },
+      {
+        time: "11:05 AM – 11:25 AM",
+        title: "Speaker Session 2: Mr. Shuvadip Banerjee",
+        desc: '"From shelf to scrolls - Reimagining the FMCG growth with new age media and consumer insights"',
+        side: "left",
+      },
+      {
+        time: "11:25 AM – 11:45 AM",
+        title: "Speaker Session 3: Mr. Rahul Joseph",
+        desc: '"From 5 stores to INR 1,500 Crs, turning trust into real treasure - The White Gold Revolution"',
+        side: "right",
+      },
+      {
+        time: "11:45 AM – 12:15 PM ",
+        title: "Z Network Ecosystem Showcase: Mrs. Laxmi + Mr. V.S. Raghavan",
+        desc: "Showcase of 'Z' Channels omnichannel strength + custom offering packages",
+        side: "left",
+      },
+      {
+        time: "12:15 PM – 12:35 PM",
+        title: "Speaker Session 4: Mr. Rajesh Dembla",
+        desc: '"What makes VCs say YES - Decoding startup success from pitch to scale and media levers that drive it"',
+        side: "right",
+      },
+      {
+        time: "12:35 PM – 12:55 PM",
+        title: "Speaker Session 5: Mr. Ramesh Arvind",
+        desc: "",
+        side: "left",
+      },
+      {
+        time: "12:55 PM - 01:30 PM",
+        title: "Fireside Chat: Moderated by Mrs. Aparna Thakur",
+        desc: 'Aparna Thakur - Sr. VP, HiveMinds | "One Bharat many screens - Navigating omni-channel India with brand purpose" | Panelists:',
+        desc: "• Ashish Sehgal - Chief Growth Officer, Zee Entertainment Enterprises Ltd |• Nischay AG - Co-founder & CEO, JAR |• Venkatesh Vijayaraghavan - MD and CEO, TTK prestige | • Shuvadip Banerjee - Chief Digital Marketing Officer, ITC Ltd",
+        side: "right",
+      },
+      {
+        time: "01:30 PM Onwards",
+        title: "Closing Note + Breakout Session",
+        desc: "",
+        side: "left",
+      },
+      {
+        time: "02:00 PM Onwards",
+        title: "Networking Lunch",
+        desc: "",
+        side: "right",
+      },
+    ],
+    speakers: [
+      // { name: 'Mr.Ashish Sehgal', title: 'Chief Growth Officer', company: 'Zee Entertainment Enterprises Ltd.', image: './Zee All Images:Videos/Speakers 1.png' },
+      {
+        name: "Nischay AG",
+        title: "Co-founder & CEO",
+        company: "JAR",
+        image: "./Zee All Images:Videos/Speakers b2.png",
+      },
+      {
+        name: "Rahul Joseph",
+        title: "Founder",
+        company: "White Gold",
+        image: "./Zee All Images:Videos/Speakers b3.png",
+      },
+      {
+        name: "Rajesh Dembla",
+        title: "Growth Visionary & Innovation",
+        company: "Backer",
+        image: "./Zee All Images:Videos/Speakers b4.png",
+      },
+      {
+        name: "Ramesh Arvind",
+        title: "Actor and Film Maker",
+        company: "",
+        image: "./Zee All Images:Videos/Speakers b5.png",
+      },
+      {
+        name: "Shuvadip Banerjee",
+        title: "Chief Digital Marketing Officer",
+        company: "ITC Ltd.",
+        image: "./Zee All Images:Videos/Speakers b6.png",
+      },
+      {
+        name: "Aparna Thakur",
+        title: "Sr. Vice President",
+        company: "Hive Minds",
+        image: "./Zee All Images:Videos/Speakers b7.png",
+      },
+      {
+        name: "Rasika Prashant",
+        title: "Chief Marketing Officer & Co-Founder",
+        company: "Tata Soulfull",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+      {
+        name: "Laxmi Shetty",
+        title:
+          "Chief Sales Strategy & Maximisation Officer • Sales Planning & Strategy",
+        company: "Zee Entertainment Enterprises Ltd.",
+        image: "./Zee All Images:Videos/Speakers cm1.jpg",
+      },
+      {
+        name: "V. S. Raghavan",
+        title: "Chief Sales Officer",
+        company: "Zee Entertainment Enterprises Ltd.",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+      {
+        name: "Venkatesh Vijayaraghavan",
+        title: "MD and CEO",
+        company: "TTK Prestige",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+    ],
+  },
+  delhi: {
+    date: "July 18th, 2025",
+    location: "Delhi",
+    venue: "Roseate House",
+    timeline: [
+      {
+        time: "9:00 AM - 10:00 AM",
+        title: "WELCOME & REGISTRATION + BREAKFAST",
+        desc: "Guest arrivals and registration",
+        side: "right",
+      },
+      {
+        time: "10:00 AM - 10:20 AM",
+        title: "OPENING ADDRESS: MR.ASHISH SEHGAL",
+        desc: "Welcome note and an overview of Z's omnichannel Ecosystem",
+        side: "left",
+      },
+      {
+        time: "10:20 AM – 10:40 AM",
+        title: "Speaker Session 1: Kunal Sharma",
+        desc: "In-Grained: When Culture, Consumers and Commitment collide",
+        side: "right",
+      },
+      {
+        time: "10:40 AM – 11:00 AM",
+        title: "Speaker Session 2: Saurabh Munjal",
+        desc: "Breaking the Bottle: How Regional Beverages Are Uncapping Global Giants",
+        side: "left",
+      },
+      {
+        time: "11:00 AM - 11:20 AM",
+        title: "Speaker Session 3: Manik Pasricha",
+        desc: "Unlocking Investment Opportunities for Start-Ups",
+        side: "right",
+      },
+      {
+        time: "11:20 AM - 11:40 AM",
+        title: "Speaker Session 4: Harkawal Singh",
+        desc: "Elevating Brand Performance: In a Cluttered Ecosystem",
+        side: "left",
+      },
+      {
+        time: "11:40 AM – 12:10 PM ",
+        title: "Z Network Ecosystem Showcase: Laxmi + Ali",
+        desc: "Showcase of Zee Network's omnichannel strengths + Custom Offering Packages",
+        side: "right",
+      },
+      {
+        time: "12:15 PM - 01:00 PM",
+        title: "Fireside Chat: Moderated by Mr. Mohit Joshi - Havas Media",
+        desc: "Mr. Mohit Joshi - CEO - Havas Media| Culture as Currency : Building Brands that belong in Bharat| Panelists:",
+        desc: "• Ashish Sehgal - Chief Growth Officer, Zee Entertainment Enterprises Ltd| • Raj Vikram - Co-founder & CEO, Beast Life |• Harkanwal Singh - Vice President, Marketing - Rohit Surfactant Pvt Ltd.| • Saurabh Munjal - Co-Founder and Chief Executive Officer - Lahori Zeera|• Manav Sethi - Head Media Martech & Growth - VIDA",
+        side: "left",
+      },
+      {
+        time: "01:00 PM Onwards",
+        title: "Closing Note + Breakout Session",
+        desc: "-",
+        side: "right",
+      },
+      {
+        time: "02:00 PM Onwards",
+        title: "Networking Lunch",
+        desc: "-",
+        side: "left",
+      },
+    ],
+    speakers: [
+      // { name: 'Mr.Ashish Sehgal', title: 'Chief Growth Officer', company: 'Zee Entertainment Enterprises Ltd.', image: './Zee All Images:Videos/Speakers 1.png' },
+      {
+        name: "Harkawal Singh",
+        title: "Vice President, Marketing",
+        company: "Rohit Surfactant Pvt Ltd.",
+        image: "./Zee All Images:Videos/Speakers d2.png",
+      },
+      {
+        name: "Kunal Sharma",
+        title: "Head of Marketing & Business Head, Modern Trade and E-Commerce",
+        company: "KRBL Limited",
+        image: "./Zee All Images:Videos/Speakers d3.png",
+      },
+      {
+        name: "Saurabh Munjal",
+        title: "Co-Founder and Chief Executive Officer",
+        company: "Lahori Zeera",
+        image: "./Zee All Images:Videos/Speakers d4.png",
+      },
+      {
+        name: "Manik Pasricha",
+        title: "Vice President of Investments",
+        company: "Titan Capital",
+        image: "./Zee All Images:Videos/Speakers d5.jpg",
+      },
+      {
+        name: "Laxmi Shetty",
+        title: "Chief Sales Strategy & Maximisation Officer",
+        company: "Zee Entertainment Enterprises Ltd.",
+        image: "./Zee All Images:Videos/Speakers cm1.jpg",
+      },
+      {
+        name: "Ali Zaidi",
+        title:
+          "Chief Sales Officer - Hindi GEC & FTA GEC Cluster - Sales North",
+        company: "Zee Entertainment Enterprises Ltd.",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+      {
+        name: "Mr. Mohit Joshi",
+        title: "Chief Executive Officer",
+        company: "Havas Media",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+      {
+        name: "Raj Vikram",
+        title: "Co-founder & CEO",
+        company: "Beast Life",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+      {
+        name: "Manav Sethi",
+        title: "Head Media Martech & Growth",
+        company: "VIDA",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+    ],
+  },
+  mumbai: {
+    date: "July 11th, 2025",
+    location: "Mumbai",
+    venue: "Grand Hyatt, Santacruz",
+    timeline: [
+      {
+        time: "09:00 AM – 09:30 AM",
+        title: "Welcome & Registration",
+        desc: "Guest arrivals and registration",
+        side: "right",
+      },
+      {
+        time: "09:30 AM – 10:00 AM",
+        title: "Networking Breakfast",
+        desc: "Breakfast with open networking among clients, agencies, VCs, and the Z team",
+        side: "left",
+      },
+      {
+        time: "10:00 AM – 10:20 AM",
+        title: "Opening Address",
+        desc: "Ashish Sehgal - Chief Growth Officer, Zee Entertainment Enterprises Ltd. | Welcome note and an overview of Z’s Omnichannel Ecosystem; introduction to the 7-language content strategy",
+        side: "right",
+      },
+      {
+        time: "10:20 AM – 10:35 AM",
+        title: "Time to RISE – Our Road to Effectiveness in Brand Connect",
+        desc: "Raghavendra Katte – AVP, Brand Performance, Jyothi Labs Ltd. | Marketing insights on brand performance and Z’s growth strategy",
+        side: "left",
+      },
+      {
+        time: "10:35 AM – 10:50 AM",
+        title: "Legacy to Leadership – The Waman Hari Pethe Growth Story",
+        desc: "Ashish Pethe - Partner, Waman Hari Pethe Jewellers | Retail transformation through generations and building brand legacy",
+        side: "right",
+      },
+      {
+        time: "10:50 AM – 11:05 AM",
+        title:
+          "Regional Roots, National Shine – Pitambari’s Brand Transformation Story",
+        desc: "Parikshit Prabhudesai – Vice Chairman, Pitambari Products Pvt. Ltd. | From a regional player to a national brand – the Pitambari journey",
+        side: "left",
+      },
+      {
+        time: "11:05 AM - 11:20 AM",
+        title:
+          "Beyond Capital – How Storytelling, Strategy & Scale Drive VC-Backed Brands",
+        desc: "Parikshit Prabhudesai – Vice Chairman, Pitambari Products Pvt. Ltd. | Vansh Oberoi – Managing Partner, VC Grid",
+        side: "right",
+      },
+      {
+        time: "11:20 AM – 11:35 PM",
+        title: "From Reels to Reality – The AI Powered Future of Content",
+        desc: "Shubhranshu Singh – Chief Marketing Officer, TATA Motors | AI-driven content strategies and evolving consumer media behavior",
+        side: "left",
+      },
+      {
+        time: "11:35 PM – 11:50 PM",
+        title: "The Evolving Role of Television in Today’s Media Landscape",
+        desc: "Ashwin Padmanabhan – Chief Operating Officer, WPP Media South Asia | Fresh perspectives on the relevance and evolution of TV in a digital era",
+        side: "right",
+      },
+      {
+        time: "11:50 PM - 12:10 PM",
+        title: "Short Break",
+        desc: "Refreshments and informal networking",
+        side: "left",
+      },
+      {
+        time: "12:10 PM - 12:40 PM",
+        title:
+          "Panel – Roots and Reach: Traditional Media’s Role in a Connected India",
+        desc: "Panellist’s: Raghavendra Katte, Ajay Gupta, Ashish Sehgal, Shubhranshu Singh, Ashish Pethe |Cross-industry discussion on media’s influence and evolving consumer habits",
+        side: "right",
+      },
+      {
+        time: "12:40 PM – 1:10 PM",
+        title: "Z Network Ecosystem Showcase + Custom Offering Packages",
+        desc: "Laxmi Shetty - Chief Sales Strategy & Maximisation Officer, Gunjarav Nayak - Chief Sales Officer | Showcase of Zee Network’s omnichannel strengths and tailored advertising solutions",
+        side: "left",
+      },
+      {
+        time: "1:10 PM – 1:20 PM",
+        title: "Closing Note",
+        desc: "Ashish Sehgal - Chief Growth Officer, Zee Entertainment Enterprises Ltd. | Wrap-up and closing remarks for the day | Wrap-up and closing remarks for the day",
+        side: "right",
+      },
+      {
+        time: "1:20 PM – 2:00 PM",
+        title: "Breakout Zone – Informal Interactions & Networking",
+        desc: "Z Sales Cluster Heads | Open conversation zone for clients and Zee teams",
+        side: "left",
+      },
+      {
+        time: "2:00 PM Onwards",
+        title: "Networking Lunch",
+        desc: "- | Group lunch and casual networking",
+        side: "right",
+      },
+    ],
+    speakers: [
+      // { name: 'Mr.Ashish Sehgal', title: 'Chief Growth Officer', company: 'Zee Entertainment Enterprises Ltd.', image: './Zee All Images:Videos/Speakers 1.png' },
+      {
+        name: "Shubhranshu Singh",
+        title: "Chief Marketing Officer",
+        company: "TATA Motors",
+        image: "./Zee All Images:Videos/Speakers m2.png",
+      },
+      {
+        name: "Ajay Gupta",
+        title:
+          "Founder of Capital Foods ( Ching's Secret ) & Counsultant to Tata Consumer.",
+        image: "./Zee All Images:Videos/Speakers m3.png",
+      },
+      {
+        name: "Ashish Pethe",
+        title: "Partner",
+        company: "Waman Hari Pethe Jewellers",
+        image: "./Zee All Images:Videos/Speakers m4.jpg",
+      },
+      {
+        name: "Laxmi Shetty",
+        title:
+          "Chief Sales Strategy & Maximisation Officer • Sales Planning & Strategy",
+        company: "Zee Entertainment Enterprises Ltd.",
+        image: "./Zee All Images:Videos/Speakers cm1.jpg",
+      },
+      {
+        name: "Parikshit Prabhudesai",
+        title: "Vice Chairman",
+        company: "Pitambari Products Pvt. Ltd.",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+      {
+        name: "Ashwin Padmanabhan",
+        title: "Chief Operating Officer",
+        company: "WPP Media South Asia",
+        image: "./Zee All Images:Videos/Speakers 13.png",
+      },
+    ],
+  },
+};
+
+// Initialize AGENDA section
+function initAgendaSection() {
+  // Initialize City Tabs Swiper
+  const cityTabsEl = document.querySelector(".city-tabs-swiper");
+  if (cityTabsEl && window.Swiper) {
+    const prevBtn = document.querySelector(".city-nav-prev");
+    const nextBtn = document.querySelector(".city-nav-next");
+
+    cityTabsSwiper = new Swiper(cityTabsEl, {
+      slidesPerView: 1.5,
+      spaceBetween: 10,
+      centeredSlides: false,
+      freeMode: false,
+      navigation: {
+        nextEl: nextBtn,
+        prevEl: prevBtn,
+      },
+      breakpoints: {
+        640: { slidesPerView: 3, spaceBetween: 20 },
+        768: { slidesPerView: 4, spaceBetween: 20 },
+        1024: { slidesPerView: 5, spaceBetween: 20 },
+      },
+    });
+
+    // Add click handlers to city tabs
+    const cityTabs = document.querySelectorAll(".city-tab");
+    cityTabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        const city = tab.getAttribute("data-city");
+        switchCity(city);
+
+        // On mobile (below 480px), scroll the clicked city tab to the left (0%)
+        if (window.innerWidth <= 480 && cityTabsSwiper) {
+          // Find the parent swiper-slide of the clicked tab
+          const slideElement = tab.closest(".swiper-slide");
+          if (slideElement) {
+            // Get all slides and find the index of the clicked slide
+            const allSlides = Array.from(
+              cityTabsEl.querySelectorAll(".swiper-slide")
+            );
+            const slideIndex = allSlides.indexOf(slideElement);
+
+            if (slideIndex !== -1) {
+              // Scroll to the slide, positioning it at the left (0%)
+              cityTabsSwiper.slideTo(slideIndex, 300);
+            }
+          }
+        }
+      });
+    });
+  }
+
+  // Initialize Speakers Swiper
+  const speakersEl = document.querySelector(".speakers-slider");
+  if (speakersEl && window.Swiper) {
+    speakersSwiper = new Swiper(speakersEl, {
+      slidesPerView: 2,
+      spaceBetween: 20,
+      pagination: {
+        el: speakersEl.querySelector(".swiper-pagination"),
+        clickable: true,
+      },
+      navigation: {
+        nextEl: speakersEl.querySelector(".swiper-button-next"),
+        prevEl: speakersEl.querySelector(".swiper-button-prev"),
+      },
+      breakpoints: {
+        480: { slidesPerView: 2, spaceBetween: 20 },
+        640: { slidesPerView: 2, spaceBetween: 30 },
+        768: { slidesPerView: 3, spaceBetween: 30 },
+        1024: { slidesPerView: 4, spaceBetween: 40 },
+      },
+    });
+  }
+
+  // Initialize with default city (Pune) speakers and timeline
+  if (cityData.pune) {
+    if (cityData.pune.speakers) {
+      updateSpeakers(cityData.pune.speakers);
+    }
+    if (cityData.pune.timeline) {
+      updateTimeline(cityData.pune.timeline);
+    }
+  }
+}
+
+// Update timeline
+function updateTimeline(timelineData) {
+  const timelineItems = document.querySelector(".timeline-items");
+  if (!timelineItems || !timelineData) return;
+
+  // Clear existing timeline items
+  timelineItems.innerHTML = "";
+
+  // Create new timeline items
+  timelineData.forEach((item) => {
+    const timelineItem = document.createElement("div");
+    timelineItem.className = `timeline-item ${item.side}`;
+
+    // Right items: dot first, left items: dot after content
+    if (item.side === "right") {
+      timelineItem.innerHTML = `
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-time">${item.time}</div>
+                    <div class="timeline-title">${item.title}</div>
+                    <div class="timeline-desc">${item.desc}</div>
+                </div>
+            `;
+    } else {
+      timelineItem.innerHTML = `
+                <div class="timeline-content">
+                    <div class="timeline-time">${item.time}</div>
+                    <div class="timeline-title">${item.title}</div>
+                    <div class="timeline-desc">${item.desc}</div>
+                </div>
+                <div class="timeline-dot"></div>
+            `;
+    }
+
+    timelineItems.appendChild(timelineItem);
+  });
+}
+
+// Update speakers
+function updateSpeakers(speakersData) {
+  const speakersWrapper = document.querySelector(
+    ".speakers-slider .swiper-wrapper"
+  );
+  if (!speakersWrapper || !speakersData) return;
+
+  // Clear existing speakers
+  speakersWrapper.innerHTML = "";
+
+  // Create new speaker slides
+  speakersData.forEach((speaker) => {
+    const speakerSlide = document.createElement("div");
+    speakerSlide.className = "swiper-slide";
+
+    speakerSlide.innerHTML = `
+            <div class="speaker-card">
+                <img src="${speaker.image}" alt="${speaker.name}" class="speaker-img" onerror="this.src='./Zee All Images:Videos/recap s1.png'">
+                <div class="speaker-name">${speaker.name}</div>
+                <div class="speaker-title">${speaker.title}</div>
+                <div class="speaker-company">${speaker.company}</div>
+            </div>
+        `;
+
+    speakersWrapper.appendChild(speakerSlide);
+  });
+
+  // Update Swiper if it exists
+  if (speakersSwiper) {
+    speakersSwiper.update();
+    speakersSwiper.slideTo(0, 0);
+  }
+}
+
+// Switch city
+function switchCity(city) {
+  // Update active tab
+  document.querySelectorAll(".city-tab").forEach((tab) => {
+    tab.classList.remove("active");
+    if (tab.getAttribute("data-city") === city) {
+      tab.classList.add("active");
+    }
+  });
+
+  // Update event details and timeline
+  const data = cityData[city];
+  if (data) {
+    document.querySelector(".event-date").textContent = data.date;
+    document.querySelector(".event-location").textContent = data.location;
+    document.querySelector(".event-venue").textContent = data.venue;
+
+    // Update timeline
+    if (data.timeline) {
+      updateTimeline(data.timeline);
+    }
+
+    // Update speakers
+    if (data.speakers) {
+      updateSpeakers(data.speakers);
+    }
+  }
+}
+
+// Toggle schedule
+function toggleSchedule() {
+  const schedule = document.getElementById("timeline-schedule");
+  const btn = document.querySelector(".btn-view-schedule");
+
+  if (schedule.style.display === "none") {
+    schedule.style.display = "block";
+    btn.textContent = "HIDE SCHEDULE";
+    btn.classList.add("hide-schedule-state");
+    setTimeout(() => {
+      schedule.style.opacity = "1";
+    }, 10);
+  } else {
+    schedule.style.display = "none";
+    btn.textContent = "VIEW SCHEDULE";
+    btn.classList.remove("hide-schedule-state");
+  }
+}
+
+// Speaker modal functionality removed
+
+// Initialize AGENDA when DOM is ready
+window.addEventListener("DOMContentLoaded", () => {
+  // Wait for loader to finish
+  setTimeout(() => {
+    initAgendaSection();
+  }, 2000);
+});
