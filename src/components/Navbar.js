@@ -67,7 +67,7 @@ const applySearchHighlights = (query) => {
 };
 
 const navItems = [
-  { name: 'Ad Solutions', id: 'ad-formats' },
+  { name: 'Ad Solutions', id: 'premium-ad-formats' },
   { name: 'Advertise with us', id: 'contact' },
   { name: 'Z Rise', href: '/rise/index.html' }
 ];

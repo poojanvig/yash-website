@@ -14,8 +14,8 @@ function App() {
       <Navbar />
       <Hero />
       <Entertainment />
-      <AdFormats />
       <PremiumAdFormats />
+      <AdFormats />
       <Contact />
       <Footer />
     </div>
