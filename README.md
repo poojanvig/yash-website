@@ -1,4 +1,4 @@
-# Yash Website
+# Zee website
 
 A React-based marketing site showcasing ZEE5 ad formats, entertainment offerings, and brand experiences.
 
