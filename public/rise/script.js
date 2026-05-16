@@ -1079,11 +1079,83 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 if (registerForm) {
+  // Live error clearing on input
+  registerForm.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("input", () => {
+      const field = input.closest(".form-field");
+      const errorEl = field && field.querySelector(".field-error");
+      if (field) field.classList.remove("has-error");
+      if (errorEl) { errorEl.textContent = ""; errorEl.classList.remove("visible"); }
+    });
+  });
+
+  function showFieldError(fieldId, message) {
+    const input = registerForm.querySelector("#" + fieldId);
+    const errorEl = document.getElementById(fieldId + "-error");
+    if (!input || !errorEl) return;
+    const field = input.closest(".form-field");
+    if (field) field.classList.add("has-error");
+    errorEl.textContent = message;
+    errorEl.classList.add("visible");
+  }
+
+  function clearAllErrors() {
+    registerForm.querySelectorAll(".form-field").forEach((f) => f.classList.remove("has-error"));
+    registerForm.querySelectorAll(".field-error").forEach((e) => { e.textContent = ""; e.classList.remove("visible"); });
+  }
+
+  function validateForm() {
+    clearAllErrors();
+    let valid = true;
+
+    const fullname = registerForm.querySelector("#fullname").value.trim();
+    const email = registerForm.querySelector("#email").value.trim();
+    const mobile = registerForm.querySelector("#mobile").value.trim();
+    const company = registerForm.querySelector("#company").value.trim();
+    const city = registerForm.querySelector("#city").value.trim();
+
+    if (!fullname) {
+      showFieldError("fullname", "Full name is required.");
+      valid = false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+      showFieldError("email", "Email address is required.");
+      valid = false;
+    } else if (!emailRegex.test(email)) {
+      showFieldError("email", "Please enter a valid email address.");
+      valid = false;
+    }
+
+    const mobileDigits = mobile.replace(/\D/g, "");
+    if (!mobile) {
+      showFieldError("mobile", "Mobile number is required.");
+      valid = false;
+    } else if (mobileDigits.length < 10) {
+      showFieldError("mobile", "Please enter a valid 10-digit mobile number.");
+      valid = false;
+    }
+
+    if (!company) {
+      showFieldError("company", "Company name is required.");
+      valid = false;
+    }
+
+    if (!city) {
+      showFieldError("city", "City of interest is required.");
+      valid = false;
+    }
+
+    return valid;
+  }
+
   registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    if (!registerForm.checkValidity()) {
-      registerForm.reportValidity();
+    if (!validateForm()) {
+      const firstError = registerForm.querySelector(".field-error.visible");
+      if (firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
 

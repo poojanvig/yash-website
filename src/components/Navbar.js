@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 import zLogo from '../assets/z-logo.webp';
 
@@ -69,7 +70,7 @@ const applySearchHighlights = (query) => {
 const navItems = [
   { name: 'Ad Solutions', id: 'premium-ad-formats' },
   { name: 'Advertise with us', id: 'contact' },
-  { name: 'Z Rise', href: '/rise/index.html' }
+  { name: 'Z Rise', href: '/rise', internal: true }
 ];
 
 const Navbar = () => {
@@ -276,6 +277,29 @@ const Navbar = () => {
                   ))}
                 </div>
               </div>
+            ) : item.href && item.internal ? (
+              <Link
+                key={item.name}
+                to={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span className="mobile-link-text">{item.name}</span>
+                <svg
+                  className="mobile-link-arrow"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </Link>
             ) : item.href ? (
               <a
                 key={item.name}

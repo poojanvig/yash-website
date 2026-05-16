@@ -2111,6 +2111,30 @@ body {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+.field-error {
+    display: block;
+    color: #ff4d6d;
+    font-size: 12px;
+    margin-top: 6px;
+    min-height: 16px;
+    letter-spacing: 0.3px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.field-error.visible {
+    opacity: 1;
+}
+
+.form-field.has-error input {
+    border-bottom-color: #ff4d6d;
+}
+
+.form-field.has-error::after {
+    background: #ff4d6d;
+    width: 100%;
+}
+
 .privacy-text {
     color: #fff;
     font-size: 12px;
