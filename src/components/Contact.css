@@ -283,6 +283,58 @@
   align-items: flex-start;
 }
 
+/* ── Field Wrapper (input + error message) ── */
+.contact-field-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-field-wrapper--full {
+  width: 100%;
+}
+
+.contact-field-wrapper .contact-input-group {
+  flex: unset;
+}
+
+.contact-field-error {
+  color: #ff4d6d;
+  font-size: 12px;
+  margin-top: 6px;
+  padding-left: 4px;
+  animation: contactErrorFadeIn 0.2s ease forwards;
+}
+
+@keyframes contactErrorFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Error state on input group ── */
+.contact-input-group.has-error {
+  border-color: rgba(255, 77, 109, 0.7);
+  box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.12), 0 0 20px rgba(255, 77, 109, 0.08);
+}
+
+.contact-input-group.has-error .contact-input-icon {
+  color: #ff4d6d;
+}
+
+/* ── Success message ── */
+.contact-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #75c847;
+  background: rgba(117, 200, 71, 0.1);
+  border: 1px solid rgba(117, 200, 71, 0.25);
+  border-radius: 10px;
+  padding: 12px 16px;
+  animation: contactErrorFadeIn 0.3s ease forwards;
+}
+
 /* ── Disclaimer ── */
 .contact-disclaimer {
   display: flex;
