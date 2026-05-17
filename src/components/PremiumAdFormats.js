@@ -241,7 +241,7 @@ const categories = [
         name: "In-content Ads",
         displayTitle: "IN-CONTENT ADVERTISING",
         description:
-          "In-Content Ads are placed in show between scene transitions as 7/8 secs shots. The shot typically is an outdoor shot with product features clearly displayed in form of a hoarding.",
+          "In-Content Ads are placed in show between scene transitions as 7-8 secs shots. The shot typically is an outdoor shot with product features clearly displayed in form of a hoarding.",
         usage: "Ideal for Deep brand integration, High recall and Non-intrusive engagement.",
         image: inContentAdvertising,
         video: inSceneBrandShowcaseVideo,
