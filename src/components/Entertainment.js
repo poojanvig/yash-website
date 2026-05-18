@@ -180,7 +180,7 @@ const allCards = [
     },
   },
   {
-    title: 'Z Zee Brand Works',
+    title: 'Zee Brand Works',
     image: zBrandworksCard,
     statImage: zBrandworksColour,
     description: "Z Network's flagship platform for building high-value advertiser partnerships through curated, high-impact engagements.",

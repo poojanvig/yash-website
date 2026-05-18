@@ -411,18 +411,18 @@
   }
 
   .footer-content {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   .footer-col {
-    gap: 14px;
-    padding: 18px 16px;
+    gap: 12px;
+    padding: 16px 14px;
   }
 
   .footer-col:first-child,
   .footer-newsletter {
-    grid-column: auto;
+    grid-column: 1 / -1;
   }
 
   .footer-col-title {
@@ -431,7 +431,7 @@
   }
 
   .footer-col a {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .footer-newsletter {

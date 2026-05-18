@@ -566,7 +566,8 @@ body {
 }
 
 /* Hide mobile menu overlay on desktop */
-@media (min-width: 481px) {
+/* Mobile overlay only shows when JS adds .active class; hide on desktop */
+@media (min-width: 769px) {
     .mobile-menu-overlay {
         display: none !important;
     }
@@ -1337,6 +1338,53 @@ body {
 
     .recap-logo {
         font-size: 36px;
+    }
+}
+
+/* AGENDA mobile — compact city tabs so both fit on screen */
+@media (max-width: 768px) {
+    .city-tabs-swiper {
+        margin: 30px 0 14px;
+        padding: 0 20px;
+    }
+
+    .city-tabs-nav {
+        padding: 0 20px;
+        gap: 16px;
+    }
+
+    .city-tab {
+        padding: 10px 16px;
+    }
+
+    .city-tab .city-name {
+        font-size: 14px;
+    }
+
+    .city-tab .city-date {
+        font-size: 12px;
+    }
+
+    .details-left p {
+        font-size: 15px;
+    }
+
+    .event-details {
+        margin: 24px 0 36px;
+    }
+
+    .view-schedule-wrapper {
+        margin: 24px 0 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-tab {
+        padding: 8px 12px;
+    }
+
+    .city-tab .city-name {
+        font-size: 13px;
     }
 }
 
@@ -2199,6 +2247,11 @@ body {
 
     .register-form {
         gap: 28px;
+        padding: 0;
+    }
+
+    .register-submit {
+        width: 100%;
     }
 
     .form-field {
@@ -2662,13 +2715,23 @@ body {
         width: clamp(70px, 18vw, 120px);
     }
 
-    /* Hide desktop nav on mobile */
+    /* Hide desktop nav, show hamburger */
     .nav-list {
         display: none;
     }
 
     .main-nav .btn-gradient {
         display: none;
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        position: relative;
+        right: auto;
     }
 
     /* Hero Section */
